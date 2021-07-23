@@ -46,7 +46,7 @@ const FamilyList = ({ navigation }) => {
     );
   };
   return (
-    <View style={{ flex: 1, height: "100%", marginBottom:'10' }}>
+    <View style={{ flex: 1, height: "100%", marginBottom: 40}}>
       {/* <TouchableOpacity onPress={()} */}
       <FlatList
         data={DummyFamily}
