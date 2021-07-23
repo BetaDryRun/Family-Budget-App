@@ -12,7 +12,7 @@ const HomeScreen = (props) => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Families" component={FamilyScreen} />
-      <Tab.Screen name="Build" component={AddFamilyScreen} />
+      <Tab.Screen name="Add Family" component={AddFamilyScreen} />
       <Tab.Screen name="Wallet" component={WalletScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
