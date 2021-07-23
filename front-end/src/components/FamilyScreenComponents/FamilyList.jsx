@@ -46,8 +46,8 @@ const FamilyList = ({ navigation }) => {
     );
   };
   return (
-      <View style={{ flex: 1 }}>
-          {/* <TouchableOpacity onPress={()} */}
+    <View style={{ flex: 1, height: "100%", marginBottom:'10' }}>
+      {/* <TouchableOpacity onPress={()} */}
       <FlatList
         data={DummyFamily}
         showsVerticalScrollIndicator={false}
@@ -59,10 +59,12 @@ const FamilyList = ({ navigation }) => {
         keyExtractor={({ item, index }) => String(index)}
         renderItem={renderItem}
       ></FlatList>
-      <Button
-        title="Go to Family 1"
-        onPress={() => navigation.navigate("Family")}
-      />
+      {/* <View style={{ marginTop: 10 }}>
+        <Button
+          title="Go to Family 1"
+          onPress={() => navigation.navigate("Family")}
+        />
+      </View> */}
     </View>
   );
 };
