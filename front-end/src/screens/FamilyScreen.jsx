@@ -7,8 +7,8 @@ const Stack = createStackNavigator();
 const FamilyScreen = (props) => {
     return (
         <Stack.Navigator initialRouteName="Registration">
-            <Stack.Screen name="Families" component={FamilyList} />
-            <Stack.Screen name="Family" component={Family} />
+            <Stack.Screen name="Families" options={{ headerShown: false }} component={FamilyList} />
+            <Stack.Screen name="Family" options={{ headerShown: false }} component={Family} />
         </Stack.Navigator>
     )
 }
