@@ -2,19 +2,28 @@ import React from "react";
 import { Button, TouchableOpacity, FlatList } from "react-native";
 import { DummyFamily } from "../../dummyData/Data";
 import {
-  VStack,
-  HStack,
-  Avatar,
-  Image,
   View,
   Text,
-  NativeBaseProvider,
-  AspectRatio,
-  Center,
   Box,
   Stack,
   Heading,
+  Fab, 
+  Icon
 } from "native-base";
+import { AntDesign } from "@expo/vector-icons"
+
+
+export const FabButton = () => {
+  return (
+      <Fab
+        right={5}
+        bottom={20}
+        size="sm"
+        bg='fi.300'
+        icon={<Icon color="white" as={<AntDesign name="plus" />} size="sm" />}
+      />
+  )
+}
 
 const FamilyList = ({ navigation }) => {
     const changeBal = (item) => {
@@ -59,6 +68,7 @@ const FamilyList = ({ navigation }) => {
         keyExtractor={({ item, index }) => String(index)}
         renderItem={renderItem}
       ></FlatList>
+      <FabButton/>
       {/* <View style={{ marginTop: 10 }}>
         <Button
           title="Go to Family 1"
