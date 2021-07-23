@@ -63,7 +63,7 @@ const Login = ({navigation}) => {
               Login
           </Button>
 
-<HStack justifyContent="center" alignItem='center'>
+        <HStack justifyContent="center" alignItem='center'>
           <IconButton
             variant='unstyled'
             startIcon={
