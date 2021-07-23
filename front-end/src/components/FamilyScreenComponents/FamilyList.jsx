@@ -1,11 +1,12 @@
 import React from "react";
-import { Button, View, TouchableOpacity, FlatList } from "react-native";
+import { Button, TouchableOpacity, FlatList } from "react-native";
 import { DummyFamily } from "../../dummyData/Data";
 import {
   VStack,
   HStack,
   Avatar,
   Image,
+  View,
   Text,
   NativeBaseProvider,
   AspectRatio,
@@ -19,34 +20,33 @@ const FamilyList = ({ navigation }) => {
     const changeBal = (item) => {
         let bal = 0;
         item.map((key) => {
-            console.log(key);
             bal = bal + key.remainingBudget;
         })
         return (
-            <Text color="gray.400">{bal}</Text>
+            <Text color="fi.300">{bal}</Text>
         );
     }
   const renderItem = ({ item, index }) => {
     return (
-      <Box bg="white" shadow={5} rounded="lg" maxWidth="100%" mt={5}>
+      <Box bg="fi.500" shadow={5} rounded="lg" maxWidth="100%" mt={5}>
         <Stack space={4} m={4}>
-          <Text color="gray.400">
-            No Of Members:{" "}
-            {item.members.length + item.members.length + item.members.length}
-          </Text>
-          <Heading size={["md", "lg", "md"]}>{item.name}</Heading>
-          <Text lineHeight={[5, 5, 7]} noOfLines={[4, 4, 2]} color="gray.700">
+          <Heading color='fi.300' size={["md", "lg", "md"]}>{item.name}</Heading>
+          <Text lineHeight={[5, 5, 7]} noOfLines={[4, 4, 2]} color="fi.50">
             {item.description}
           </Text>
-          <Text color="gray.400">
-            Family Account Balance: {changeBal(item.membersBudgets)}/{item.budget}
+          <Text color="fi.100">
+            No Of Members:{" "}
+            <Text color="fi.50">{item.members.length + item.members.length + item.members.length}</Text>
+          </Text>
+          <Text color="fi.100">
+            Family Account Balance: {changeBal(item.membersBudgets)}/<Text color="fi.50">{item.budget}</Text>
           </Text>
         </Stack>
       </Box>
     );
   };
   return (
-    <View style={{ flex: 1, height: "100%", marginBottom: 40}}>
+    <View bg={'fi.50'} style={{ flex: 1, height: "100%", paddingBottom: 10 }}>
       {/* <TouchableOpacity onPress={()} */}
       <FlatList
         data={DummyFamily}
