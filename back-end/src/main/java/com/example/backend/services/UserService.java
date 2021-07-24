@@ -20,7 +20,7 @@ public class UserService {
     public DefaultResponse createUser(UserEntity userEntity) {
 
         walletService.createWallet(userEntity.getPhoneNumber());
-        userRepository.save(userEntity);
+        userRepository.insert(userEntity);
 
         DefaultResponse defaultResponse = new DefaultResponse();
         defaultResponse.setCode("200");
