@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class GetFamilyResponse {
+public class GetUserFamilyResponse {
 
     String id;
     String name;

@@ -5,6 +5,8 @@ import com.example.backend.exceptions.BadRequestException;
 import com.example.backend.exchanges.DefaultResponse;
 import com.example.backend.models.FamilyEntity;
 import com.example.backend.services.FamilyService;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +20,28 @@ public class FamilyController {
     FamilyService familyService;
 
     @PostMapping("/family")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Created", response = DefaultResponse.class),
+            @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
+    })
     public ResponseEntity<DefaultResponse> createFamily(@RequestBody FamilyEntity familyEntity , @RequestParam String id) throws BadRequestException {
 
-        System.out.println(familyEntity);
         /*TODO: ID should come from JWT*/
         DefaultResponse defaultResponse =  familyService.createFamily(familyEntity,id);
 
         return ResponseEntity.ok().body(defaultResponse);
+    }
+
+    @PutMapping("family/addMember")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Added", response = DefaultResponse.class),
+            @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
+    })
+    public  ResponseEntity<DefaultResponse> addMember(@RequestParam String phoneNumber) {
+
+        DefaultResponse defaultResponse = familyService.addMember(phoneNumber);
+
+        return ResponseEntity.ok(defaultResponse);
     }
 
 

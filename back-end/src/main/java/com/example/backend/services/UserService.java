@@ -3,7 +3,7 @@ package com.example.backend.services;
 
 import com.example.backend.exceptions.BadRequestException;
 import com.example.backend.exchanges.DefaultResponse;
-import com.example.backend.exchanges.GetFamilyResponse;
+import com.example.backend.exchanges.GetUserFamilyResponse;
 import com.example.backend.exchanges.GetUserResponse;
 import com.example.backend.models.BudgetEntity;
 import com.example.backend.models.UserEntity;
@@ -55,9 +55,9 @@ public class UserService {
         List<GetUserResponse> getUserResponses = mongoTemplate.aggregate(aggregationOperation,"users", GetUserResponse.class).getMappedResults();
 
         for(GetUserResponse g : getUserResponses) {
-            List<GetFamilyResponse> families = g.getFamilies();
+            List<GetUserFamilyResponse> families = g.getFamilies();
 
-            for(GetFamilyResponse f : families) {
+            for(GetUserFamilyResponse f : families) {
 
 
                 List<BudgetEntity> membersBudget = f.getMembersBudget();

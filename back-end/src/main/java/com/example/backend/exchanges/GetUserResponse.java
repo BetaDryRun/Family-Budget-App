@@ -1,8 +1,6 @@
 package com.example.backend.exchanges;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.util.List;
 
@@ -14,7 +12,7 @@ public class GetUserResponse {
 
     String phoneNumber;
 
-    List<GetFamilyResponse> families;
+    List<GetUserFamilyResponse> families;
     String emailId;
     String firstName;
     String lastName;
