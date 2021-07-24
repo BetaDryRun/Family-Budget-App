@@ -14,6 +14,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpServerErrorException;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class UserController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Created", response = DefaultResponse.class),
             @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error",response = HttpServerErrorException.InternalServerError.class)
     })
     public ResponseEntity<DefaultResponse> createUser(@RequestBody UserEntity userEntity) {
 
@@ -49,6 +51,7 @@ public class UserController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Created", response = DefaultResponse.class),
             @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error",response = HttpServerErrorException.InternalServerError.class)
     })
     public ResponseEntity<List<GetUserResponse>> getUser(@RequestParam String phoneNumber) throws BadRequestException {
         List<GetUserResponse> user = userService.getUser(phoneNumber);
@@ -59,6 +62,7 @@ public class UserController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Created", response = DefaultResponse.class),
             @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error",response = HttpServerErrorException.InternalServerError.class)
     })
     public ResponseEntity<DefaultResponse> deleteUser(@RequestParam String id) {
 
@@ -73,13 +77,14 @@ public class UserController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Created", response = DefaultResponse.class),
             @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error",response = HttpServerErrorException.InternalServerError.class)
     })
-    public ResponseEntity<UserEntity> updateUser(@RequestBody UserEntity userEntity) {
+    public ResponseEntity<DefaultResponse> updateUser(@RequestBody UserEntity userEntity) throws BadRequestException {
 
 
         // TODO : Raise error if user is not present
 
-        UserEntity user = userService.updateUser(userEntity);
+        DefaultResponse user = userService.updateUser(userEntity);
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 

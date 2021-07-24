@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends MongoRepository<UserEntity,String> {
 
 
+    public UserEntity findUserEntitiesByPhoneNumber(String phoneNumber);
 }

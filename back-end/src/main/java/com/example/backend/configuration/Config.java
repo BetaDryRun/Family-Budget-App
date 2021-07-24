@@ -10,14 +10,15 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 /*
-* This is just a Swagger config has nothing to do with rest api
-*/
+ * This is just a Swagger config has nothing to do with rest api
+ */
 @Configuration
 @EnableSwagger2
 public class Config {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .useDefaultResponseMessages(false)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.example.backend"))
                 .paths(PathSelectors.any())

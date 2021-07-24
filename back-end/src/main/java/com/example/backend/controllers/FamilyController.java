@@ -2,6 +2,7 @@ package com.example.backend.controllers;
 
 
 import com.example.backend.exceptions.BadRequestException;
+import com.example.backend.exchanges.AddMemberRequest;
 import com.example.backend.exchanges.DefaultResponse;
 import com.example.backend.models.FamilyEntity;
 import com.example.backend.services.FamilyService;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpServerErrorException;
 
 @RestController
 public class FamilyController {
@@ -23,11 +25,12 @@ public class FamilyController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Created", response = DefaultResponse.class),
             @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error",response = HttpServerErrorException.InternalServerError.class)
     })
-    public ResponseEntity<DefaultResponse> createFamily(@RequestBody FamilyEntity familyEntity , @RequestParam String id) throws BadRequestException {
+    public ResponseEntity<DefaultResponse> createFamily(@RequestBody FamilyEntity familyEntity , @RequestParam String userId) throws BadRequestException {
 
-        /*TODO: ID should come from JWT*/
-        DefaultResponse defaultResponse =  familyService.createFamily(familyEntity,id);
+        /*TODO: userId should come from JWT*/
+        DefaultResponse defaultResponse =  familyService.createFamily(familyEntity, userId);
 
         return ResponseEntity.ok().body(defaultResponse);
     }
@@ -36,10 +39,12 @@ public class FamilyController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Added", response = DefaultResponse.class),
             @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error",response = HttpServerErrorException.InternalServerError.class)
     })
-    public  ResponseEntity<DefaultResponse> addMember(@RequestParam String phoneNumber) {
+    public  ResponseEntity<DefaultResponse> addMember(@RequestBody AddMemberRequest addMemberRequest, @RequestParam String userId) throws BadRequestException {
 
-        DefaultResponse defaultResponse = familyService.addMember(phoneNumber);
+        /*TODO: userId should come from JWT*/
+        DefaultResponse defaultResponse = familyService.addMember(addMemberRequest,userId);
 
         return ResponseEntity.ok(defaultResponse);
     }

@@ -1,6 +1,7 @@
 package com.example.backend.services;
 
 import com.example.backend.exceptions.BadRequestException;
+import com.example.backend.exchanges.AddMemberRequest;
 import com.example.backend.exchanges.DefaultResponse;
 import com.example.backend.models.BudgetEntity;
 import com.example.backend.models.FamilyEntity;
@@ -23,36 +24,32 @@ public class FamilyService {
     @Autowired
     FamilyRepository familyRepository;
 
+    /*TODO : remove this after JWT*/
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    UserService userService;
 
     public DefaultResponse createFamily(FamilyEntity familyEntity, String userId) throws BadRequestException {
 
         Optional<UserEntity> response = userRepository.findById(userId);
 
-        if(response.isPresent()) {
+        if (response.isPresent()) {
             UserEntity user = response.get();
             UserEntity userRef = new UserEntity();
             userRef.setId(user.getId());
 
-            BudgetEntity budgetEntity = new BudgetEntity(user.getId(),user.getPhoneNumber(),-1,-1);
+            BudgetEntity budgetEntity = new BudgetEntity(user.getId(), user.getPhoneNumber(), -1, -1);
             familyEntity.getAdmins_id().add(userId);
             familyEntity.getMembers_id().add(userId);
 
             familyEntity.getMembersBudget().add(budgetEntity);
             FamilyEntity insert = familyRepository.insert(familyEntity);
-            List<String> families = new ArrayList<>();
 
-            if(user.getFamilies_id()!=null)
-                families = new ArrayList<>(user.getFamilies_id());
+            userService.addFamily(insert.getId(),userId);
 
-            families.add(insert.getId());
-            user.setFamilies_id(families);
-
-            userRepository.save(user);
-
-        }
-        else {
+        } else {
             throw new BadRequestException("User not found");
         }
 
@@ -63,6 +60,25 @@ public class FamilyService {
         return defaultResponse;
     }
 
-    public DefaultResponse addMember(String phoneNumber) {
+    public DefaultResponse addMember(AddMemberRequest addMemberRequest, String userId) throws BadRequestException {
+
+        Optional<FamilyEntity> familyOptional = familyRepository.findById(addMemberRequest.getFamilyId());
+
+        if (familyOptional.isPresent()) {
+
+            FamilyEntity familyEntity = familyOptional.get();
+            if (familyEntity.getAdmins_id().contains(userId)) {
+                String id = userRepository.findUserEntitiesByPhoneNumber(addMemberRequest.getPhoneNumber()).getId();
+                userService.addFamily(addMemberRequest.getFamilyId(),id);
+                familyEntity.getMembers_id().add(userId);
+                familyRepository.save(familyEntity);
+            } else {
+                throw new BadRequestException("Only admins allowed");
+            }
+
+        } else {
+            throw new BadRequestException("Family Does not exists");
+        }
+        return new DefaultResponse();
     }
 }

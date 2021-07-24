@@ -9,12 +9,15 @@ import com.example.backend.models.BudgetEntity;
 import com.example.backend.models.UserEntity;
 import com.example.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,8 +34,8 @@ public class UserService {
 
     public DefaultResponse createUser(UserEntity userEntity) {
 
+        userRepository.save(userEntity);
         walletService.createWallet(userEntity.getPhoneNumber());
-        userRepository.insert(userEntity);
 
         DefaultResponse defaultResponse = new DefaultResponse();
         defaultResponse.setCode("200");
@@ -79,9 +82,33 @@ public class UserService {
         return defaultResponse;
     }
 
-    public UserEntity updateUser(UserEntity userEntity) {
+    public DefaultResponse updateUser(UserEntity userEntity) throws BadRequestException {
 
-        UserEntity entity = userRepository.save(userEntity);
-        return entity;
+        Optional<UserEntity> id = userRepository.findById(userEntity.getId());
+        if(!id.isPresent())
+            throw new BadRequestException("user does not exists");
+
+        userEntity.setPassword(id.get().getPassword());
+        try {
+            userRepository.save(userEntity);
+        } catch (DuplicateKeyException e) {
+            throw new BadRequestException("User with mobile number already exists");
+        }
+
+        return new DefaultResponse(new String[]{"User Updated"},"200");
+    }
+
+    public void addFamily(String familyId,String userId) {
+        Optional<UserEntity> entity = userRepository.findById(userId);
+        UserEntity user = userRepository.findById(userId).get();
+        List<String> families = new ArrayList<>();
+
+        if (user.getFamilies_id() != null)
+            families = new ArrayList<>(user.getFamilies_id());
+
+        families.add(familyId);
+        user.setFamilies_id(families);
+
+        userRepository.save(user);
     }
 }
