@@ -35,15 +35,15 @@ public class FamilyService {
             UserEntity userRef = new UserEntity();
             userRef.setId(user.getId());
 
-            familyEntity.getAdmins().add(userRef);
+            familyEntity.getAdmins_id().add(id);
             FamilyEntity insert = familyRepository.insert(familyEntity);
-            List<FamilyEntity> families = new ArrayList<>();
+            List<String> families = new ArrayList<>();
 
-            if(user.getFamilies()!=null)
-                families = new ArrayList<>(user.getFamilies());
+            if(user.getFamilies_id()!=null)
+                families = new ArrayList<>(user.getFamilies_id());
 
-            families.add(insert);
-            user.setFamilies(families);
+            families.add(insert.getId());
+            user.setFamilies_id(families);
 
             System.out.println("Saving"+user);
 
@@ -58,6 +58,6 @@ public class FamilyService {
         DefaultResponse defaultResponse = new DefaultResponse();
         defaultResponse.setCode("200");
         defaultResponse.setMessages(new String[]{"Family Created"});
-        return new DefaultResponse();
+        return defaultResponse;
     }
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 public class BudgetEntity {
 
     String id;
+    String phoneNumber;
     String budget;
     String remainingBudget;
 }

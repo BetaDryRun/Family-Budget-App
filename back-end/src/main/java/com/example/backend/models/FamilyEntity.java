@@ -1,6 +1,9 @@
 package com.example.backend.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -11,6 +14,7 @@ import java.util.List;
 
 @Document(collection = "families")
 @Data
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class FamilyEntity {
 
     @Id
@@ -19,12 +23,10 @@ public class FamilyEntity {
     String link;
     String desc;
 
-    @DBRef(lazy = true)
-    List<UserEntity> members;
-    @DBRef(lazy = true)
-    List<UserEntity> admins;
-    @DBRef(lazy = true)
-    List<UserEntity> seasoned;
+
+    List<String> members_id;
+    List<String> admins_id;
+    List<String> seasoned_id;
 
     List<BudgetEntity> membersBudget;
 

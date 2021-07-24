@@ -3,6 +3,7 @@ package com.example.backend.controllers;
 
 import com.example.backend.exceptions.BadRequestException;
 import com.example.backend.exchanges.DefaultResponse;
+import com.example.backend.exchanges.GetUserResponse;
 import com.example.backend.models.UserEntity;
 
 import com.example.backend.services.UserService;
@@ -11,6 +12,8 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -37,8 +40,8 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public ResponseEntity<UserEntity> getUser(@RequestParam String phoneNumber) throws BadRequestException {
-        UserEntity user = userService.getUser(phoneNumber);
+    public ResponseEntity<List<GetUserResponse>> getUser(@RequestParam String phoneNumber) throws BadRequestException {
+        List<GetUserResponse> user = userService.getUser(phoneNumber);
         return ResponseEntity.ok(user);
     }
 

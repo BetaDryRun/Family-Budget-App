@@ -1,7 +1,7 @@
 package com.example.backend.models;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -14,6 +14,7 @@ import java.util.List;
 
 @Document(collection = "users")
 @Data
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class UserEntity {
 
     @Id
@@ -23,9 +24,7 @@ public class UserEntity {
     String phoneNumber;
     String password;
 
-    @DBRef(lazy = true)
-    @JsonIgnore
-    List<FamilyEntity> families;
+    List<String> families_id;
     String emailId;
     String firstName;
     String lastName;
