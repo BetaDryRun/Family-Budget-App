@@ -13,9 +13,6 @@ import { useForm, Controller } from "react-hook-form";
 
 const AddFamily = (props) => {
   const { control, handleSubmit, errors } = useForm();
-  const onChangeText = (value) => {
-    console.log("Dropdown value ", value);
-  }
   const onSubmit = (data) => {
     console.log("submiting with ", data);
   };
@@ -46,13 +43,13 @@ const AddFamily = (props) => {
           </FormControl.Label>
           <Controller
             control={control}
-            render={({ onChangeText, value }) => (
+            render={({ onchange, value }) => (
               <Select
                 placeholder="Choose Iteration Period"
                 selectedValue={value}
                 width={"100%"}
-                onValueChange={(itemValue) => {
-                  onChangeText(itemValue);
+                onValueChange={(itemValue: string) => {
+                  onchange(itemValue);
                 }}
                 selectedItemBg={"fi.300"}
                 dropdownOpenIcon={
