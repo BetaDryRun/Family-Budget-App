@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, TouchableOpacity, FlatList } from "react-native";
+import { FlatList, ImageBackground } from "react-native";
 import { DummyFamily } from "../../dummyData/Data";
 import {
   View,
@@ -11,9 +11,14 @@ import {
   Icon
 } from "native-base";
 import { AntDesign } from "@expo/vector-icons"
+import {Header} from "../Utility"
+
+const image = { uri: 'https://preview.redd.it/qwd83nc4xxf41.jpg?width=640&crop=smart&auto=webp&s=e82767fdf47158e80604f407ce4938e44afc6c25' };
+// const image = { uri: 'https://theabbie.github.io/blog/assets/official-whatsapp-background-image.jpg' };
+// const image = { uri: 'https://i.pinimg.com/474x/8f/b4/59/8fb4595307a2ad198fff92899d69ccb7.jpg' };
 
 
-export const FabButton = () => {
+export const FabButton = ({navigation}) => {
   return (
       <Fab
         right={5}
@@ -21,6 +26,7 @@ export const FabButton = () => {
         size="sm"
         bg='fi.300'
         icon={<Icon color="white" as={<AntDesign name="plus" />} size="sm" />}
+        onPress={()=> navigation.navigate('Add Family')}
       />
   )
 }
@@ -55,7 +61,17 @@ const FamilyList = ({ navigation }) => {
     );
   };
   return (
-    <View bg={'fi.50'} style={{ flex: 1, height: "100%", paddingBottom: 10 }}>
+    <View style={{ flex: 1, height: "100%"}}>
+      <ImageBackground 
+        source={image} 
+        resizeMode="cover" 
+        style={{
+          flex: 1,
+          justifyContent: "center"
+        }}
+      >
+
+      <Header Title={"My Families"}/>
       {/* <TouchableOpacity onPress={()} */}
       <FlatList
         data={DummyFamily}
@@ -63,12 +79,13 @@ const FamilyList = ({ navigation }) => {
         contentContainerStyle={{
           paddingHorizontal: 16,
           paddingBottom: 16,
-          marginTop: 16,
+          marginTop: 4,
         }}
         keyExtractor={({ item, index }) => String(index)}
         renderItem={renderItem}
       ></FlatList>
-      <FabButton/>
+      <FabButton navigation={navigation}/>
+      </ImageBackground>
       {/* <View style={{ marginTop: 10 }}>
         <Button
           title="Go to Family 1"

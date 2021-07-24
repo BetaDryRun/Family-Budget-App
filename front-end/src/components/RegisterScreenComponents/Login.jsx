@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { FlatList, ImageBackground } from "react-native";
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import {
   Box,
@@ -25,6 +26,7 @@ const Login = ({navigation}) => {
         mx='auto'
         bg='fi.50'
       >
+        
         <Box
         w="100%">
         <Center>

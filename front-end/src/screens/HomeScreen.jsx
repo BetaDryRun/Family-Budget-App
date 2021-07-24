@@ -3,7 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ProfileScreen from './ProfileScreen';
 import WalletScreen from './WalletScreen';
 import FamilyScreen from './FamilyScreen';
-import AddFamilyScreen from './AddFamilyScreen'
+import AddFamilyScreen from '../components/FamilyScreenComponents/AddFamily'
+import ReportsScreen from './ReportsScreen'
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import {
   Text,
@@ -54,7 +55,7 @@ const HomeScreen = (props) => {
               </View> 
         }}
       />
-      <Tab.Screen name="Add Family" component={AddFamilyScreen}
+      <Tab.Screen name="Reports" component={ReportsScreen}
         options={{ 
           tabBarLabel: 'Reports', 
           tabBarIcon: 

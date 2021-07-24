@@ -1,26 +1,17 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import {
-  Box,
-  Heading,
-  Text,
   VStack,
   FormControl,
   Input,
-  Link,
   Button,
   Icon,
-  IconButton,
-  HStack,
-  Center,
   View,
   Select,
-  NativeBaseProvider,
-  TextArea
 } from "native-base";
 import { useForm, Controller } from "react-hook-form";
 
-const AddFamilyScreen = (props) => {
+const AddFamily = (props) => {
   const { control, handleSubmit, errors } = useForm();
   const onChangeText = (value) => {
     console.log("Dropdown value ", value);
@@ -30,8 +21,6 @@ const AddFamilyScreen = (props) => {
   };
   return (
     <View bg={"fi.400"} h="100%">
-      {/* <Text style={styles.textStyle}>AddFamilyScreen Page</Text> */}
-      {/* //name description iterationDuration budget */}
       <VStack space={5} mt={10} w="90%" pb={10}>
         <FormControl mr={5} ml={5}>
           <FormControl.Label
@@ -62,7 +51,7 @@ const AddFamilyScreen = (props) => {
                 placeholder="Choose Iteration Period"
                 selectedValue={value}
                 width={"100%"}
-                onValueChange={(itemValue: String) => {
+                onValueChange={(itemValue) => {
                   onChangeText(itemValue);
                 }}
                 selectedItemBg={"fi.300"}
@@ -107,4 +96,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddFamilyScreen;
+export default AddFamily;
