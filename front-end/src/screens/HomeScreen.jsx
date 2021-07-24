@@ -1,10 +1,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import ProfileScreen from './ProfileScreen';
-import WalletScreen from './WalletScreen';
-import FamilyScreen from './FamilyScreen';
-import AddFamilyScreen from '../components/FamilyScreenComponents/AddFamily'
+import FamilyList from './FamilyList';
 import ReportsScreen from './ReportsScreen'
+import WalletScreen from './WalletScreen';
+import ProfileScreen from './ProfileScreen';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import {
   Text,
@@ -33,7 +32,7 @@ const HomeScreen = (props) => {
           elevation: 20,
       }
     }}>
-      <Tab.Screen name="Families" component={FamilyScreen} 
+      <Tab.Screen name="Families" component={FamilyList} 
         options={{ 
           tabBarLabel: 'Families',
           tabBarIcon: 

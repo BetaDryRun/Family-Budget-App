@@ -1,7 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+} from "native-base";
 
-const ReportsScreen = (props) => {
+const ReportsScreen = ({navigation}) => {
 return (
     <View>
         <Text style={styles.textStyle}>ReportsScreen Page</Text>
