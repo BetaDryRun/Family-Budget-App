@@ -48,7 +48,7 @@ const AddFamily = (props) => {
                 placeholder="Choose Iteration Period"
                 selectedValue={value}
                 width={"100%"}
-                onValueChange={(itemValue: string) => {
+                onValueChange={(itemValue) => {
                   onchange(itemValue);
                 }}
                 selectedItemBg={"fi.300"}

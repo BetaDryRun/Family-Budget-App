@@ -1,18 +1,18 @@
-import React from "react";
-import { FlatList, ImageBackground, Alert } from "react-native";
-import { DummyFamily } from "../../dummyData/Data";
+import React, { useState } from "react";
+import { FlatList, ImageBackground } from "react-native";
+import { DummyFamily } from "../dummyData/Data";
 import {
-  Pressable,
   View,
   Text,
   Box,
   Stack,
   Heading,
-  Fab,
+  Button,
   Icon,
+  Pressable,
 } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
-import { Header } from "../Utility";
+import { Header } from "../components/Utility";
 
 const image = {
   uri: "https://preview.redd.it/qwd83nc4xxf41.jpg?width=640&crop=smart&auto=webp&s=e82767fdf47158e80604f407ce4938e44afc6c25",
@@ -20,27 +20,35 @@ const image = {
 // const image = { uri: 'https://theabbie.github.io/blog/assets/official-whatsapp-background-image.jpg' };
 // const image = { uri: 'https://i.pinimg.com/474x/8f/b4/59/8fb4595307a2ad198fff92899d69ccb7.jpg' };
 
-export const FabButton = ({ navigation }) => {
+const FabButton = ({ navigation }) => {
+  const [selecting, setSelecting] = useState();
   return (
-    <Fab
-      right={5}
-      bottom={20}
-      size="sm"
+    <Button
       bg="fi.300"
-      icon={<Icon color="white" as={<AntDesign name="plus" />} size="sm" />}
+      style={{
+        position: "absolute",
+        bottom: 20,
+        right: 10,
+        height: 60,
+        width: 60,
+        borderRadius: 40,
+      }}
+      startIcon={
+        <Icon color="white" as={<AntDesign name="plus" />} size="sm" />
+      }
       onPress={() => navigation.navigate("Add Family")}
     />
   );
 };
 
+const changeBal = (item) => {
+  let bal = 0;
+  item.map((key) => {
+    bal = bal + key.remainingBudget;
+  });
+  return <Text color="fi.300">{bal}</Text>;
+};
 const FamilyList = ({ navigation }) => {
-  const changeBal = (item) => {
-    let bal = 0;
-    item.map((key) => {
-      bal = bal + key.remainingBudget;
-    });
-    return <Text color="fi.300">{bal}</Text>;
-  };
   const renderItem = ({ item, index }) => {
     return (
       <Box bg="fi.500" shadow={5} rounded="lg" maxWidth="100%" mt={5}>
@@ -71,6 +79,7 @@ const FamilyList = ({ navigation }) => {
       </Box>
     );
   };
+
   return (
     <View style={{ flex: 1, height: "100%" }}>
       <ImageBackground
@@ -82,7 +91,6 @@ const FamilyList = ({ navigation }) => {
         }}
       >
         <Header Title={"My Families"} />
-        {/* <TouchableOpacity onPress={()} */}
         <FlatList
           data={DummyFamily}
           showsVerticalScrollIndicator={false}
@@ -91,17 +99,11 @@ const FamilyList = ({ navigation }) => {
             paddingBottom: 16,
             marginTop: 4,
           }}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => String(item.id)}
           renderItem={renderItem}
-        ></FlatList>
+        />
         <FabButton navigation={navigation} />
       </ImageBackground>
-      {/* <View style={{ marginTop: 10 }}>
-        <Button
-          title="Go to Family 1"
-          onPress={() => navigation.navigate("Family")}
-        />
-      </View> */}
     </View>
   );
 };
