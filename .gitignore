@@ -1,5 +1,5 @@
-FamilyBudgetApp/node_modules/
-FamilyBudgetApp/.expo/
-FamilyBudgetApp/npm-debug.*
+front-end/node_modules/
+front-end/.expo/
+front-end/npm-debug.*
 
 .idea
