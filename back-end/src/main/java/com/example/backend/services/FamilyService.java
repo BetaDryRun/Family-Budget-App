@@ -11,6 +11,7 @@ import com.example.backend.repositories.UserRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
@@ -60,6 +61,7 @@ public class FamilyService {
         return defaultResponse;
     }
 
+    @Transactional
     public DefaultResponse addMember(AddMemberRequest addMemberRequest, String userId) throws BadRequestException {
 
         Optional<FamilyEntity> familyOptional = familyRepository.findById(addMemberRequest.getFamilyId());
@@ -70,7 +72,9 @@ public class FamilyService {
             if (familyEntity.getAdmins_id().contains(userId)) {
                 String id = userRepository.findUserEntitiesByPhoneNumber(addMemberRequest.getPhoneNumber()).getId();
                 userService.addFamily(addMemberRequest.getFamilyId(),id);
-                familyEntity.getMembers_id().add(userId);
+                familyEntity.getMembers_id().add(id);
+                BudgetEntity budgetEntity = new BudgetEntity(id, addMemberRequest.getPhoneNumber(), -1, -1);
+                familyEntity.getMembersBudget().add(budgetEntity);
                 familyRepository.save(familyEntity);
             } else {
                 throw new BadRequestException("Only admins allowed");
@@ -79,6 +83,47 @@ public class FamilyService {
         } else {
             throw new BadRequestException("Family Does not exists");
         }
-        return new DefaultResponse();
+        return new DefaultResponse(new String[]{"Member added"},"200");
+    }
+
+
+    @Transactional
+    public DefaultResponse addAdmin(AddMemberRequest addMemberRequest, String userId) throws BadRequestException {
+
+        Optional<FamilyEntity> familyOptional = familyRepository.findById(addMemberRequest.getFamilyId());
+
+        if(!familyOptional.isPresent())
+            throw new BadRequestException("Family Does not exists");
+
+        FamilyEntity familyEntity = familyOptional.get();
+
+        if (!familyEntity.getAdmins_id().contains(userId))
+            throw new BadRequestException("Only Admins Required");
+
+        String id = userRepository.findUserEntitiesByPhoneNumber(addMemberRequest.getPhoneNumber()).getId();
+        familyEntity.getAdmins_id().add(id);
+        familyRepository.save(familyEntity);
+
+        return new DefaultResponse(new String[]{"Admin added"},"200");
+    }
+
+    @Transactional
+    public DefaultResponse addSeasoned(AddMemberRequest addMemberRequest, String userId) throws BadRequestException {
+
+        Optional<FamilyEntity> familyOptional = familyRepository.findById(addMemberRequest.getFamilyId());
+
+        if(!familyOptional.isPresent())
+            throw new BadRequestException("Family Does not exists");
+
+        FamilyEntity familyEntity = familyOptional.get();
+
+        if (!familyEntity.getAdmins_id().contains(userId))
+            throw new BadRequestException("Only Admins Required");
+
+        String id = userRepository.findUserEntitiesByPhoneNumber(addMemberRequest.getPhoneNumber()).getId();
+        familyEntity.getSeasoned_id().add(id);
+        familyRepository.save(familyEntity);
+
+        return new DefaultResponse(new String[]{"Admin added"},"200");
     }
 }

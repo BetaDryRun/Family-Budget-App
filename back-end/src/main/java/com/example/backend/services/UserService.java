@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +83,7 @@ public class UserService {
         return defaultResponse;
     }
 
+    @Transactional
     public DefaultResponse updateUser(UserEntity userEntity) throws BadRequestException {
 
         Optional<UserEntity> id = userRepository.findById(userEntity.getId());
@@ -98,6 +100,7 @@ public class UserService {
         return new DefaultResponse(new String[]{"User Updated"},"200");
     }
 
+    @Transactional
     public void addFamily(String familyId,String userId) {
         Optional<UserEntity> entity = userRepository.findById(userId);
         UserEntity user = userRepository.findById(userId).get();

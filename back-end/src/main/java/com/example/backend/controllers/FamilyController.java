@@ -50,6 +50,35 @@ public class FamilyController {
     }
 
 
+    @PutMapping("family/addAdmin")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Added", response = DefaultResponse.class),
+            @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error",response = HttpServerErrorException.InternalServerError.class)
+    })
+    public  ResponseEntity<DefaultResponse> addAdmin(@RequestBody AddMemberRequest addMemberRequest, @RequestParam String userId) throws BadRequestException {
+
+        /*TODO: userId should come from JWT*/
+        DefaultResponse defaultResponse = familyService.addAdmin(addMemberRequest,userId);
+
+        return ResponseEntity.ok(defaultResponse);
+    }
+
+    @PutMapping("family/addSeasoned")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Added", response = DefaultResponse.class),
+            @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error",response = HttpServerErrorException.InternalServerError.class)
+    })
+    public  ResponseEntity<DefaultResponse> addSeasoned(@RequestBody AddMemberRequest addMemberRequest, @RequestParam String userId) throws BadRequestException {
+
+        /*TODO: userId should come from JWT*/
+        DefaultResponse defaultResponse = familyService.addSeasoned(addMemberRequest,userId);
+
+        return ResponseEntity.ok(defaultResponse);
+    }
+
+
     @ExceptionHandler({BadRequestException.class})
     public ResponseEntity<DefaultResponse> handleException(BadRequestException badRequestException) {
         DefaultResponse defaultResponse = new DefaultResponse();
