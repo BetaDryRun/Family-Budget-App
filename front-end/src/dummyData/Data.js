@@ -4,13 +4,13 @@ export const DummyFamily = [
     name: "Family 1",
     link: "https://share",
     description: "About the family argarga aergarg rga agaraga",
-    members: ["mid1", "mid2", "mid3"],
-    admins: ["aid1", "aid2", "aid3…"],
-    seasoned: ["sid1", "sid2", "sid3…"],
-    walletId: "id", // will be same as userID
+    members: ["1", "2", "3"],
+    admins: ["1"],
+    seasoned: ["2"],
+    walletId: "3", // will be same as userID
     membersBudgets: [
-      { id1: "mid1", budget: 123, remainingBudget: 134 },
-      { id2: "mid2", budget: 13, remainingBudget: 514 },
+      { id1: "2", budget: 500, remainingBudget: 150 },
+      { id2: "3", budget: 300, remainingBudget: 200 },
     ],
     iterationDuration: "Daily",
     // budget: double   → this should be equal to the sum of all the membersBudgets.

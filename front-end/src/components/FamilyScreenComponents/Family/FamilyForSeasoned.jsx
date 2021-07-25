@@ -1,7 +1,5 @@
 import React from "react";
-import { Header } from "../components/Utility";
-import {transactions} from '../dummyData/Transaction'
-import {Email, Separator, Tel, Setting} from '../components/ProfileScreenComponents'
+// import { Header } from "../components/Utility";
 import {
     Box,
     Text, 
@@ -16,7 +14,13 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 import { FlatList } from "react-native";
 
-const WalletScreen = (props) => {
+//Data
+import {family} from '../../../dummyData/OrganisedData/Family'
+import {familyTransactionsInThisIteration} from '../../../dummyData/OrganisedData/FamilyTransactions'
+import {familyWallet} from '../../../dummyData/OrganisedData/FamilyWallet'
+import {familyUsers} from '../../../dummyData/OrganisedData/FamilyUsers'
+
+const FamilyForSeasoned = (props) => {
   const { navigation } = props;
   const itemSelected = props?.route?.params?.selectedItem;
 
@@ -121,7 +125,7 @@ const WalletScreen = (props) => {
           </VStack>
           <View h='275' mt='10'>
                     <FlatList
-                        data={transactions}
+                        data={familyTransactionsInThisIteration}
                         showsVerticalScrollIndicator={true}
                         contentContainerStyle={{
                             paddingHorizontal: 16,
@@ -138,4 +142,4 @@ const WalletScreen = (props) => {
   );
 };
 
-export default WalletScreen;
+export default FamilyForSeasoned;

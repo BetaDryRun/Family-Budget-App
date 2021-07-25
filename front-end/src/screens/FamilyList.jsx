@@ -53,7 +53,7 @@ const FamilyList = ({ navigation }) => {
     return (
       <Box bg="fi.500" shadow={5} rounded="lg" maxWidth="100%" mt={5}>
         <Pressable
-          onPress={() => navigation.navigate("Family", { selectedItem: item })}
+          onPress={() => navigation.navigate("FamilyForAdmin", { selectedItem: item })}
         >
           <Stack space={4} m={4}>
             <Heading color="fi.300" size={["md", "lg", "md"]}>

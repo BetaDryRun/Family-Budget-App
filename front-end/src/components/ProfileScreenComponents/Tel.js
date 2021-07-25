@@ -1,6 +1,9 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Icon } from 'react-native-elements'
+import {
+  HStack   
+} from "native-base";
 
 import mainColor from './constants'
 
@@ -48,50 +51,26 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
   },
+  telContainer: {
+    backgroundColor: '#FFF',
+    flex: 1,
+    paddingTop: 30,
+  }
 })
 
 const Tel = ({
-  containerStyle,
   index,
-  // name,
   number,
-  // onPressSms,
-  // onPressTel,
 }) => {
-
   return (
-    // <TouchableOpacity onPress={() => onPressTel(number)}>
-      <View style={[styles.container, containerStyle]}>
-        <View style={styles.iconRow}>
-          {index === 0 && (
-            <Icon
-              name="call"
-              underlayColor="transparent"
-              iconStyle={styles.telIcon}
-              // onPress={() => onPressTel(number)}
-            />
-          )}
-        </View>
-        <View style={styles.telRow}>
-          <View style={styles.telNumberColumn}>
-            <Text style={styles.telNumberText}>{number}</Text>
-          </View>
-          {/* <View style={styles.telNameColumn}>
-            {name.length !== 0 && (
-              <Text style={styles.telNameText}>{name}</Text>
-            )}
-          </View> */}
-        </View>
-        <View style={styles.smsRow}>
+    <HStack space={5}>
           <Icon
-            name="textsms"
+            name="call"
             underlayColor="transparent"
-            iconStyle={styles.smsIcon}
-            // onPress={() => onPressSms()}
+            iconStyle={styles.telIcon}
           />
-        </View>
-      </View>
-    // </TouchableOpacity>
+          <Text style={{fontSize: 18}}>{number}</Text>
+      </HStack>
   )
 }
 

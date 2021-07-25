@@ -48,19 +48,19 @@ const styles = StyleSheet.create({
   }
 })
 
-const Email = ({ emailId, index }) => {
+const Setting = ({ emailId, index }) => {
   return (
       <HStack space={5}>
           <Icon
-            name="email"
+            name="settings"
             style={{size: 100}}
             underlayColor="transparent"
             iconStyle={styles.emailIcon}
           />
           <Text 
-            style={{fontSize: 18}}>{emailId}</Text>
+            style={{fontSize: 18}}>Settings</Text>
       </HStack>
   )
 }
 
-export default Email
+export default Setting

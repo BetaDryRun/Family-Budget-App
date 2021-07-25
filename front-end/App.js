@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import {HomeScreen, FamilyList, WalletScreen, ReportsScreen, ProfileScreen} from './src/screens';
-import {Family, AddFamily} from './src/components/FamilyScreenComponents'
+import { AddFamily} from './src/components/FamilyScreenComponents'
+import {FamilyForAdmin, FamilyForMember, FamilyForSeasoned} from './src/components/FamilyScreenComponents/Family'
 import {Register, Login} from './src/components/RegisterScreenComponents'
+import AddMoneyScreen from './src/components/AddMoneyScreenComponents/AddMoneyScreen'
+import PayScreen from './src/components/PayScreenComponents/PayScreen'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NativeBaseProvider, extendTheme} from 'native-base';
 const Stack = createStackNavigator();
@@ -25,8 +28,12 @@ export default function App({navigation}) {
           <Stack.Screen name="Wallet" options={{ headerShown: false }} component={WalletScreen} />
           <Stack.Screen name="Reports" options={{ headerShown: false }} component={ReportsScreen} />
           <Stack.Screen name="Profile" options={{ headerShown: false }} component={ProfileScreen} />
-          <Stack.Screen name="Family" options={{ headerShown: false }} component={Family} />
+          <Stack.Screen name="FamilyForAdmin" options={{ headerShown: false }} component={FamilyForAdmin} />
+          <Stack.Screen name="FamilyForSeasoned" options={{ headerShown: false }} component={FamilyForSeasoned} />
+          <Stack.Screen name="FamilyForMember" options={{ headerShown: false }} component={FamilyForMember} />
           <Stack.Screen name="Add Family" options={{ headerShown: false }} component={AddFamily} />
+          <Stack.Screen name="Add Money" options={{ headerShown: false }} component={AddMoneyScreen} />
+          <Stack.Screen name="Pay" options={{ headerShown: false }} component={PayScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
