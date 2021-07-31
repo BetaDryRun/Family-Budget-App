@@ -1,56 +1,75 @@
-import {useState,useEffect} from "react";
-import * as React from 'react';
-import { DataTable } from 'react-native-paper';
+import { useState, useEffect } from "react";
+import * as React from "react";
+import { DataTable } from "react-native-paper";
 const optionsPerPage = [2, 3, 4];
-import { SafeAreaView, FlatList } from 'react-native';
-import Carousel, { Pagination } from 'react-native-snap-carousel';
+import { SafeAreaView, FlatList, ImageBackground } from "react-native";
+import Carousel, { Pagination } from "react-native-snap-carousel";
 import { Header } from "../../../components/Utility";
 import {
-    Box,
-    Text, 
-    View,
-    VStack,
-    Avatar,    
-    HStack,
-    Button,
-    Icon,
-    Center,
+  Box,
+  Text,
+  View,
+  VStack,
+  Avatar,
+  HStack,
+  Button,
+  Icon,
+  Center,
+  Heading,
 } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
-import { AnimatedCircularProgress, Easing } from 'react-native-circular-progress';
-import WhiteCarousel from './WhiteCarousel'
+import {
+  AnimatedCircularProgress,
+  Easing,
+} from "react-native-circular-progress";
+import WhiteCarousel from "./WhiteCarousel";
 
 //Data
-import {family} from '../../../dummyData/OrganisedData/Family'
-import {familyTransactionsInThisIteration} from '../../../dummyData/OrganisedData/FamilyTransactions'
-import {familyWallet} from '../../../dummyData/OrganisedData/FamilyWallet'
-import {familyUsers} from '../../../dummyData/OrganisedData/FamilyUsers'
+import { family } from "../../../dummyData/OrganisedData/Family";
+import { familyTransactionsInThisIteration } from "../../../dummyData/OrganisedData/FamilyTransactions";
+import { familyWallet } from "../../../dummyData/OrganisedData/FamilyWallet";
+import { familyUsers } from "../../../dummyData/OrganisedData/FamilyUsers";
 import { alignContent } from "styled-system";
 
+const image = {
+  uri: "https://preview.redd.it/qwd83nc4xxf41.jpg?width=640&crop=smart&auto=webp&s=e82767fdf47158e80604f407ce4938e44afc6c25",
+};
 
-const FamilyInnerData=({type})=>{
-    let value=familyWallet.currentAmount;
-    return (
-        <HStack>
-            <Icon color="fi.300" as={<FontAwesome name="rupee" />} size="xs" alignContent='center'/>
-            <Text bold fontSize='md' color="fi.300" alignContent='center'>
-                {value}
-            </Text>
-        </HStack>
-    )
-}
-const PerosnalInnerData=({type})=>{
-    let value=0;
-    family.membersBudgets.map((member) => {if(member.id==="1") value+=member.remainingBudget})
-    return (
-        <HStack>
-            <Icon color="fi.300" as={<FontAwesome name="rupee" />} size="xs" alignContent='center'/>
-            <Text bold fontSize='md' color="fi.300" alignContent='center'>
-                {value}
-            </Text>
-        </HStack>
-    )
-}
+const FamilyInnerData = ({ type }) => {
+  let value = familyWallet.currentAmount;
+  return (
+    <HStack>
+      <Icon
+        color="fi.300"
+        as={<FontAwesome name="rupee" />}
+        size="xs"
+        alignContent="center"
+      />
+      <Text bold fontSize="md" color="fi.300" alignContent="center">
+        {value}
+      </Text>
+    </HStack>
+  );
+};
+const PerosnalInnerData = ({ type }) => {
+  let value = 0;
+  family.membersBudgets.map((member) => {
+    if (member.id === "1") value += member.remainingBudget;
+  });
+  return (
+    <HStack>
+      <Icon
+        color="fi.300"
+        as={<FontAwesome name="rupee" />}
+        size="xs"
+        alignContent="center"
+      />
+      <Text bold fontSize="md" color="fi.300" alignContent="center">
+        {value}
+      </Text>
+    </HStack>
+  );
+};
 
 const AdminCarouselSelector = (item, navigation) =>{
 
@@ -58,7 +77,7 @@ const AdminCarouselSelector = (item, navigation) =>{
         case 0:
             return <FunctionalPage navigation={navigation}/>
         case 1:
-            return <GeneratInfo  />
+            return <GeneralInfo  />
         case 2:
             return <SpendTable />
         case 3:
@@ -68,21 +87,22 @@ const AdminCarouselSelector = (item, navigation) =>{
     }
 }
 
-const FunctionalPage = (navigation)=>{
-//   const itemSelected = props?.route?.params?.selectedItem;
+const FunctionalPage = (props) => {
+  const { navigation } = props;
+  //   const itemSelected = props?.route?.params?.selectedItem;
 
-    const calculator=()=>{
-        let value=0;
-        let total=0;
-        family.membersBudgets.map((member) => {
-            if(member.id==="1"){ 
-                value+=member.remainingBudget
-                total+=member.budget
-            }
-        })
-        return (value/total)*100;
-    }
-  
+  const calculator = () => {
+    let value = 0;
+    let total = 0;
+    family.membersBudgets.map((member) => {
+      if (member.id === "1") {
+        value += member.remainingBudget;
+        total += member.budget;
+      }
+    });
+    return (value / total) * 100;
+  };
+
   return (
     <View>
       {/* <Header Title={itemSelected.name} /> */}
@@ -175,27 +195,68 @@ const FunctionalPage = (navigation)=>{
     </View>
   );
 }
+            
+const GeneralInfo = () => {
+  return (
+    <ImageBackground
+      source={image}
+      resizeMode="cover"
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        height: "100%",
+      }}
+    >
+        <Header Title={"General Info"} />
+        <VStack space={5} ml="5" mr="5">
+          <Box bg="fi.500" shadow={5} rounded="lg" mt={5} p={2}>
+            <Heading color="fi.300" size={["md", "lg", "md"]}>
+              Highest Spender
+            </Heading>
+            <Text lineHeight={[5, 5, 7]} noOfLines={[4, 4, 2]} color="fi.50">
+              User 1
+            </Text>
+          </Box>
+          <Box bg="fi.500" shadow={5} rounded="lg" maxWidth="100%" p={2}>
+            <Heading color="fi.300" size={["md", "lg", "md"]}>
+              Lowest Spender
+            </Heading>
+            <Text lineHeight={[5, 5, 7]} noOfLines={[4, 4, 2]} color="fi.50">
+              User 2
+            </Text>
+          </Box>
+          <Box bg="fi.500" shadow={5} rounded="lg" maxWidth="100%" p={2}>
+            <Heading color="fi.300" size={["md", "lg", "md"]}>
+              Highest Contributor
+            </Heading>
+            <Text lineHeight={[5, 5, 7]} noOfLines={[4, 4, 2]} color="fi.50">
+              User 3
+            </Text>
+          </Box>
+          <Box bg="fi.500" shadow={5} rounded="lg" maxWidth="100%" p={2}>
+            <Heading color="fi.300" size={["md", "lg", "md"]}>
+              Lowest Contributor
+            </Heading>
+            <Text lineHeight={[5, 5, 7]} noOfLines={[4, 4, 2]} color="fi.50">
+              User 1
+            </Text>
+          </Box>
+          <Box bg="fi.500" shadow={5} rounded="lg" maxWidth="100%" p={2}>
+            <Heading color="fi.300" size={["md", "lg", "md"]}>
+              Average Money spent per user
+            </Heading>
+            <Text lineHeight={[5, 5, 7]} noOfLines={[4, 4, 2]} color="fi.50">
+              Numeric Value
+            </Text>
+          </Box>
+        </VStack>
+    </ImageBackground>
+  );
+};
 
-const GeneratInfo = ()=>{
-    return (
-        <View>
-            <Header Title={"General Info"}/>
-            <Box bg="fi.600" w="100%" h="100%">
-                <VStack space={5}>
-                    <Text style={{fontSize: 38, alignSelf: 'center', color:'white'}}>General Info</Text>
-                </VStack>
-            </Box>
-        </View>
-    )
-}
-
-const SpendTable = ()=>{
+const SpendTable = () => {
     const [page, setPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(optionsPerPage[0]);
-
-    React.useEffect(() => {
-        setPage(0);
-    }, [itemsPerPage]);
 
     return (
         <View>
@@ -264,48 +325,52 @@ const TransactionHistory = ()=>{
     )
 }
 
-
 const Transaction = ({ item, index }) => {
-    return (
-        <View w='200' h='150'>
-          <HStack space={2}>
-              <Avatar alignItems="center" style={{alignSelf:'center'}}/>
-              <VStack space={3}>
-                  {item.amount<0? 
-                      <Text>
-                          You gave money to {item.to}.
-                      </Text>
-                      :
-                      <Text>
-                          You got money from {item.from}.
-                      </Text>
-                  }
-                  <Text>{item.timeStamp}</Text>
-              </VStack>
-              {item.amount<0? 
-                      <Text mt='5' fontSize='25' alignItems="center" style={{color:'red', alignSelf:'center'}}>
-                          <Icon color="red" as={<FontAwesome name="rupee" />} size="sm" />
-                           {Math.abs(item.amount)}
-                      </Text>
-                      :
-                      <Text mt='5' fontSize='25' alignItems="center" style={{color:'#00c79b', alignSelf:'center'}}>
-                          <Icon color="fi.300" as={<FontAwesome name="rupee" />} size="sm" />
-                          {item.amount}
-                      </Text>
-                  }
-          </HStack>
-          <View
-              mt='7'
-              w='200'
-              ml='70'
-              style={{
-                  borderBottomWidth: 1,
-              }}
-          />
-        </View>
-    )
-}
-
+  return (
+    <View w="200" h="150">
+      <HStack space={2}>
+        <Avatar alignItems="center" style={{ alignSelf: "center" }} />
+        <VStack space={3}>
+          {item.amount < 0 ? (
+            <Text>You gave money to {item.to}.</Text>
+          ) : (
+            <Text>You got money from {item.from}.</Text>
+          )}
+          <Text>{item.timeStamp}</Text>
+        </VStack>
+        {item.amount < 0 ? (
+          <Text
+            mt="5"
+            fontSize="25"
+            alignItems="center"
+            style={{ color: "red", alignSelf: "center" }}
+          >
+            <Icon color="red" as={<FontAwesome name="rupee" />} size="sm" />
+            {Math.abs(item.amount)}
+          </Text>
+        ) : (
+          <Text
+            mt="5"
+            fontSize="25"
+            alignItems="center"
+            style={{ color: "#00c79b", alignSelf: "center" }}
+          >
+            <Icon color="fi.300" as={<FontAwesome name="rupee" />} size="sm" />
+            {item.amount}
+          </Text>
+        )}
+      </HStack>
+      <View
+        mt="7"
+        w="200"
+        ml="70"
+        style={{
+          borderBottomWidth: 1,
+        }}
+      />
+    </View>
+  );
+};
 
 export default class FamilyForAdmin extends React.Component {
     constructor(props){
@@ -352,23 +417,24 @@ export default class FamilyForAdmin extends React.Component {
         );
     }
 
-    render() {
-        return (
-          <SafeAreaView style={{flex: 1, backgroundColor:'#282828' }}>
-
-            <View style={{ flex: 2, flexDirection:'row', justifyContent: 'center', }}>
-                <Carousel
-                //   layout={"default"}
-                  ref={ref => this.carousel = ref}
-                  data={this.state.carouselItems}
-                  sliderWidth={300}
-                  itemWidth={385}
-                  renderItem={this._renderItem}
-                  onSnapToItem = { index => this.setState({activeIndex:index}) } />
-                  
-            </View>
-            { this.pagination }
-          </SafeAreaView>
-        );
-    }
+  render() {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#282828" }}>
+        <View
+          style={{ flex: 2, flexDirection: "row", justifyContent: "center" }}
+        >
+          <Carousel
+            //   layout={"default"}
+            ref={(ref) => (this.carousel = ref)}
+            data={this.state.carouselItems}
+            sliderWidth={300}
+            itemWidth={385}
+            renderItem={this._renderItem}
+            onSnapToItem={(index) => this.setState({ activeIndex: index })}
+          />
+        </View>
+        {this.pagination}
+      </SafeAreaView>
+    );
+  }
 }
