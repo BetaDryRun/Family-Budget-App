@@ -21,7 +21,6 @@ import { FontAwesome } from "@expo/vector-icons";
 const AddMoneyScreen = ({ navigation }) => {
   return (
     <VStack flex={1} p={2} w="100%" mx="auto" bg="fi.50">
-      {/* <Box w="100%"> */}
       <Center>
         <Heading size="lg" color="fi.200" mt="20%">
           ADD MONEY
@@ -29,9 +28,6 @@ const AddMoneyScreen = ({ navigation }) => {
         <Heading size="lg" color="fi.200" mb="10%">
           TO THE WALLET
         </Heading>
-        {/* <Heading color="fi.500" size="xs">
-            Sign in to continue!
-          </Heading> */}
       </Center>
 
       <VStack space={2} mt={5}>
@@ -48,7 +44,7 @@ const AddMoneyScreen = ({ navigation }) => {
               <Icon
                 as={<FontAwesome name="rupee" />}
                 size="sm"
-                ml={2}
+                ml={5}
                 mt={2}
                 mb={2}
                 _light={{
@@ -227,7 +223,6 @@ const AddMoneyScreen = ({ navigation }) => {
           </VStack>
         </VStack>
       </VStack>
-      {/* </Box> */}
     </VStack>
   );
 };

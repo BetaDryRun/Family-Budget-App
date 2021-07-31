@@ -18,75 +18,21 @@ import {
 } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
 
-const PayScreen = ({ navigation }) => {
+const WithdrawScreen = ({ navigation }) => {
   return (
     <VStack flex={1} p={2} w="100%" mx="auto" bg="fi.50">
-      <Button
-        bg="fi.300"
-        _text={{ color: "fi.50" }}
-        mt="7"
-        w="16%"
-        style={{
-          borderRadius: 20,
-          alignSelf: "flex-end",
-          justifyContent: "center",
-        }}
-        // onPress={() => navigation.navigate("Add Money")}
-        startIcon={
-          <Icon
-            color="fi.50"
-            as={<FontAwesome name="qrcode" />}
-            size="md"
-            ml="1"
-            style={{ alignSelf: "center" }}
-          />
-        }
-      />
       <Center>
-        <Heading size="lg" color="fi.200" mt="2">
-          PAY MONEY
+        <Heading size="lg" color="fi.200" mt="20%">
+          WITHDRAW MONEY
         </Heading>
       </Center>
 
-      <VStack space={2}>
+      <VStack space={2} mt={5}>
         <FormControl marginBottom={2}>
           <FormControl.Label
             _text={{ color: "fi.500", fontSize: "sm", fontWeight: 600 }}
           >
-            Pay To
-          </FormControl.Label>
-          <Input
-            size="2xl"
-            variant="outline"
-            InputLeftElement={
-              <Icon
-                as={<FontAwesome name="phone" />}
-                size="sm"
-                ml={5}
-                mt={2}
-                mb={2}
-                _light={{
-                  color: "black",
-                }}
-                _dark={{
-                  color: "gray.300",
-                }}
-              />
-            }
-            placeholder=""
-            _light={{
-              placeholderTextColor: "blueGray.400",
-            }}
-            _dark={{
-              placeholderTextColor: "blueGray.50",
-            }}
-          />
-        </FormControl>
-        <FormControl marginBottom={2}>
-          <FormControl.Label
-            _text={{ color: "fi.500", fontSize: "sm", fontWeight: 600 }}
-          >
-            Amount
+            Amount To Be Withdrawn
           </FormControl.Label>
           <Input
             size="2xl"
@@ -123,7 +69,7 @@ const PayScreen = ({ navigation }) => {
           </FormControl.Label>
           <HStack
             alignItem="center"
-            marginBottom={1}
+            marginBottom={3}
             marginTop={1}
             marginLeft={2}
           >
@@ -238,6 +184,7 @@ const PayScreen = ({ navigation }) => {
           <Link
             _text={{ fontSize: "xs", fontWeight: "700", color: "fi.500" }}
             alignSelf="flex-end"
+            mt={1}
           >
             Add via NEFT/IMPS
           </Link>
@@ -245,7 +192,7 @@ const PayScreen = ({ navigation }) => {
         <VStack alignSelf="flex-end">
           <HStack justifyContent="flex-start" noOfLines={2}>
             <Text fontSize="sm" color="fi.500" fontWeight={400}>
-              Pay{" "}
+              Add{" "}
               {
                 <Icon
                   color="fi.500"
@@ -268,7 +215,7 @@ const PayScreen = ({ navigation }) => {
               _text={{ color: "white" }}
               //   onPress={() => navigation.navigate("Home")}
             >
-              Pay from Wallet
+              Add Funds
             </Button>
           </VStack>
         </VStack>
@@ -284,4 +231,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PayScreen;
+export default WithdrawScreen;
