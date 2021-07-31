@@ -11,6 +11,7 @@ import { SafeAreaView, FlatList } from 'react-native';
       Icon,
     Center,
     Heading,
+    ScrollView,
   } from "native-base";
   import { FontAwesome } from "@expo/vector-icons";
 
@@ -132,19 +133,11 @@ const generalInfoData = [
 
 const generalInfoRender = (item) => {
   return(
-    <View w="200" h="150">
+    <View>
       <VStack style={{ alignItems: "center", justifyContent: "center" }}>
-        <Heading color="fi.300">{item.item.title}</Heading>
-        <Text color="fi.50">{item.item.value}</Text>
+        <Text color="fi.300">{item.item.title}</Text>
+        <Text color="fi.600">{item.item.value}</Text>
       </VStack>
-      <View
-        mt="7"
-        w="200"
-        ml="70"
-        style={{
-          borderBottomWidth: 1,
-        }}
-      />
     </View>
   )
 }
@@ -152,9 +145,7 @@ const generalInfoRender = (item) => {
 const GeneratInfo = ()=>{
     return (
       <VStack space={5}>
-        <Text style={{ fontSize: 18, alignSelf: "center" }}>
-          General Info
-        </Text>
+        <Text style={{ fontSize: 18, alignSelf: "center" }}>General Info</Text>
         <View
           mt="-10"
           style={{
@@ -162,17 +153,18 @@ const GeneratInfo = ()=>{
             borderBottomWidth: 3,
           }}
         />
+        <ScrollView>
           <FlatList
             data={generalInfoData}
             showsVerticalScrollIndicator={true}
             contentContainerStyle={{
               paddingHorizontal: 16,
               paddingBottom: 16,
-              marginTop: 4,
             }}
             keyExtractor={(item) => String(item.id)}
             renderItem={generalInfoRender}
           />
+        </ScrollView>
       </VStack>
     );
 }
