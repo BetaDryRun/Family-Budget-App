@@ -1,8 +1,10 @@
 import {useState,useEffect} from "react";
 import * as React from 'react';
+import { DataTable } from 'react-native-paper';
+const optionsPerPage = [2, 3, 4];
 import { SafeAreaView, FlatList } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-// import { Header } from "../components/Utility";
+import { Header } from "../../../components/Utility";
 import {
     Box,
     Text, 
@@ -79,7 +81,6 @@ const FunctionalPage = (props)=>{
                 total+=member.budget
             }
         })
-        console.log((value/total)*100)
         return (value/total)*100;
     }
   
@@ -97,7 +98,6 @@ const FunctionalPage = (props)=>{
                     width={15}
                     fill={(familyWallet.currentAmount/family.budget)*100}
                     tintColor="#00c69c"
-                    onAnimationComplete={() => console.log('onAnimationComplete')}
                     dashedTint={{ width: 1, gap: 2 }}
                     // ref={(ref) => setCircularProgress(ref)}
                     backgroundColor="#3d5875" 
@@ -111,7 +111,6 @@ const FunctionalPage = (props)=>{
                     width={15}
                     fill={calculator()}
                     tintColor="#00c69c"
-                    onAnimationComplete={() => console.log('onAnimationComplete')}
                     dashedTint={{ width: 1, gap: 2 }}
                     // ref={(ref) => setCircularProgress(ref)}
                     backgroundColor="#3d5875" 
@@ -180,6 +179,7 @@ const FunctionalPage = (props)=>{
 const GeneratInfo = ()=>{
     return (
         <View>
+            <Header Title={"General Info"}/>
             <Box bg="fi.600" w="100%" h="200%">
                 <VStack space={5}>
                     <Text style={{fontSize: 38, alignSelf: 'center', color:'white'}}>General Info</Text>
@@ -190,30 +190,45 @@ const GeneratInfo = ()=>{
 }
 
 const SpendTable = ()=>{
+    const [page, setPage] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(optionsPerPage[0]);
+
+    React.useEffect(() => {
+        setPage(0);
+    }, [itemsPerPage]);
+
     return (
         <View>
+            <Header Title={"Spendings"}/>
             <Box bg="fi.50" w="100%" h="200%">
-            <VStack space={5}>
-                <Text style={{fontSize: 18, alignSelf: 'center'}}>Family Spendings</Text>
-                <View
-                    mt='-10'
-                    style={{
-                        borderBottomColor: '#00c69c',
-                        borderBottomWidth: 3,
-                    }}
+            <DataTable>
+                <DataTable.Header>
+                    <DataTable.Title >Name</DataTable.Title>
+                    <DataTable.Title numeric>Spending</DataTable.Title>
+                    <DataTable.Title numeric>Total</DataTable.Title>
+                </DataTable.Header>
+                {family.membersBudgets.map((member,index)=>{
+                    return (
+                    <DataTable.Row key={index}>
+                        <DataTable.Cell>{member.firstName}</DataTable.Cell>
+                        <DataTable.Cell numeric>{member.remainingBudget}</DataTable.Cell>
+                        <DataTable.Cell numeric>{member.budget}</DataTable.Cell>
+                    </DataTable.Row>
+                    )
+                })}
+
+                <DataTable.Pagination
+                    page={page}
+                    numberOfPages={1}
+                    onPageChange={(page) => setPage(page)}
+                    label="1-3 of 3"
+                    optionsPerPage={optionsPerPage}
+                    itemsPerPage={itemsPerPage}
+                    setItemsPerPage={setItemsPerPage}
+                    showFastPagination
+                    optionsLabel={'Rows per page'}
                 />
-                <FlatList
-                    data={familyTransactionsInThisIteration}
-                    showsVerticalScrollIndicator={true}
-                    contentContainerStyle={{
-                        paddingHorizontal: 16,
-                        paddingBottom: 16,
-                        marginTop: 4
-                    }}
-                    keyExtractor={(item) => String(item.id)}
-                    renderItem={Transaction}
-                />
-            </VStack>
+            </DataTable>
             </Box>
         </View>
     )
@@ -222,9 +237,9 @@ const SpendTable = ()=>{
 const TransactionHistory = ()=>{
     return (
         <View>
+            <Header Title={"Family Transactions"}/>
             <Box bg="fi.50" w="100%" h="200%">
             <VStack space={5}>
-                <Text style={{fontSize: 18, alignSelf: 'center'}}>Family Spendings</Text>
                 <View
                     mt='-10'
                     style={{

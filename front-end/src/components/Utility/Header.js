@@ -7,17 +7,16 @@ import {
   } from 'native-base';
 
 const Header = ({Title}) => {
-    console.log(Title)
     return (
         <View
-            flex={1}
-            p={10}
+            flex={3}
+            p={55}
             w="100%"
-            h='50%'
+            h='100%'
             mx='auto'
             bg='fi.300'
         >
-            <Center><Text color='fi.50' fontSize='2xl' >{Title}</Text></Center>
+            <Center><Text color='fi.50' fontSize='2xl' alignContent='center' mt='10'>{Title}</Text></Center>
         </View>
     );
 }
