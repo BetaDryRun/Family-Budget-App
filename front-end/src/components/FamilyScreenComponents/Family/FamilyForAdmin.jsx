@@ -318,7 +318,7 @@ export default class FamilyForAdmin extends React.Component {
             <Pagination
               dotsLength={carouselItems.length}
               activeDotIndex={activeIndex}
-              containerStyle={{ backgroundColor: '#ffffff', marginBottom:-15 }}
+              containerStyle={{ backgroundColor: '#282828', marginBottom:-15 }}
               dotStyle={{
                   width: 10,
                   height: 10,
@@ -337,20 +337,20 @@ export default class FamilyForAdmin extends React.Component {
 
     render() {
         return (
-          <SafeAreaView style={{flex: 1 }}>
+          <SafeAreaView style={{flex: 1, backgroundColor:'#282828' }}>
 
-            { this.pagination }
             <View style={{ flex: 2, flexDirection:'row', justifyContent: 'center', }}>
                 <Carousel
                 //   layout={"default"}
                   ref={ref => this.carousel = ref}
                   data={this.state.carouselItems}
                   sliderWidth={300}
-                  itemWidth={350}
+                  itemWidth={385}
                   renderItem={this._renderItem}
                   onSnapToItem = { index => this.setState({activeIndex:index}) } />
                   
             </View>
+            { this.pagination }
           </SafeAreaView>
         );
     }
