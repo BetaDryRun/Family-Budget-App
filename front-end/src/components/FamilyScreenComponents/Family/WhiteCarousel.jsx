@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {
-  SafeAreaView, FlatList } from 'react-native';
+import { SafeAreaView, FlatList } from 'react-native';
   import {
       Box,
       Text, 
@@ -10,7 +9,9 @@ import {
       HStack,
       Button,
       Icon,
-      Center,
+    Center,
+    Heading,
+    ScrollView,
   } from "native-base";
   import { FontAwesome } from "@expo/vector-icons";
 
@@ -22,9 +23,9 @@ const whiteCarouselSelector = (item) =>{
     switch(item){
         case 0:
             return <GeneratInfo  />
+        // case 1:
+        //     return <SpendTable />
         case 1:
-            return <SpendTable />
-        case 2:
             return <TransactionHistory />
         default:
             return (<Text>No Data</Text>)
@@ -102,41 +103,70 @@ const Transaction = ({ item, index }) => {
     )
 }
 
+const generalInfoData = [
+  {
+    id:1,
+    title: "Highest Spender",
+    value: "First Item",
+  },
+  {
+    id:2,
+    title: "Lowest Spender",
+    value: "Second Item",
+  },
+  {
+    id:3,
+    title: "Highest Contributor",
+    value: "Third Item",
+  },
+  {
+    id:4,
+    title: "Lowest Contributor",
+    value: "Third Item",
+  },
+  {
+    id:5,
+    title: "Average Money Spent Per User",
+    value: "Third Item",
+  },
+];
 
-const SpendTable = ()=>{
-    return (
-        <VStack space={5}>
-            <Text style={{fontSize: 18, alignSelf: 'center'}}>Family Spendings</Text>
-            <View
-                mt='-10'
-                style={{
-                    borderBottomColor: '#00c69c',
-                    borderBottomWidth: 3,
-                }}
-            />
-            <View h='275'>
-                <FlatList
-                    data={familyTransactionsInThisIteration}
-                    showsVerticalScrollIndicator={true}
-                    contentContainerStyle={{
-                        paddingHorizontal: 16,
-                        paddingBottom: 16,
-                        marginTop: 4
-                    }}
-                    keyExtractor={(item) => String(item.id)}
-                    renderItem={Transaction}
-                />
-            </View>
-        </VStack>
-    )
+const generalInfoRender = (item) => {
+  return(
+    <View>
+      <VStack style={{ alignItems: "center", justifyContent: "center" }}>
+        <Text color="fi.300">{item.item.title}</Text>
+        <Text color="fi.600">{item.item.value}</Text>
+      </VStack>
+    </View>
+  )
 }
 
 const GeneratInfo = ()=>{
     return (
-        <VStack space={5}>
-            <Text style={{fontSize: 18, alignSelf: 'center'}}>General Info</Text>
-        </VStack>
-    )
+      <VStack space={5}>
+        <Text style={{ fontSize: 18, alignSelf: "center" }}>General Info</Text>
+        <View
+          mt="-10"
+          style={{
+            borderBottomColor: "#00c69c",
+            borderBottomWidth: 3,
+          }}
+        />
+        <ScrollView>
+          <FlatList
+            data={generalInfoData}
+            showsVerticalScrollIndicator={true}
+            contentContainerStyle={{
+              paddingHorizontal: 16,
+              paddingBottom: 16,
+            }}
+            keyExtractor={(item) => String(item.id)}
+            renderItem={generalInfoRender}
+          />
+        </ScrollView>
+      </VStack>
+    );
 }
 
 export default class WhiteCarousel extends React.Component {
@@ -146,7 +176,7 @@ export default class WhiteCarousel extends React.Component {
         super(props);
         this.state = {
           activeIndex:0,
-          carouselItems: [0,1,2]
+          carouselItems: [0,1]
       }
     }
 
@@ -195,7 +225,7 @@ export default class WhiteCarousel extends React.Component {
                   ref={ref => this.carousel = ref}
                   data={this.state.carouselItems}
                   sliderWidth={300}
-                  itemWidth={350}
+                  itemWidth={380}
                   renderItem={this._renderItem}
                   onSnapToItem = { index => this.setState({activeIndex:index}) } />
                   
