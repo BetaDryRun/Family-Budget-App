@@ -8,6 +8,7 @@ export const family={
     seasoned: ["2"],
     walletId: "3", // will be same as userID
     membersBudgets: [
+      { id: "1", budget: 1200, remainingBudget: 900 },
       { id: "2", budget: 500, remainingBudget: 150 },
       { id: "3", budget: 300, remainingBudget: 200 },
     ],

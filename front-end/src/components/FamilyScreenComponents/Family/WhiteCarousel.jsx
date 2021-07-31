@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {
-  SafeAreaView, FlatList } from 'react-native';
+import { SafeAreaView, FlatList } from 'react-native';
   import {
       Box,
       Text, 

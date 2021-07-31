@@ -1,4 +1,5 @@
 export const familyUsers=[{
+	id:"1",
     firstName : 'Sarthak',
 	lastName : 'M. Das',
 	phoneNumber : 8789365337,
@@ -7,6 +8,7 @@ export const familyUsers=[{
 	walletId: '1'
 },
 {
+	id:"2",
     firstName : 'Shivansh',
 	lastName : 'Narayan',
 	phoneNumber : 8789365444,
@@ -15,6 +17,7 @@ export const familyUsers=[{
 	walletId: '2'
 },
 {
+	id:"3",
     firstName : 'Naman',
 	lastName : 'Goel',
 	phoneNumber : 8789333237,
