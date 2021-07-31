@@ -20,12 +20,15 @@ import { FontAwesome } from "@expo/vector-icons";
 
 const PayScreen = ({ navigation }) => {
   return (
-    <VStack flex={1} p={2} w="100%" mx="auto" bg="fi.50">
+    <VStack flex={1} p={2} w="100%" h='100%' mx="auto" bg="fi.50">
       <Button
         bg="fi.300"
         _text={{ color: "fi.50" }}
         mt="7"
         w="16%"
+        onPress={()=>{
+          navigation.navigate("QR")
+        }}
         style={{
           borderRadius: 20,
           alignSelf: "flex-end",
