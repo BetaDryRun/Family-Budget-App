@@ -20,11 +20,12 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 
 const WithdrawScreen = ({ navigation }) => {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = React.useState("Personal wallet");
+  const [valueInput, setValueInput] = React.useState("0");
   return (
     <VStack flex={1} p={2} w="100%" mx="auto" bg="fi.50">
       <Center>
-        <Heading size="lg" color="fi.200" mt="20%">
+        <Heading size="xl" color="fi.200" mt="30%" mb="10%">
           WITHDRAW MONEY
         </Heading>
       </Center>
@@ -37,31 +38,15 @@ const WithdrawScreen = ({ navigation }) => {
             setValue(nextValue);
           }}
         >
-          <Radio value="1" my={1}>
+          <Radio value="Personal wallet" my={1}>
             Personal wallet
           </Radio>
-          <Radio value="2" my={1}>
+          <Radio value="Bank Account" my={1}>
             Bank Account
           </Radio>
         </Radio.Group>
       </FormControl>
-      <HStack>
-        {/* <Radio.Group
-          name="myRadioGroup"
-          value={value}
-          onChange={(nextValue) => {
-            setValue(nextValue);
-          }}
-        >
-          <Radio value="one" my={1}>
-            One
-          </Radio>
-          <Radio value="two" my={1}>
-            Two
-          </Radio>
-        </Radio.Group> */}
-      </HStack>
-      <VStack space={2} mt={5}>
+      <VStack space={2} mt={"10%"}>
         <FormControl marginBottom={2}>
           <FormControl.Label
             _text={{ color: "fi.500", fontSize: "sm", fontWeight: 600 }}
@@ -93,37 +78,30 @@ const WithdrawScreen = ({ navigation }) => {
             _dark={{
               placeholderTextColor: "blueGray.50",
             }}
+            value={valueInput}
+            onChange={(value1) => {
+              setValueInput(value1);
+            }}
           />
         </FormControl>
-        <VStack alignSelf="flex-end">
+        <VStack space={2} mt={"15%"}>
           <HStack justifyContent="flex-start" noOfLines={2}>
             <Text fontSize="sm" color="fi.500" fontWeight={400}>
-              Add{" "}
-              {
-                <Icon
-                  color="fi.500"
-                  as={<FontAwesome name="rupee" />}
-                  size="xs"
-                />
-              }{" "}
-              5000 or more to earn upto{" "}
               <Icon
                 color="fi.500"
                 as={<FontAwesome name="rupee" />}
                 size="xs"
               />{" "}
-              200 worth of rewards.
+              {valueInput} will be added to your {value} wallet.
             </Text>
           </HStack>
-          <VStack space={2} mt={2}>
-            <Button
-              bg="fi.300"
-              _text={{ color: "white" }}
-              //   onPress={() => navigation.navigate("Home")}
-            >
-              Add Funds
-            </Button>
-          </VStack>
+          <Button
+            bg="fi.300"
+            _text={{ color: "white" }}
+            onPress={() => navigation.navigate("Families")}
+          >
+            Withdraw Funds
+          </Button>
         </VStack>
       </VStack>
     </VStack>
