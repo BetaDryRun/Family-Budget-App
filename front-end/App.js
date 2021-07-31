@@ -9,7 +9,8 @@ import PayScreen from './src/components/PayScreenComponents/PayScreen'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NativeBaseProvider, extendTheme} from 'native-base';
 const Stack = createStackNavigator();
-import {colors,fonts,spacing} from './theme';
+import { colors, fonts, spacing } from './theme';
+import WithdrawScreen from './src/components/PayScreenComponents/WithdrawScreen'
 
 export default function App({navigation}) {
   const theme = extendTheme({
@@ -34,6 +35,7 @@ export default function App({navigation}) {
           <Stack.Screen name="Add Family" options={{ headerShown: false }} component={AddFamily} />
           <Stack.Screen name="Add Money" options={{ headerShown: false }} component={AddMoneyScreen} />
           <Stack.Screen name="Pay" options={{ headerShown: false }} component={PayScreen} />
+          <Stack.Screen name="Withdraw" options={{ headerShown: false }} component={WithdrawScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

@@ -93,7 +93,7 @@ const FamilyForSeasoned = (props) => {
                     w='35%'
                     h='50'
                     style={{borderRadius:20}}
-                    onPress={()=> navigation.navigate('Pay')}
+                    onPress={()=> navigation.navigate('Withdraw')}
                     startIcon={
                         <Icon color="fi.300" as={<FontAwesome name="retweet" />} size="sm" />
                     }

@@ -162,7 +162,7 @@ const FunctionalPage = (props)=>{
                         w='35%'
                         h='50'
                         style={{borderRadius:20}}
-                        onPress={()=> navigation.navigate('Pay')}
+                        onPress={()=> navigation.navigate('Withdraw')}
                         startIcon={
                             <Icon color="fi.50" as={<FontAwesome name="retweet" />} size="sm" />
                         }
