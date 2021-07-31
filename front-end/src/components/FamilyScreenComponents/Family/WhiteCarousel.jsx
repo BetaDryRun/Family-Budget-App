@@ -104,30 +104,35 @@ const Transaction = ({ item, index }) => {
 
 const generalInfoData = [
   {
+    id:1,
     title: "Highest Spender",
     value: "First Item",
   },
   {
+    id:2,
     title: "Lowest Spender",
     value: "Second Item",
   },
   {
+    id:3,
     title: "Highest Contributor",
     value: "Third Item",
   },
   {
+    id:4,
     title: "Lowest Contributor",
     value: "Third Item",
   },
   {
+    id:5,
     title: "Average Money Spent Per User",
     value: "Third Item",
   },
 ];
 
 const generalInfoRender = (item) => {
+  return(
     <View w="200" h="150">
-      {console.log(item.item.title)}
       <VStack style={{ alignItems: "center", justifyContent: "center" }}>
         <Heading color="fi.300">{item.item.title}</Heading>
         <Text color="fi.50">{item.item.value}</Text>
@@ -140,7 +145,8 @@ const generalInfoRender = (item) => {
           borderBottomWidth: 1,
         }}
       />
-    </View>;
+    </View>
+  )
 }
 
 const GeneratInfo = ()=>{
@@ -156,7 +162,6 @@ const GeneratInfo = ()=>{
             borderBottomWidth: 3,
           }}
         />
-        <View h="275">
           <FlatList
             data={generalInfoData}
             showsVerticalScrollIndicator={true}
@@ -168,7 +173,6 @@ const GeneratInfo = ()=>{
             keyExtractor={(item) => String(item.id)}
             renderItem={generalInfoRender}
           />
-        </View>
       </VStack>
     );
 }

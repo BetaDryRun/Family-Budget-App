@@ -141,9 +141,7 @@ const FunctionalPage = (props) => {
                     w='45%'
                     style={{borderRadius:20}}
                     onPress={()=> {
-                        console.log("a")
-                        console.log()
-                        navigation.navigation.navigate('Add Money')
+                        navigation.navigate('Add Money')
                     }}
                     startIcon={
                         <Icon color="fi.50" as={<FontAwesome name="puzzle-piece" />} size="sm" />
@@ -156,7 +154,7 @@ const FunctionalPage = (props) => {
                     w='35%'
                     h='50'
                     style={{borderRadius:20}}
-                    onPress={()=> navigation.navigation.navigate('Pay')}
+                    onPress={()=> navigation.navigate('Pay')}
                     startIcon={
                         <Icon color="fi.50" as={<FontAwesome name="share" />} size="sm" />
                     }
@@ -169,7 +167,7 @@ const FunctionalPage = (props) => {
                     mt='5'
                     w='45%'
                     style={{borderRadius:20}}
-                    onPress={()=> navigation.navigation.navigate('Add Money')}
+                    onPress={()=> navigation.navigate('Reports')}
                     startIcon={
                         <Icon color="fi.50" as={<FontAwesome name="signal" />} size="sm" />
                     }
@@ -181,7 +179,7 @@ const FunctionalPage = (props) => {
                     w='35%'
                     h='50'
                     style={{borderRadius:20}}
-                    onPress={()=> navigation.navigation.navigate('Withdraw')}
+                    onPress={()=> navigation.navigate('Withdraw')}
                     startIcon={
                         <Icon color="fi.50" as={<FontAwesome name="retweet" />} size="sm" />
                     }

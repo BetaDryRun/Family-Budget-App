@@ -1,6 +1,6 @@
 export const familyTransactionsInThisIteration=[
     {
-        'id' : '1',
+        id : '1',
         'amount': -100,
         'transactionSummary' : 'Dinner',
         'to' : 'Zomato',
@@ -8,7 +8,7 @@ export const familyTransactionsInThisIteration=[
         'timeStamp': '3:08 am Sunday, 25 July 2021 (IST)'
     },
     {
-        'id' : '2',
+        id : '2',
         'amount': -200,
         'transactionSummary' : 'Dinner',
         'to' : 'Zomato',
@@ -16,7 +16,7 @@ export const familyTransactionsInThisIteration=[
         'timeStamp': '3:08 am Sunday, 24 July 2021 (IST)'
     },
     {
-        'id' : '3',
+        id : '3',
         'amount': -350,
         'transactionSummary' : 'Placement Party',
         'to' : 'Zomato',
@@ -24,7 +24,7 @@ export const familyTransactionsInThisIteration=[
         'timeStamp': '3:08 am Sunday, 24 July 2021 (IST)'
     },
     {
-        'id' : '4',
+        id : '4',
         'amount': -100,
         'transactionSummary' : 'Withdrawal to personal wallet',
         'to' : 4,
@@ -32,7 +32,7 @@ export const familyTransactionsInThisIteration=[
         'timeStamp': '3:08 am Sunday, 24 July 2021 (IST)'
     },
     {
-        'id' : '5',
+        id : '5',
         'amount': 2000,
         'transactionSummary' : 'add to family wallet',
         'to' : 3,
