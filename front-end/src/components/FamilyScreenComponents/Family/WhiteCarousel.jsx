@@ -21,9 +21,9 @@ const whiteCarouselSelector = (item) =>{
     switch(item){
         case 0:
             return <GeneratInfo  />
+        // case 1:
+        //     return <SpendTable />
         case 1:
-            return <SpendTable />
-        case 2:
             return <TransactionHistory />
         default:
             return (<Text>No Data</Text>)
@@ -101,35 +101,6 @@ const Transaction = ({ item, index }) => {
     )
 }
 
-
-const SpendTable = ()=>{
-    return (
-        <VStack space={5}>
-            <Text style={{fontSize: 18, alignSelf: 'center'}}>Family Spendings</Text>
-            <View
-                mt='-10'
-                style={{
-                    borderBottomColor: '#00c69c',
-                    borderBottomWidth: 3,
-                }}
-            />
-            <View h='275'>
-                <FlatList
-                    data={familyTransactionsInThisIteration}
-                    showsVerticalScrollIndicator={true}
-                    contentContainerStyle={{
-                        paddingHorizontal: 16,
-                        paddingBottom: 16,
-                        marginTop: 4
-                    }}
-                    keyExtractor={(item) => String(item.id)}
-                    renderItem={Transaction}
-                />
-            </View>
-        </VStack>
-    )
-}
-
 const GeneratInfo = ()=>{
     return (
         <VStack space={5}>
@@ -145,7 +116,7 @@ export default class WhiteCarousel extends React.Component {
         super(props);
         this.state = {
           activeIndex:0,
-          carouselItems: [0,1,2]
+          carouselItems: [0,1]
       }
     }
 
@@ -194,7 +165,7 @@ export default class WhiteCarousel extends React.Component {
                   ref={ref => this.carousel = ref}
                   data={this.state.carouselItems}
                   sliderWidth={300}
-                  itemWidth={350}
+                  itemWidth={380}
                   renderItem={this._renderItem}
                   onSnapToItem = { index => this.setState({activeIndex:index}) } />
                   

@@ -52,11 +52,11 @@ const PerosnalInnerData=({type})=>{
     )
 }
 
-const AdminCarouselSelector = (item) =>{
+const AdminCarouselSelector = (item, navigation) =>{
 
     switch(item){
         case 0:
-            return <FunctionalPage />
+            return <FunctionalPage navigation={navigation}/>
         case 1:
             return <GeneratInfo  />
         case 2:
@@ -68,8 +68,7 @@ const AdminCarouselSelector = (item) =>{
     }
 }
 
-const FunctionalPage = (props)=>{
-    const { navigation } = props;
+const FunctionalPage = (navigation)=>{
 //   const itemSelected = props?.route?.params?.selectedItem;
 
     const calculator=()=>{
@@ -87,12 +86,10 @@ const FunctionalPage = (props)=>{
   return (
     <View>
       {/* <Header Title={itemSelected.name} /> */}
-      <Box bg="fi.600" w="100%" h="200%">
-        <View style={{ flex: 1, alignItems: "center", marginTop: 90 }}>
+      <Box bg="fi.600" w="100%" h="100%">
+        <View style={{ flex: 1, alignItems: "center", marginTop: 90}}>
             <VStack space={5} alignItems="center">
-                
                 <Text color="fi.50" style={{fontSize:25}} mt='-20'>{family.name}</Text>
-                
                 <AnimatedCircularProgress
                     size={100}
                     width={15}
@@ -118,57 +115,60 @@ const FunctionalPage = (props)=>{
                     {PerosnalInnerData}
                 </AnimatedCircularProgress>
                 <Text color="fi.100" mt='0'>Personal Balance</Text>
-            
                 <HStack mt='18' space={4}>
-                    <Button bg="fi.300" _text={{color: 'fi.50'}}
-                        mt='5'
-                        w='45%'
-                        style={{borderRadius:20}}
-                        onPress={()=> navigation.navigate('Add Money')}
-                        startIcon={
-                            <Icon color="fi.50" as={<FontAwesome name="puzzle-piece" />} size="sm" />
-                        }
-                    >
-                        Add Money
-                    </Button>
-                    <Button bg="fi.300" _text={{color: 'fi.50'}}
-                        mt='5'
-                        w='35%'
-                        h='50'
-                        style={{borderRadius:20}}
-                        onPress={()=> navigation.navigate('Pay')}
-                        startIcon={
-                            <Icon color="fi.50" as={<FontAwesome name="share" />} size="sm" />
-                        }
-                    >
-                        Pay
-                    </Button>
-                </HStack>
-                <HStack mt='-12' space={3} alignContent='center'>
-                    <Button bg="fi.300" _text={{color: 'fi.50'}}
-                        mt='5'
-                        w='45%'
-                        style={{borderRadius:20}}
-                        onPress={()=> navigation.navigate('Add Money')}
-                        startIcon={
-                            <Icon color="fi.50" as={<FontAwesome name="signal" />} size="sm" />
-                        }
-                    >
-                        Family Reports
-                    </Button>
-                    <Button bg="fi.300" _text={{color: 'fi.50'}}
-                        mt='5'
-                        w='35%'
-                        h='50'
-                        style={{borderRadius:20}}
-                        onPress={()=> navigation.navigate('Withdraw')}
-                        startIcon={
-                            <Icon color="fi.50" as={<FontAwesome name="retweet" />} size="sm" />
-                        }
-                    >
-                        Withdraw
-                    </Button>
-                </HStack>
+                <Button bg="fi.300" _text={{color: 'fi.50'}}
+                    mt='5'
+                    w='45%'
+                    style={{borderRadius:20}}
+                    onPress={()=> {
+                        console.log("a")
+                        console.log()
+                        navigation.navigation.navigate('Add Money')
+                    }}
+                    startIcon={
+                        <Icon color="fi.50" as={<FontAwesome name="puzzle-piece" />} size="sm" />
+                    }
+                >
+                    Add Money
+                </Button>
+                <Button bg="fi.300" _text={{color: 'fi.50'}}
+                    mt='5'
+                    w='35%'
+                    h='50'
+                    style={{borderRadius:20}}
+                    onPress={()=> navigation.navigation.navigate('Pay')}
+                    startIcon={
+                        <Icon color="fi.50" as={<FontAwesome name="share" />} size="sm" />
+                    }
+                >
+                    Pay
+                </Button>
+            </HStack>
+            <HStack mt='-12' space={3} alignContent='center'>
+                <Button bg="fi.300" _text={{color: 'fi.50'}}
+                    mt='5'
+                    w='45%'
+                    style={{borderRadius:20}}
+                    onPress={()=> navigation.navigation.navigate('Add Money')}
+                    startIcon={
+                        <Icon color="fi.50" as={<FontAwesome name="signal" />} size="sm" />
+                    }
+                >
+                    Family Reports
+                </Button>
+                <Button bg="fi.300" _text={{color: 'fi.50'}}
+                    mt='5'
+                    w='35%'
+                    h='50'
+                    style={{borderRadius:20}}
+                    onPress={()=> navigation.navigation.navigate('Withdraw')}
+                    startIcon={
+                        <Icon color="fi.50" as={<FontAwesome name="retweet" />} size="sm" />
+                    }
+                >
+                    Withdraw
+                </Button>
+            </HStack>
             </VStack>
         </View>
       </Box>
@@ -180,7 +180,7 @@ const GeneratInfo = ()=>{
     return (
         <View>
             <Header Title={"General Info"}/>
-            <Box bg="fi.600" w="100%" h="200%">
+            <Box bg="fi.600" w="100%" h="100%">
                 <VStack space={5}>
                     <Text style={{fontSize: 38, alignSelf: 'center', color:'white'}}>General Info</Text>
                 </VStack>
@@ -200,7 +200,7 @@ const SpendTable = ()=>{
     return (
         <View>
             <Header Title={"Spendings"}/>
-            <Box bg="fi.50" w="100%" h="200%">
+            <Box bg="fi.50" w="100%" h="100%">
             <DataTable>
                 <DataTable.Header>
                     <DataTable.Title >Name</DataTable.Title>
@@ -238,7 +238,7 @@ const TransactionHistory = ()=>{
     return (
         <View>
             <Header Title={"Family Transactions"}/>
-            <Box bg="fi.50" w="100%" h="200%">
+            <Box bg="fi.50" w="100%" h="100%">
             <VStack space={5}>
                 <View
                     mt='-10'
@@ -311,9 +311,11 @@ export default class FamilyForAdmin extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-          activeIndex:0,
-          carouselItems: [0,1,2,3]
-      }
+            navigation: props.navigation,
+            activeIndex:0,
+            carouselItems: [0,1,2,3]
+        }
+        this._renderItem = this._renderItem.bind(this)
     }
 
     _renderItem({item,index}){
@@ -321,9 +323,9 @@ export default class FamilyForAdmin extends React.Component {
             <View style={{
                 backgroundColor:'#ffffff',
                 borderRadius: 5,
-                height: 280,
+                height: 640,
             }}>
-                {AdminCarouselSelector(item)}
+                {AdminCarouselSelector(item,this.props.navigation)}
             </View>
         )
     }
