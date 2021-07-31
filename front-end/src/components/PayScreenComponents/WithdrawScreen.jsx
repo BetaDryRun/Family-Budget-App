@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import {
+  Radio,
   Box,
   Text,
   Heading,
@@ -19,6 +20,7 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 
 const WithdrawScreen = ({ navigation }) => {
+  const [value, setValue] = React.useState("1");
   return (
     <VStack flex={1} p={2} w="100%" mx="auto" bg="fi.50">
       <Center>
@@ -26,7 +28,39 @@ const WithdrawScreen = ({ navigation }) => {
           WITHDRAW MONEY
         </Heading>
       </Center>
-
+      <FormControl isRequired isInvalid>
+        <FormControl.Label>Withdraw Money To: </FormControl.Label>
+        <Radio.Group
+          name="myRadioGroup"
+          value={value}
+          onChange={(nextValue) => {
+            setValue(nextValue);
+          }}
+        >
+          <Radio value="1" my={1}>
+            Personal wallet
+          </Radio>
+          <Radio value="2" my={1}>
+            Bank Account
+          </Radio>
+        </Radio.Group>
+      </FormControl>
+      <HStack>
+        {/* <Radio.Group
+          name="myRadioGroup"
+          value={value}
+          onChange={(nextValue) => {
+            setValue(nextValue);
+          }}
+        >
+          <Radio value="one" my={1}>
+            One
+          </Radio>
+          <Radio value="two" my={1}>
+            Two
+          </Radio>
+        </Radio.Group> */}
+      </HStack>
       <VStack space={2} mt={5}>
         <FormControl marginBottom={2}>
           <FormControl.Label
@@ -60,134 +94,6 @@ const WithdrawScreen = ({ navigation }) => {
               placeholderTextColor: "blueGray.50",
             }}
           />
-        </FormControl>
-        <FormControl mb={5}>
-          <FormControl.Label
-            _text={{ color: "fi.500", fontSize: "md", fontWeight: 600 }}
-          >
-            Select UPI App
-          </FormControl.Label>
-          <HStack
-            alignItem="center"
-            marginBottom={3}
-            marginTop={1}
-            marginLeft={2}
-          >
-            <Box
-              style={{ justifyContent: "center", alignContent: "center" }}
-              bg="white"
-              //   rounded="md"
-              //   shadow={3}
-              height={20}
-              width={20}
-            >
-              <VStack
-                style={{ justifyContent: "center", alignContent: "center" }}
-              >
-                <Image
-                  size={10}
-                  resizeMode={"contain"}
-                  source={require("../../../assets/upi.png")}
-                  alt="Alternate Text"
-                  style={{ alignSelf: "center" }}
-                />
-                <Text
-                  style={{ alignSelf: "center" }}
-                  fontSize={"15"}
-                  color="black"
-                >
-                  BHIM
-                </Text>
-              </VStack>
-            </Box>
-            <Box
-              style={{ justifyContent: "center", alignContent: "center" }}
-              bg="white"
-              //   rounded="md"
-              //   shadow={3}
-              height={20}
-              width={20}
-            >
-              <VStack
-                style={{ justifyContent: "center", alignContent: "center" }}
-              >
-                <Image
-                  size={10}
-                  source={require("../../../assets/gpay.png")}
-                  alt="Alternate Text"
-                  style={{ alignSelf: "center" }}
-                />
-                <Text
-                  style={{ alignSelf: "center" }}
-                  fontSize={"15"}
-                  color="black"
-                >
-                  GPAY
-                </Text>
-              </VStack>
-            </Box>
-            <Box
-              style={{ justifyContent: "center", alignContent: "center" }}
-              bg="white"
-              //   rounded="md"
-              //   shadow={3}
-              height={20}
-              width={20}
-            >
-              <VStack
-                style={{ justifyContent: "center", alignContent: "center" }}
-              >
-                <Image
-                  size={10}
-                  resizeMode={"contain"}
-                  source={require("../../../assets/icici.png")}
-                  alt="Alternate Text"
-                  style={{ alignSelf: "center" }}
-                />
-                <Text
-                  style={{ alignSelf: "center" }}
-                  fontSize={"15"}
-                  color="black"
-                >
-                  ICICI
-                </Text>
-              </VStack>
-            </Box>
-            <Box
-              style={{ justifyContent: "center", alignContent: "center" }}
-              bg="white"
-              //   rounded="md"
-              //   shadow={3}
-              height={20}
-              width={20}
-            >
-              <VStack
-                style={{ justifyContent: "center", alignContent: "center" }}
-              >
-                <Image
-                  size={10}
-                  resizeMode={"contain"}
-                  source={require("../../../assets/paytm.png")}
-                  alt="Alternate Text"
-                  style={{ alignSelf: "center" }}
-                />
-                <Text
-                  style={{ alignSelf: "center" }}
-                  fontSize={"15"}
-                  color="black"
-                >
-                  PAYTM
-                </Text>
-              </VStack>
-            </Box>
-          </HStack>
-          <Link
-            _text={{ fontSize: "xs", fontWeight: "700", color: "fi.500" }}
-            alignSelf="flex-end"
-            mt={1}
-          >
-            Add via NEFT/IMPS
-          </Link>
         </FormControl>
         <VStack alignSelf="flex-end">
           <HStack justifyContent="flex-start" noOfLines={2}>
