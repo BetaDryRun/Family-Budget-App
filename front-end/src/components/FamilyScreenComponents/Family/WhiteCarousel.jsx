@@ -9,7 +9,8 @@ import { SafeAreaView, FlatList } from 'react-native';
       HStack,
       Button,
       Icon,
-      Center,
+    Center,
+    Heading,
   } from "native-base";
   import { FontAwesome } from "@expo/vector-icons";
 
@@ -130,12 +131,74 @@ const SpendTable = ()=>{
     )
 }
 
+const generalInfoData = [
+  {
+    title: "Highest Spender",
+    value: "First Item",
+  },
+  {
+    title: "Lowest Spender",
+    value: "Second Item",
+  },
+  {
+    title: "Highest Contributor",
+    value: "Third Item",
+  },
+  {
+    title: "Lowest Contributor",
+    value: "Third Item",
+  },
+  {
+    title: "Average Money Spent Per User",
+    value: "Third Item",
+  },
+];
+const generalInfoRender = (item) => {
+    <View w="200" h="150">
+      {console.log(item.item.title)}
+      <VStack style={{ alignItems: "center", justifyContent: "center" }}>
+        <Heading color="fi.300">{item.item.title}</Heading>
+        <Text color="fi.50">{item.item.value}</Text>
+      </VStack>
+      <View
+        mt="7"
+        w="200"
+        ml="70"
+        style={{
+          borderBottomWidth: 1,
+        }}
+      />
+    </View>;
+}
+
 const GeneratInfo = ()=>{
     return (
-        <VStack space={5}>
-            <Text style={{fontSize: 18, alignSelf: 'center'}}>General Info</Text>
-        </VStack>
-    )
+      <VStack space={5}>
+        <Text style={{ fontSize: 18, alignSelf: "center" }}>
+          General Info
+        </Text>
+        <View
+          mt="-10"
+          style={{
+            borderBottomColor: "#00c69c",
+            borderBottomWidth: 3,
+          }}
+        />
+        <View h="275">
+          <FlatList
+            data={generalInfoData}
+            showsVerticalScrollIndicator={true}
+            contentContainerStyle={{
+              paddingHorizontal: 16,
+              paddingBottom: 16,
+              marginTop: 4,
+            }}
+            keyExtractor={(item) => String(item.id)}
+            renderItem={generalInfoRender}
+          />
+        </View>
+      </VStack>
+    );
 }
 
 export default class WhiteCarousel extends React.Component {
@@ -194,7 +257,7 @@ export default class WhiteCarousel extends React.Component {
                   ref={ref => this.carousel = ref}
                   data={this.state.carouselItems}
                   sliderWidth={300}
-                  itemWidth={350}
+                  itemWidth={380}
                   renderItem={this._renderItem}
                   onSnapToItem = { index => this.setState({activeIndex:index}) } />
                   
