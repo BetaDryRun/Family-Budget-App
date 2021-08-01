@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState,useEffect} from 'react';
 import { FlatList, ImageBackground } from "react-native";
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import {
@@ -18,6 +19,11 @@ import {
 
 const Login = ({navigation}) => {
 
+  const [loginForm,setLoginForm] = useState({
+    phoneNumber:null,
+    password:null
+  })
+
  return (
       <Box
         flex={1}
@@ -26,7 +32,6 @@ const Login = ({navigation}) => {
         mx='auto'
         bg='fi.50'
       >
-        
         <Box
         w="100%">
         <Center>
@@ -43,13 +48,13 @@ const Login = ({navigation}) => {
             <FormControl.Label _text={{color: 'fi.500', fontSize: 'sm', fontWeight: 600}}>
                 Phone No.
             </FormControl.Label>
-            <Input />
+            <Input onChangeText={(text)=>setLoginForm({...loginForm, phoneNumber: text})}/>
           </FormControl>
           <FormControl mb={5}>
             <FormControl.Label  _text={{color: 'fi.500', fontSize: 'sm', fontWeight: 600}}>
                 Password
             </FormControl.Label>
-            <Input type="password" />
+            <Input type="password" autoCapitalize="off" onChangeText={(text)=>setLoginForm({...loginForm, password: text})}/>
             <Link
               _text={{ fontSize: 'xs', fontWeight: '700', color:'fi.500' }}
               alignSelf="flex-end"
@@ -60,7 +65,10 @@ const Login = ({navigation}) => {
           </FormControl>
           <VStack  space={2}>
           <Button bg="fi.300" _text={{color: 'white' }}
-            onPress={()=> navigation.navigate('Home')}
+            onPress={()=> {
+              
+              navigation.navigate('Home')
+            }}
           >
               Login
           </Button>
