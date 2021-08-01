@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import {HomeScreen, FamilyList, WalletScreen, ReportsScreen, ProfileScreen} from './src/screens';
-import { AddFamily} from './src/components/FamilyScreenComponents'
+import { AddFamily, FamilySettings} from './src/components/FamilyScreenComponents'
 import {FamilyForAdmin, FamilyForMember, FamilyForSeasoned} from './src/components/FamilyScreenComponents/Family'
 import {Register, Login} from './src/components/RegisterScreenComponents'
 import {PayScreen, AddMoneyScreen, QRScreen, WithdrawScreen} from './src/components/PayScreenComponents'
@@ -30,6 +30,7 @@ export default function App({navigation}) {
           <Stack.Screen name="FamilyForAdmin" options={{ headerShown: false }} component={FamilyForAdmin} />
           <Stack.Screen name="FamilyForSeasoned" options={{ headerShown: false }} component={FamilyForSeasoned} />
           <Stack.Screen name="FamilyForMember" options={{ headerShown: false }} component={FamilyForMember} />
+          <Stack.Screen name="Family Settings" options={{ headerShown: false }} component={FamilySettings} />
           <Stack.Screen name="Add Family" options={{ headerShown: false }} component={AddFamily} />
           <Stack.Screen name="Add Money" options={{ headerShown: false }} component={AddMoneyScreen} />
           <Stack.Screen name="Pay" options={{ headerShown: false }} component={PayScreen} />

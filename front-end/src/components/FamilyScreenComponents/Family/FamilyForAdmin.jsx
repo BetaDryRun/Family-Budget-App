@@ -108,6 +108,27 @@ const FunctionalPage = (props) => {
       <Box bg="fi.600" w="100%" h="100%">
         <View style={{ flex: 1, alignItems: "center", marginTop: 90 }}>
           <VStack space={5} alignItems="center">
+            <Button
+              bg="fi.600"
+              _text={{ color: "fi.50" }}
+              onPress={()=>{
+                navigation.navigate("Family Settings")
+              }}
+              style={{
+                borderRadius: 20,
+                alignSelf: "flex-end",
+                justifyContent: "center",
+              }}
+              // onPress={() => navigation.navigate("Add Money")}
+              startIcon={
+                <Icon
+                  color="fi.300"
+                  as={<FontAwesome name="cog" />}
+                  size="lg"
+                  style={{ alignSelf: "center" }}
+                />
+              }
+            />
             <Text color="fi.50" style={{ fontSize: 25 }} mt="-20">
               {family.name}
             </Text>

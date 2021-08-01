@@ -19,7 +19,10 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 
 const AddMoneyScreen = ({ navigation }) => {
-  const [amount, setAmount] = useState('');
+  const [addAmountForm, setAddAmountForm] = useState({
+    amount:null
+  });
+
   return (
     <VStack flex={1} p={2} w="100%" mx="auto" bg="fi.50">
       <Center>
@@ -57,7 +60,7 @@ const AddMoneyScreen = ({ navigation }) => {
               />
             }
             onChangeText={(Text) => {
-              setAmount(parseInt(Text));
+              setAddAmountForm({...addAmountForm,amount:parseInt(Text)});
             }}
             placeholder="0"
             _light={{
@@ -221,6 +224,7 @@ const AddMoneyScreen = ({ navigation }) => {
               bg="fi.300"
               _text={{ color: "white" }}
               onPress={() => {
+                console.log(addAmountForm)
                 navigation.navigate("Home")
               }}
             >
