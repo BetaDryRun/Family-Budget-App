@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { StyleSheet } from "react-native";
 import {
   Box,
@@ -19,6 +19,7 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 
 const AddMoneyScreen = ({ navigation }) => {
+  const [amount, setAmount] = useState('');
   return (
     <VStack flex={1} p={2} w="100%" mx="auto" bg="fi.50">
       <Center>
@@ -55,6 +56,9 @@ const AddMoneyScreen = ({ navigation }) => {
                 }}
               />
             }
+            onChangeText={(Text) => {
+              setAmount(parseInt(Text));
+            }}
             placeholder="0"
             _light={{
               placeholderTextColor: "blueGray.400",
@@ -79,8 +83,8 @@ const AddMoneyScreen = ({ navigation }) => {
             <Box
               style={{ justifyContent: "center", alignContent: "center" }}
               bg="white"
-            //   rounded="md"
-            //   shadow={3}
+              //   rounded="md"
+              //   shadow={3}
               height={20}
               width={20}
             >
@@ -106,8 +110,8 @@ const AddMoneyScreen = ({ navigation }) => {
             <Box
               style={{ justifyContent: "center", alignContent: "center" }}
               bg="white"
-            //   rounded="md"
-            //   shadow={3}
+              //   rounded="md"
+              //   shadow={3}
               height={20}
               width={20}
             >
@@ -132,8 +136,8 @@ const AddMoneyScreen = ({ navigation }) => {
             <Box
               style={{ justifyContent: "center", alignContent: "center" }}
               bg="white"
-            //   rounded="md"
-            //   shadow={3}
+              //   rounded="md"
+              //   shadow={3}
               height={20}
               width={20}
             >
@@ -159,8 +163,8 @@ const AddMoneyScreen = ({ navigation }) => {
             <Box
               style={{ justifyContent: "center", alignContent: "center" }}
               bg="white"
-            //   rounded="md"
-            //   shadow={3}
+              //   rounded="md"
+              //   shadow={3}
               height={20}
               width={20}
             >
@@ -216,7 +220,9 @@ const AddMoneyScreen = ({ navigation }) => {
             <Button
               bg="fi.300"
               _text={{ color: "white" }}
-              //   onPress={() => navigation.navigate("Home")}
+              onPress={() => {
+                navigation.navigate("Home")
+              }}
             >
               Add Funds
             </Button>
