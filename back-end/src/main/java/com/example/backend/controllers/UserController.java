@@ -6,6 +6,8 @@ import com.example.backend.exchanges.DefaultResponse;
 import com.example.backend.exchanges.GetUserResponse;
 import com.example.backend.models.UserEntity;
 
+import com.example.backend.security.facade.IAuthenticationFacade;
+import com.example.backend.security.models.UserDetailsCustom;
 import com.example.backend.services.UserService;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -23,6 +25,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private IAuthenticationFacade authenticationFacade;
 
     @PostMapping("/user")
     @ApiResponses(value = {
@@ -64,11 +69,13 @@ public class UserController {
             @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error",response = HttpServerErrorException.InternalServerError.class)
     })
-    public ResponseEntity<DefaultResponse> deleteUser(@RequestParam String id) {
+    public ResponseEntity<DefaultResponse> deleteUser() throws BadRequestException {
 
-        // TODO: Throw error if id is null
-        // TODO: Throw error if user does not exists
-        DefaultResponse defaultResponse = userService.deleteUser(id);
+        UserDetailsCustom loggedInUser = (UserDetailsCustom) authenticationFacade.getPrincipal();
+        if (loggedInUser == null) {
+            throw new BadRequestException("User is not logged in!");
+        }
+        DefaultResponse defaultResponse = userService.deleteUser(loggedInUser.getUserId());
 
         return ResponseEntity.status(200).body(defaultResponse);
     }

@@ -25,7 +25,6 @@ public class FamilyService {
     @Autowired
     FamilyRepository familyRepository;
 
-    /*TODO : remove this after JWT*/
     @Autowired
     UserRepository userRepository;
 

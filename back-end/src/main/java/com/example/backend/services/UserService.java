@@ -13,6 +13,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,8 +34,11 @@ public class UserService {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public DefaultResponse createUser(UserEntity userEntity) {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
+    public DefaultResponse createUser(UserEntity userEntity) {
+        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
         userRepository.save(userEntity);
         walletService.createWallet(userEntity.getPhoneNumber());
 
