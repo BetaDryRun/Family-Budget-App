@@ -1,7 +1,7 @@
-package com.example.backend.services;
+package com.example.backend.security.service;
 
-import com.example.backend.models.UserDetailsCustom;
 import com.example.backend.repositories.UserRepository;
+import com.example.backend.security.models.UserDetailsCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

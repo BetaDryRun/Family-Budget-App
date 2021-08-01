@@ -1,6 +1,6 @@
-package com.example.backend;
+package com.example.backend.security;
 
-import com.example.backend.services.UserDetailServiceCustom;
+import com.example.backend.security.service.UserDetailServiceCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
