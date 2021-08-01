@@ -17,12 +17,22 @@ import { FontAwesome } from "@expo/vector-icons";
 
 
 const AddFamily = (props) => {
+
+  const [addFamilyForm, setFamilyForm] = useState({
+    name: null,
+    description: null,
+    iterationPeriod: null,
+    budget: null
+  });
+
+  console.log(addFamilyForm);
+
   const { control, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    console.log("submiting with ", data);
+    console.log("submiting with ", data, addFamilyForm);
   };
 
-  let [timePeriod, setTimePeriod] = useState("")
+  // let [timePeriod, setTimePeriod] = useState("")
 
   return (
     <View bg={"fi.400"} h="100%">
@@ -49,7 +59,9 @@ const AddFamily = (props) => {
             >
               Family Name:
             </FormControl.Label>
-            <Input />
+            <Input value = {addFamilyForm.name} onChangeText = {(text) => setFamilyForm(prevState => {
+              return {...prevState, name: text};
+            })}/>
           </FormControl>
           <FormControl mr={5} ml={5}>
             <FormControl.Label
@@ -57,7 +69,9 @@ const AddFamily = (props) => {
             >
               Family Description:
             </FormControl.Label>
-            <Input multiline={true} numberOfLines={4} />
+            <Input multiline={true} numberOfLines={4} value = {addFamilyForm.description} onChangeText = {(text) => setFamilyForm(prevState => {
+              return {...prevState, description: text};
+            })}/>
           </FormControl>
           <FormControl mr={5} ml={5}>
             <FormControl.Label
@@ -70,11 +84,15 @@ const AddFamily = (props) => {
               render={({ timePeriod }) => (
                 <Select
                   placeholder="Choose Iteration Period"
-                  selectedValue={timePeriod}
-                  width={"100%"}
-                  onValueChange={(itemValue) => {
-                    setTimePeriod(itemValue);
+                  selectedValue={ addFamilyForm.iterationPeriod }
+                  width={"100%"} onValueChange = {(itemValue) => {
+                    setFamilyForm(prevState => {
+                      return {...prevState, iterationPeriod: itemValue}
+                    })
                   }}
+                  // onValueChange={(itemValue) => {
+                  //   setTimePeriod(itemValue);
+                  // }}
                   selectedItemBg={"fi.300"}
                   dropdownOpenIcon={
                     <Icon as = {<FontAwesome name = "chevron-circle-up" />} size={6} />
@@ -99,9 +117,11 @@ const AddFamily = (props) => {
             >
               Family Budget For Selected Time Period:
             </FormControl.Label>
-            <Input />
+            <Input value = {addFamilyForm.budget} onChangeText = {(text) => setFamilyForm(prevState => {
+              return {...prevState, budget: text};
+            })}/>
           </FormControl>
-          <Button onPress={handleSubmit(onSubmit)} color="fi.300" ml = {5} width = "100%">
+          <Button onPress ={() => {console.log('mac')}} color="fi.300" ml = {5} width = "100%">
             Create Group
           </Button>
         </VStack>
