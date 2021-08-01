@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.servlet.http.HttpServletResponse;
+
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -32,9 +34,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/configuration/security",
                         "/swagger-ui.html",
                         "/webjars/**").permitAll()
+                .antMatchers("/", "static/css/*", "static/js/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/user").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin();
+                .and().formLogin()
+                    .successHandler((request, response, authentication) -> {
+                            response.setStatus(HttpServletResponse.SC_OK);
+                        })
+                    .failureHandler((request, response, authentication) -> {
+                        response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                    })
+                .and().logout()
+                    .logoutSuccessHandler((request, response, authentication) -> {
+                        response.setStatus(HttpServletResponse.SC_OK);
+                    });
     }
 
     @Bean
