@@ -8,11 +8,23 @@ const header = {
     'Accept': 'application/json'
 }
 
-export const postCall=({action, body})=>{
+export const postCall=async({action, body, accessToken})=>{
     try{
         header['Authorization']='Basic '+accessToken;
         let url = baseUrl+action;
-        const res = axios.post(url,body,{headers: headers});
+        const res = await axios.post(url,body,{headers: headers});
+    }
+    catch(error){
+        console.log("There was some error : "+error)
+    }
+}
+
+export const getCall=async({action, accessToken})=>{
+    try{
+        header['Authorization']='Basic '+accessToken;
+        let url = baseUrl+action;
+
+        const res = await axios.get(url, {headers: headers});
     }
     catch(error){
         console.log("There was some error : "+error)
