@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import {HomeScreen, FamilyList, WalletScreen, ReportsScreen, ProfileScreen} from './src/screens';
-import { AddFamily, FamilySettings} from './src/components/FamilyScreenComponents'
-import {FamilyForAdmin, FamilyForMember, FamilyForSeasoned} from './src/components/FamilyScreenComponents/Family'
+import { AddFamily, FamilySettings } from './src/components/FamilyScreenComponents'
+import {FamilyForAdmin, FamilyForMember, FamilyForSeasoned } from './src/components/FamilyScreenComponents/Family'
 import {Register, Login} from './src/components/RegisterScreenComponents'
 import {PayScreen, AddMoneyScreen, QRScreen, WithdrawScreen} from './src/components/PayScreenComponents'
+import AddMember from './src/components/FamilyScreenComponents/AddMember';
 import { createStackNavigator } from '@react-navigation/stack'
 import { NativeBaseProvider, extendTheme} from 'native-base';
 const Stack = createStackNavigator();
@@ -36,6 +37,7 @@ export default function App({navigation}) {
           <Stack.Screen name="Pay" options={{ headerShown: false }} component={PayScreen} />
           <Stack.Screen name="Withdraw" options={{ headerShown: false }} component={WithdrawScreen} />
           <Stack.Screen name="QR" options={{ headerShown: false }} component={QRScreen} />
+          <Stack.Screen name="Add Member" options={{headerShown: false }} component = {AddMember} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
