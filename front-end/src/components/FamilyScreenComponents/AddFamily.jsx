@@ -101,10 +101,10 @@ const AddFamily = (props) => {
                     <Icon as= {<FontAwesome name="chevron-circle-down" />} size = {6}/>
                   }
                 >
-                  <Select.Item label="Daily" value="dy" />
-                  <Select.Item label="Weekly" value="wy" />
-                  <Select.Item label="Monthly" value="my" />
-                  <Select.Item label="Yearly" value="yy" />
+                  <Select.Item label="Daily" value="daily" />
+                  <Select.Item label="Weekly" value="weekly" />
+                  <Select.Item label="Monthly" value="monthly" />
+                  <Select.Item label="Yearly" value="yearly" />
                 </Select>
               )}
               name="Iteration Time"

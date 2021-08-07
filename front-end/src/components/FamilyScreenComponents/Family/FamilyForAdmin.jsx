@@ -112,7 +112,7 @@ const FunctionalPage = (props) => {
               bg="fi.600"
               _text={{ color: "fi.50" }}
               onPress={()=>{
-                navigation.navigate("Family Settings")
+                navigation.navigate("Add Member")
               }}
               style={{
                 borderRadius: 20,
@@ -123,7 +123,7 @@ const FunctionalPage = (props) => {
               startIcon={
                 <Icon
                   color="fi.300"
-                  as={<FontAwesome name="cog" />}
+                  as={<FontAwesome name="plus-square" />}
                   size="lg"
                   style={{ alignSelf: "center" }}
                 />
