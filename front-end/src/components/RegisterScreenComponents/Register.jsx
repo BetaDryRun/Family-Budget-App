@@ -16,6 +16,7 @@ import {
   HStack,
   Center
 } from 'native-base';
+import {registerUser} from '../../BackendCall/InmemoryData/InmemoryAPIs'
 
 const Register = ({navigation}) => {
   const [pickerData, setPickerData] = useState(null);
@@ -26,6 +27,8 @@ const Register = ({navigation}) => {
     phone: null,
     password: null,
   });
+
+
  return (
    <Box flex={1} p={2} w="100%" mx="auto" bg="fi.50">
      <Center>
@@ -111,8 +114,8 @@ const Register = ({navigation}) => {
          <Button
            bg="fi.300"
            _text={{ color: "white" }}
-           onPress={() => {
-             console.log("Naman", stateRegister);
+           onPress={async() => {
+             await registerUser(stateRegister)
              navigation.navigate("Home");
            }}
          >
@@ -158,7 +161,9 @@ const Register = ({navigation}) => {
          </Text>
          <Link
            _text={{ color: "fi.300", bold: true, fontSize: "sm" }}
-           onPress={() => navigation.navigate("Login")}
+           onPress={() => {
+            navigation.navigate("Login")
+          }}
          >
            Log In
          </Link>
