@@ -57,7 +57,7 @@ const FamilyForSeasoned = (props) => {
                         size={100}
                         width={15}
                         fill={(familyWallet.currentAmount/family.budget)*100}
-                        tintColor="#00c69c"
+                        tintColor="#f48c06"
                         onAnimationComplete={() => console.log('onAnimationComplete')}
                         dashedTint={{ width: 1, gap: 2 }}
                         // ref={(ref) => setCircularProgress(ref)}

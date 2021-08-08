@@ -18,7 +18,7 @@ import Tel from './Tel'
 
 const styles = StyleSheet.create({
   cardContainer: {
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
     borderWidth: 0,
     flex: 1,
     margin: 0,
@@ -28,56 +28,56 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   emailContainer: {
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
     flex: 1,
     paddingTop: 30,
   },
   headerBackgroundImage: {
     paddingBottom: 20,
     paddingTop: 45,
-    backgroundColor: '#00c79b'
+    backgroundColor: "#faa307",
   },
   headerContainer: {},
   headerColumn: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     ...Platform.select({
       ios: {
-        alignItems: 'center',
+        alignItems: "center",
         elevation: 1,
         marginTop: -1,
       },
       android: {
-        alignItems: 'center',
+        alignItems: "center",
       },
     }),
   },
   placeIcon: {
-    color: 'white',
+    color: "white",
     fontSize: 26,
   },
   scroll: {
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
   },
   telContainer: {
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
     flex: 1,
     paddingTop: 30,
   },
   userAddressRow: {
-    alignItems: 'center',
-    flexDirection: 'row',
+    alignItems: "center",
+    flexDirection: "row",
   },
   userCityRow: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
   userCityText: {
-    color: '#A5A5A5',
+    color: "#A5A5A5",
     fontSize: 15,
-    fontWeight: '600',
-    textAlign: 'center',
+    fontWeight: "600",
+    textAlign: "center",
   },
   userImage: {
-    borderColor: '#FFF',
+    borderColor: "#FFF",
     borderRadius: 85,
     borderWidth: 3,
     height: 170,
@@ -85,13 +85,13 @@ const styles = StyleSheet.create({
     width: 170,
   },
   userNameText: {
-    color: '#FFF',
+    color: "#FFF",
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     paddingBottom: 8,
-    textAlign: 'center',
+    textAlign: "center",
   },
-})
+});
 
 class Contact extends Component {
 

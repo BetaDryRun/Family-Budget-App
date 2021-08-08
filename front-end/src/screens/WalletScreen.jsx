@@ -43,7 +43,7 @@ const WalletScreen = (props) => {
                              {Math.abs(item.amount)}
                         </Text>
                         :
-                        <Text mt='5' fontSize='25' alignItems="center" style={{color:'#00c79b', alignSelf:'center'}}>
+                        <Text mt='5' fontSize='25' alignItems="center" style={{color:'#e85d04', alignSelf:'center'}}>
                             <Icon color="fi.300" as={<FontAwesome name="rupee" />} size="sm" />
                             {item.amount}
                         </Text>
@@ -114,7 +114,7 @@ const WalletScreen = (props) => {
                 <View
                     mt='-10'
                     style={{
-                        borderBottomColor: '#00c69c',
+                        borderBottomColor: '#f48c06',
                         borderBottomWidth: 3,
                     }}
                 />

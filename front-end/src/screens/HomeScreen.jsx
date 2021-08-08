@@ -23,7 +23,7 @@ const HomeScreen = (props) => {
         adaptive: true, 
         allowFontScaling: true, 
         style: {
-          backgroundColor: '#00c79b',
+          backgroundColor: '#e85d04',
           height: 65, borderWidth: 0.5,
           borderBottomWidth: 1,
           borderTopLeftRadius: 15,

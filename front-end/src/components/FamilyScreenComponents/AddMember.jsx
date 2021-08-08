@@ -70,7 +70,7 @@ const AddMember = (props) => {
                 control={control}
                 render={({ role }) => (
                   <Select
-                    placeholder="Choose Iteration Period"
+                    placeholder="Choose Role"
                     selectedValue={ addMemberForm.role }
                     width={"100%"} onValueChange = {(itemValue) => {
                       setMemberForm(prevState => {
@@ -95,7 +95,7 @@ const AddMember = (props) => {
               />
             </FormControl>
 
-            <Button onPress ={() => {console.log('mac')}} color="fi.300" ml = {5} width = "100%">
+            <Button color="#e85d04" onPress ={() => {console.log('mac')}} ml = {5} width = "100%">
               Create Member
             </Button>
           </VStack>
