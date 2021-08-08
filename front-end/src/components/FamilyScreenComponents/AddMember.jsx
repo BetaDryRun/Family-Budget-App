@@ -16,6 +16,8 @@ import {
   import { FontAwesome } from "@expo/vector-icons";
   
 
+// import personService from '../../BackendCall/JustChecking/personService'
+
 const AddMember = (props) => {
 
     const [addMemberForm, setMemberForm] = useState({
@@ -24,6 +26,12 @@ const AddMember = (props) => {
     });
 
     console.log(addMemberForm);
+    
+
+    // personService.getAll()
+    // .then(allPersons => {
+    //   console.log(allPersons)
+    // })
 
     const {control, handleSubmit, errors} = useForm();
     const onSubmit = (data) => {

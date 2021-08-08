@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "server": "json-server -p3005 --watch db.json"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -21,6 +22,7 @@
     "expo": "~42.0.1",
     "expo-barcode-scanner": "^10.2.2",
     "expo-status-bar": "~1.0.4",
+    "json-server": "^0.16.3",
     "native-base": "^3.0.6",
     "react": "16.13.1",
     "react-dom": "16.13.1",

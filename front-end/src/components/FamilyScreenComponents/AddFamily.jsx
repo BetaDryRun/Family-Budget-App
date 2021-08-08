@@ -15,7 +15,6 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import { FontAwesome } from "@expo/vector-icons";
 
-
 const AddFamily = (props) => {
 
   const [addFamilyForm, setFamilyForm] = useState({
