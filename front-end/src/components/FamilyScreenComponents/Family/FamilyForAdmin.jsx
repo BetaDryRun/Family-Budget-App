@@ -111,8 +111,8 @@ const FunctionalPage = (props) => {
             <Button
               bg="fi.600"
               _text={{ color: "fi.50" }}
-              onPress={()=>{
-                navigation.navigate("Add Member")
+              onPress={() => {
+                navigation.navigate("Add Member");
               }}
               style={{
                 borderRadius: 20,
@@ -136,7 +136,7 @@ const FunctionalPage = (props) => {
               size={100}
               width={15}
               fill={(familyWallet.currentAmount / family.budget) * 100}
-              tintColor="#00c69c"
+              tintColor="#f48c06"
               dashedTint={{ width: 1, gap: 2 }}
               // ref={(ref) => setCircularProgress(ref)}
               backgroundColor="#3d5875"
@@ -151,7 +151,7 @@ const FunctionalPage = (props) => {
               size={100}
               width={15}
               fill={calculator()}
-              tintColor="#00c69c"
+              tintColor="#f48c06"
               dashedTint={{ width: 1, gap: 2 }}
               // ref={(ref) => setCircularProgress(ref)}
               backgroundColor="#3d5875"
@@ -353,7 +353,7 @@ const TransactionHistory = () => {
           <View
             mt="-10"
             style={{
-              borderBottomColor: "#00c69c",
+              borderBottomColor: "#f48c06",
               borderBottomWidth: 3,
             }}
           />
@@ -402,7 +402,7 @@ const Transaction = ({ item, index }) => {
             mt="5"
             fontSize="25"
             alignItems="center"
-            style={{ color: "#00c79b", alignSelf: "center" }}
+            style={{ color: "#e85d04", alignSelf: "center" }}
           >
             <Icon color="fi.300" as={<FontAwesome name="rupee" />} size="sm" />
             {item.amount}
@@ -457,7 +457,7 @@ export default class FamilyForAdmin extends React.Component {
           height: 10,
           borderRadius: 10,
           marginHorizontal: 8,
-          backgroundColor: "#00c79b",
+          backgroundColor: "#e85d04",
         }}
         inactiveDotStyle={
           {

@@ -40,7 +40,7 @@ const TransactionHistory = ()=>{
             <View
                 mt='-10'
                 style={{
-                    borderBottomColor: '#00c69c',
+                    borderBottomColor: '#f48c06',
                     borderBottomWidth: 3,
                 }}
             />
@@ -85,7 +85,7 @@ const Transaction = ({ item, index }) => {
                            {Math.abs(item.amount)}
                       </Text>
                       :
-                      <Text mt='5' fontSize='25' alignItems="center" style={{color:'#00c79b', alignSelf:'center'}}>
+                      <Text mt='5' fontSize='25' alignItems="center" style={{color:'#e85d04', alignSelf:'center'}}>
                           <Icon color="fi.300" as={<FontAwesome name="rupee" />} size="sm" />
                           {item.amount}
                       </Text>
@@ -149,7 +149,7 @@ const GeneratInfo = ()=>{
         <View
           mt="-10"
           style={{
-            borderBottomColor: "#00c69c",
+            borderBottomColor: "#f48c06",
             borderBottomWidth: 3,
           }}
         />
@@ -194,23 +194,25 @@ export default class WhiteCarousel extends React.Component {
     get pagination () {
         const { carouselItems, activeIndex } = this.state;
         return (
-            <Pagination
-              dotsLength={carouselItems.length}
-              activeDotIndex={activeIndex}
-              containerStyle={{ backgroundColor: '#ffffff', marginBottom:-15 }}
-              dotStyle={{
-                  width: 10,
-                  height: 10,
-                  borderRadius: 10,
-                  marginHorizontal: 8,
-                  backgroundColor: '#00c79b'
-              }}
-              inactiveDotStyle={{
-                  // Define styles for inactive dots here
-              }}
-              inactiveDotOpacity={0.4}
-              inactiveDotScale={0.6}
-            />
+          <Pagination
+            dotsLength={carouselItems.length}
+            activeDotIndex={activeIndex}
+            containerStyle={{ backgroundColor: "#ffffff", marginBottom: -15 }}
+            dotStyle={{
+              width: 10,
+              height: 10,
+              borderRadius: 10,
+              marginHorizontal: 8,
+              backgroundColor: "#e85d04",
+            }}
+            inactiveDotStyle={
+              {
+                // Define styles for inactive dots here
+              }
+            }
+            inactiveDotOpacity={0.4}
+            inactiveDotScale={0.6}
+          />
         );
     }
 
