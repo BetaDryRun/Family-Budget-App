@@ -12,7 +12,8 @@ import {
   View,
   VStack,
   Avatar,
-  FormControl,Input,
+  FormControl,
+  Input,
   HStack,
   Button,
   Modal,
@@ -20,7 +21,8 @@ import {
   Center,
   Heading,
   Image,
-  Select
+  Select,
+  ScrollView,
 } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
 import {
@@ -40,161 +42,276 @@ import {
   BarChart,
   PieChart,
   ProgressChart,
-  ContributionGraph
-} from 'react-native-chart-kit'
-
+  ContributionGraph,
+} from "react-native-chart-kit";
 
 const AdminCarouselSelector = (item, navigation) => {
   switch (item) {
     case 0:
       return <ByMembers />;
     case 1:
-        return <ByTags />;
+      return <ByTags />;
     default:
       return <Text>No Data</Text>;
   }
 };
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#F5FCFF'
-    },
-    chart: {
-      flex: 1
-    }
-  });
+  container: {
+    flex: 1,
+    backgroundColor: "#F5FCFF",
+  },
+  chart: {
+    flex: 1,
+  },
+});
 
 const ByMembers = ({}) => {
-    return(
-        <View>
-          <Header Title={"Members Analysis"}/>
-            <Box bg="fi.50" w="100%" h="100%">
-                <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
-                    <Text>Charts Page</Text>
-                    <View>
-                    <LineChart
-                      data={{
-                        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-                        datasets: [{
-                          data: [
-                            Math.random() * 100,
-                            Math.random() * 100,
-                            Math.random() * 100,
-                            Math.random() * 100,
-                            Math.random() * 100,
-                            Math.random() * 100
-                          ]
-                        }]
-                      }}
-                      width={400} // from react-native
-                      height={420}
-                      chartConfig={{
-                        backgroundColor: '#e26a00',
-                        backgroundGradientFrom: '#ffffff',
-                        backgroundGradientTo: '#ffffff',
-                        decimalPlaces: 2, // optional, defaults to 2dp
-                        color: (opacity = 1) => `rgba(0, 198, 156)`,
-                        style: {
-                          borderRadius: 16
-                        }
-                      }}
-                      bezier
-                      style={{
-                        marginVertical: 8,
-                        borderRadius: 16
-                      }}
-                    />
-                  </View>
-                </View>
-            </Box>
+  return (
+    <View>
+      <Header Title={"Members Analysis"} />
+      <Box bg="fi.50" w="100%" h="100%">
+        <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
+          <Text>Charts Page</Text>
+          <View>
+            <LineChart
+              data={{
+                labels: [
+                  "January",
+                  "February",
+                  "March",
+                  "April",
+                  "May",
+                  "June",
+                ],
+                datasets: [
+                  {
+                    data: [
+                      Math.random() * 100,
+                      Math.random() * 100,
+                      Math.random() * 100,
+                      Math.random() * 100,
+                      Math.random() * 100,
+                      Math.random() * 100,
+                    ],
+                  },
+                ],
+              }}
+              width={400} // from react-native
+              height={420}
+              chartConfig={{
+                backgroundColor: "#e26a00",
+                backgroundGradientFrom: "#ffffff",
+                backgroundGradientTo: "#ffffff",
+                decimalPlaces: 2, // optional, defaults to 2dp
+                color: (opacity = 1) => `rgba(0, 198, 156)`,
+                style: {
+                  borderRadius: 16,
+                },
+              }}
+              bezier
+              style={{
+                marginVertical: 8,
+                borderRadius: 16,
+              }}
+            />
+          </View>
         </View>
-    );
-}
+        {/* <View>
+          <Box bg="fi.50" w="100%" h="100%"> */}
+        <View style={{ flex: 1, alignItems: "center", marginTop: 65 }}>
+          <Text>Pie Chart</Text>
+          <View w="100%" h="100%" alignSelf="center">
+            <PieChart
+              data={[
+                {
+                  name: "Seoul",
+                  population: 21500000,
+                  color: "rgba(131, 167, 234, 1)",
+                  legendFontColor: "#7F7F7F",
+                  legendFontSize: 15,
+                },
+                {
+                  name: "Toronto",
+                  population: 2800000,
+                  color: "#F00",
+                  legendFontColor: "#7F7F7F",
+                  legendFontSize: 15,
+                },
+                {
+                  name: "Beijing",
+                  population: 527612,
+                  color: "red",
+                  legendFontColor: "#7F7F7F",
+                  legendFontSize: 15,
+                },
+                {
+                  name: "New York",
+                  population: 8538000,
+                  color: "#ffffff",
+                  legendFontColor: "#7F7F7F",
+                  legendFontSize: 15,
+                },
+                {
+                  name: "Moscow",
+                  population: 11920000,
+                  color: "rgb(0, 0, 255)",
+                  legendFontColor: "#7F7F7F",
+                  legendFontSize: 15,
+                },
+              ]}
+              width={300}
+              height={300}
+              chartConfig={{
+                backgroundColor: "#e26a00",
+                backgroundGradientFrom: "#ffffff",
+                backgroundGradientTo: "#ffffff",
+                decimalPlaces: 2, // optional, defaults to 2dp
+                color: (opacity = 1) => `rgba(244, 140, 6)`,
+                style: {
+                  borderRadius: 16,
+                },
+              }}
+              bezier
+              style={{
+                marginVertical: 8,
+                borderRadius: 16,
+              }}
+              accessor="population"
+              backgroundColor="transparent"
+              paddingLeft="15"
+            />
+          </View>
+        </View>
+        {/* </Box>
+        </View> */}
+      </Box>
+    </View>
+  );
+};
 
 const ByTags = ({}) => {
-  return(
-      <View>
-      <Header Title={"Category Analysis"}/>
-          <Box bg="fi.50" w="100%" h="100%">
-              <View style={{ flex: 1, alignItems: "center", marginTop: 15}}>
-                  <Text>Charts Page</Text>
-                  <View>
-                  <BarChart
-                    // style={graphStyle}
-                    data={{
-                      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-                      datasets: [{
-                        data: [ 20, 45, 28, 80, 99, 43 ]
-                      }]
-                    }}
-                    width={350}
-                    height={420}
-                    chartConfig={{
-                      backgroundColor: '#e26a00',
-                      backgroundGradientFrom: '#ffffff',
-                      backgroundGradientTo: '#ffffff',
-                      decimalPlaces: 2, // optional, defaults to 2dp
-                      color: (opacity = 1) => `rgb(231, 84, 128)`,
-                      style: {
-                        borderRadius: 16
-                      }
-                    }}
-                    bezier
-                    style={{
-                      marginVertical: 8,
-                      borderRadius: 16
-                    }}
-                  />
-                </View>
-              </View>
-          </Box>
-      </View>
+  return (
+    <View>
+      <Header Title={"Category Analysis"} />
+      <Box bg="fi.50" w="100%" h="100%">
+        <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
+          <Text>Charts Page</Text>
+          <View>
+            <BarChart
+              // style={graphStyle}
+              data={{
+                labels: [
+                  "January",
+                  "February",
+                  "March",
+                  "April",
+                  "May",
+                  "June",
+                ],
+                datasets: [
+                  {
+                    data: [20, 45, 28, 80, 99, 43],
+                  },
+                ],
+              }}
+              width={350}
+              height={420}
+              chartConfig={{
+                backgroundColor: "#e26a00",
+                backgroundGradientFrom: "#ffffff",
+                backgroundGradientTo: "#ffffff",
+                decimalPlaces: 2, // optional, defaults to 2dp
+                color: (opacity = 1) => `rgb(231, 84, 128)`,
+                style: {
+                  borderRadius: 16,
+                },
+              }}
+              bezier
+              style={{
+                marginVertical: 8,
+                borderRadius: 16,
+              }}
+            />
+          </View>
+        </View>
+      </Box>
+    </View>
   );
-}
+};
 
 const Chart3 = ({}) => {
-  return(
-      <View>
-          <Box bg="fi.50" w="100%" h="100%">
-              <View style={{ flex: 1, alignItems: "center", marginTop: 65 }}>
-                  <Text>Charts Page</Text>
-                  <View w='100%' h='100%' alignSelf='center'>
-                  <PieChart
-                    data={[
-                      { name: 'Seoul', population: 21500000, color: 'rgba(131, 167, 234, 1)', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-                      { name: 'Toronto', population: 2800000, color: '#F00', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-                      { name: 'Beijing', population: 527612, color: 'red', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-                      { name: 'New York', population: 8538000, color: '#ffffff', legendFontColor: '#7F7F7F', legendFontSize: 15 },
-                      { name: 'Moscow', population: 11920000, color: 'rgb(0, 0, 255)', legendFontColor: '#7F7F7F', legendFontSize: 15 }
-                    ]}
-                    width={300}
-                    height={300}
-                    chartConfig={{
-                      backgroundColor: '#e26a00',
-                      backgroundGradientFrom: '#ffffff',
-                      backgroundGradientTo: '#ffffff',
-                      decimalPlaces: 2, // optional, defaults to 2dp
-                      color: (opacity = 1) => `rgba(244, 140, 6)`,
-                      style: {
-                        borderRadius: 16
-                      }
-                    }}
-                    bezier
-                    style={{
-                      marginVertical: 8,
-                      borderRadius: 16
-                    }}
-                    accessor="population"
-                    backgroundColor="transparent"
-                    paddingLeft="15"
-                  />
-                  </View>
-              </View>
-          </Box>
-      </View>
+  return (
+    <View>
+      <Box bg="fi.50" w="100%" h="100%">
+        <View style={{ flex: 1, alignItems: "center", marginTop: 65 }}>
+          <Text>Charts Page</Text>
+          <View w="100%" h="100%" alignSelf="center">
+            <PieChart
+              data={[
+                {
+                  name: "Seoul",
+                  population: 21500000,
+                  color: "rgba(131, 167, 234, 1)",
+                  legendFontColor: "#7F7F7F",
+                  legendFontSize: 15,
+                },
+                {
+                  name: "Toronto",
+                  population: 2800000,
+                  color: "#F00",
+                  legendFontColor: "#7F7F7F",
+                  legendFontSize: 15,
+                },
+                {
+                  name: "Beijing",
+                  population: 527612,
+                  color: "red",
+                  legendFontColor: "#7F7F7F",
+                  legendFontSize: 15,
+                },
+                {
+                  name: "New York",
+                  population: 8538000,
+                  color: "#ffffff",
+                  legendFontColor: "#7F7F7F",
+                  legendFontSize: 15,
+                },
+                {
+                  name: "Moscow",
+                  population: 11920000,
+                  color: "rgb(0, 0, 255)",
+                  legendFontColor: "#7F7F7F",
+                  legendFontSize: 15,
+                },
+              ]}
+              width={300}
+              height={300}
+              chartConfig={{
+                backgroundColor: "#e26a00",
+                backgroundGradientFrom: "#ffffff",
+                backgroundGradientTo: "#ffffff",
+                decimalPlaces: 2, // optional, defaults to 2dp
+                color: (opacity = 1) => `rgba(244, 140, 6)`,
+                style: {
+                  borderRadius: 16,
+                },
+              }}
+              bezier
+              style={{
+                marginVertical: 8,
+                borderRadius: 16,
+              }}
+              accessor="population"
+              backgroundColor="transparent"
+              paddingLeft="15"
+            />
+          </View>
+        </View>
+      </Box>
+    </View>
   );
-}
+};
 
 export default class ReportsScreen extends React.Component {
   constructor(props) {
@@ -248,34 +365,36 @@ export default class ReportsScreen extends React.Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: "#282828" }}>
-        <View
-          style={{ flex: 2, flexDirection: "row", justifyContent: "center" }}
-        >
-          <Carousel
-            layout={"default"}
-            ref={(ref) => (this.carousel = ref)}
-            data={this.state.carouselItems}
-            sliderWidth={300}
-            itemWidth={385}
-            renderItem={this._renderItem}
-            onSnapToItem={(index) => this.setState({ activeIndex: index })}
-          />
-        </View>
-        {this.pagination}
-        <Button
-            bg="fi.600"
-            _text={{ color: "fi.50" }}
-            onPress={() =>  this.props.navigation.navigate("Calender")}
-            startIcon={
-              <Icon
-                color="fi.50"
-                as={<FontAwesome name="calendar" color="fi.50"/>}
-                size="sm"
-                style={{ alignSelf: "center" }}
-              />
-            }
+        <ScrollView>
+          <View
+            style={{ flex: 2, flexDirection: "row", justifyContent: "center" }}
           >
-            Select Time Interval
+            <Carousel
+              layout={"default"}
+              ref={(ref) => (this.carousel = ref)}
+              data={this.state.carouselItems}
+              sliderWidth={300}
+              itemWidth={385}
+              renderItem={this._renderItem}
+              onSnapToItem={(index) => this.setState({ activeIndex: index })}
+            />
+          </View>
+          {this.pagination}
+        </ScrollView>
+        <Button
+          bg="fi.600"
+          _text={{ color: "fi.50" }}
+          onPress={() => this.props.navigation.navigate("Calender")}
+          startIcon={
+            <Icon
+              color="fi.50"
+              as={<FontAwesome name="calendar" color="fi.50" />}
+              size="sm"
+              style={{ alignSelf: "center" }}
+            />
+          }
+        >
+          Select Time Interval
         </Button>
       </SafeAreaView>
     );
