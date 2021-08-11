@@ -8,6 +8,7 @@ import {PayScreen, AddMoneyScreen, QRScreen, WithdrawScreen} from './src/compone
 import AddMember from './src/components/FamilyScreenComponents/AddMember';
 import { createStackNavigator } from '@react-navigation/stack'
 import { NativeBaseProvider, extendTheme} from 'native-base';
+import {DatePicker} from './src/components/Utility'
 const Stack = createStackNavigator();
 import { colors, fonts, spacing } from './theme';
 
@@ -38,6 +39,7 @@ export default function App({navigation}) {
           <Stack.Screen name="Withdraw" options={{ headerShown: false }} component={WithdrawScreen} />
           <Stack.Screen name="QR" options={{ headerShown: false }} component={QRScreen} />
           <Stack.Screen name="Add Member" options={{headerShown: false }} component = {AddMember} />
+          <Stack.Screen name="Calender" options={{ headerShown: false }} component={DatePicker} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

@@ -27,7 +27,7 @@ const WithdrawScreen = ({ navigation }) => {
   return (
     <VStack flex={1} p={2} w="100%" mx="auto" bg="fi.50">
       <Center>
-        <Heading size="xl" color="fi.200" mt="30%" mb="10%">
+        <Heading size="xl" color="fi.200" mt="50%" mb="10%">
           WITHDRAW MONEY
         </Heading>
       </Center>

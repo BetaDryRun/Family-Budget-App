@@ -5,6 +5,7 @@ import ReportsScreen from './ReportsScreen'
 import WalletScreen from './WalletScreen';
 import ProfileScreen from './ProfileScreen';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
+import { FontAwesome } from "@expo/vector-icons";
 import {
   Text,
   Icon,
@@ -24,10 +25,10 @@ const HomeScreen = (props) => {
         allowFontScaling: true, 
         style: {
           backgroundColor: '#e85d04',
-          height: 65, borderWidth: 0.5,
+          height: 75, borderWidth: 0.5,
           borderBottomWidth: 1,
-          borderTopLeftRadius: 15,
-          borderTopRightRadius: 15,
+          // borderTopLeftRadius: 15,
+          // borderTopRightRadius: 15,
           borderColor: 'transparent',
           elevation: 20,
       }
@@ -39,17 +40,21 @@ const HomeScreen = (props) => {
             ({ focused }) => focused ? 
               <View style={{ flexDirection: 'column', alignItems: 'center', marginBottom: -14 }}>
                 <Icon
-                  as={< MaterialCommunityIcons name="home-outline" />}
-                  color='fi.50'
-                  size="xl"
+                  color="fi.50"
+                  w='100%'
+                  as={<FontAwesome name="users" color="fi.50"/>}
+                  size="lg"
+                  style={{ alignSelf: "center" }}
                 />
               </View> 
               : 
               <View style={{ flexDirection: 'column', alignItems: 'center', marginBottom: -14 }}>
                 <Icon
-                  as={< MaterialCommunityIcons name="home-outline" />}
-                  color='fi.500'
+                  color="fi.500"
+                  w='100%'
+                  as={<FontAwesome name="users" color="fi.500"/>}
                   size="md"
+                  style={{ alignSelf: "center" }}
                 />
               </View> 
         }}
@@ -61,17 +66,19 @@ const HomeScreen = (props) => {
             ({ focused }) => focused ? 
               <View style={{ flexDirection: 'column', alignItems: 'center', marginBottom: -14 }}>
                 <Icon
-                  as={< MaterialCommunityIcons name="file-edit-outline" />}
-                  color='fi.50'
-                  size="xl"
+                  color="fi.50"
+                  as={<FontAwesome name="pie-chart" color="fi.50"/>}
+                  size="lg"
+                  style={{ alignSelf: "center" }}
                 />
               </View> 
               : 
               <View style={{ flexDirection: 'column', alignItems: 'center', marginBottom: -14 }}>
                 <Icon
-                  as={< MaterialCommunityIcons name="file-edit-outline" />}
-                  color='fi.500'
+                  color="fi.500"
+                  as={<FontAwesome name="pie-chart" color="fi.500"/>}
                   size="md"
+                  style={{ alignSelf: "center" }}
                 />
               </View> 
         }}
@@ -82,19 +89,23 @@ const HomeScreen = (props) => {
           tabBarIcon: 
             ({ focused }) => focused ? 
               <View style={{ flexDirection: 'column', alignItems: 'center', marginBottom: -14 }}>
-                    <Icon
-                      as={< MaterialCommunityIcons name="wallet-outline" />}
-                      color='fi.50'
-                      size="xl"
-                    />
+                <Icon
+                  color="fi.50"
+                  w='100%'
+                  as={<FontAwesome name="credit-card" color="fi.50"/>}
+                  size="lg"
+                  style={{ alignSelf: "center" }}
+                />
               </View> 
               : 
               <View style={{ flexDirection: 'column', alignItems: 'center', marginBottom: -14 }}>
                 <Icon
-                      as={< MaterialCommunityIcons name="wallet-outline" />}
-                      color='fi.500'
-                      size="md"
-                    />
+                  color="fi.500"
+                  w='100%'
+                  as={<FontAwesome name="credit-card" color="fi.500"/>}
+                  size="md"
+                  style={{ alignSelf: "center" }}
+                />
               </View> 
         }}
       />
@@ -105,18 +116,20 @@ const HomeScreen = (props) => {
             ({ focused }) => focused ? 
               <View style={{ flexDirection: 'column', alignItems: 'center', marginBottom: -14 }}>
                 <Icon
-                    as={< MaterialCommunityIcons name="face-woman" />}
-                    color='fi.50'
-                    size="xl"
-                  />
+                  color="fi.50"
+                  as={<FontAwesome name="user-circle" color="fi.50"/>}
+                  size="lg"
+                  style={{ alignSelf: "center" }}
+                />
               </View> 
               : 
               <View style={{ flexDirection: 'column', alignItems: 'center', marginBottom: -14 }}>
                 <Icon
-                    as={< MaterialCommunityIcons name="face-woman" />}
-                    color='fi.500'
-                    size="md"
-                  />
+                  color="fi.500"
+                  as={<FontAwesome name="user-circle" color="fi.500"/>}
+                  size="md"
+                  style={{ alignSelf: "center" }}
+                />
               </View> 
         }}
       />

@@ -31,7 +31,7 @@ const Register = ({navigation}) => {
 
  return (
    <Box flex={1} p={2} w="100%" mx="auto" bg="fi.50">
-     <Center>
+     <Center  mt='25%'>
        <Heading size="lg" color="fi.200" mt="10%">
          Register
        </Heading>

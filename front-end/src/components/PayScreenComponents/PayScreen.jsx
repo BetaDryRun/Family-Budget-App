@@ -28,7 +28,7 @@ const PayScreen = ({ navigation }) => {
       <Button
         bg="fi.300"
         _text={{ color: "fi.50" }}
-        mt="7"
+        mt="20"
         w="16%"
         onPress={()=>{
           navigation.navigate("QR")
@@ -36,7 +36,7 @@ const PayScreen = ({ navigation }) => {
         style={{
           borderRadius: 20,
           alignSelf: "flex-end",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
         // onPress={() => navigation.navigate("Add Money")}
         startIcon={
@@ -55,7 +55,7 @@ const PayScreen = ({ navigation }) => {
         </Heading>
       </Center>
 
-      <VStack space={2}>
+      <VStack space={3}>
         <FormControl marginBottom={2}>
           <FormControl.Label
             _text={{ color: "fi.500", fontSize: "sm", fontWeight: 600 }}

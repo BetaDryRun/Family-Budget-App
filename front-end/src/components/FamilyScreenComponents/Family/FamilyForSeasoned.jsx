@@ -51,8 +51,8 @@ const FamilyForSeasoned = (props) => {
       {/* <Header Title={itemSelected.name} /> */}
       <Box bg="fi.600" width="100%" height="200%">
         <View style={{ flex: 1, alignItems: "center", marginTop: 90 }}>
-            <VStack space={2} alignItems="center">
-                <Text color="fi.50" style={{fontSize:25}} mt='-20'>{family.name}</Text>
+            <VStack space={6} alignItems="center">
+                <Text color="fi.50" style={{fontSize:25}} >{family.name}</Text>
                     <AnimatedCircularProgress
                         size={100}
                         width={15}

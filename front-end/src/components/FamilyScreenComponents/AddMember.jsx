@@ -50,7 +50,7 @@ const AddMember = (props) => {
   
           <Box w = "100%">
             <Center>
-              <Heading size = "lg" color = "fi.200" mt = "10%">
+              <Heading size = "lg" color = "fi.200" mt = "50%">
                 Add Member
               </Heading>
             </Center>
@@ -72,7 +72,7 @@ const AddMember = (props) => {
               <FormControl.Label
                 _text={{ color: "fi.500", fontSize: "sm", fontWeight: 600 }}
               >
-                Role:
+                Member Role:
               </FormControl.Label>
               <Controller
                 control={control}
@@ -93,9 +93,9 @@ const AddMember = (props) => {
                       <Icon as= {<FontAwesome name="chevron-circle-down" />} size = {6}/>
                     }
                   >
-                    <Select.Item label="Admin" value="admin" />
-                    <Select.Item label="Member" value="member" />
+                    <Select.Item label="Head" value="head" />
                     <Select.Item label="Seasoned" value="seasoned" />
+                    <Select.Item label="Member" value="member" />
                   </Select>
                 )}
                 name="Role"
@@ -103,8 +103,8 @@ const AddMember = (props) => {
               />
             </FormControl>
 
-            <Button color="#e85d04" onPress ={() => {console.log('mac')}} ml = {5} width = "100%">
-              Create Member
+            <Button onPress ={() => {console.log('mac')}} style={{backgroundColor:'#e85d04'}} ml = {5} width = "100%">
+              Add Member
             </Button>
           </VStack>
         </Box>

@@ -24,9 +24,9 @@ const AddMoneyScreen = ({ navigation }) => {
   });
 
   return (
-    <VStack flex={1} p={2} w="100%" mx="auto" bg="fi.50">
+    <VStack flex={1} p={2} space={2} w="100%" mx="auto" bg="fi.50">
       <Center>
-        <Heading size="lg" color="fi.200" mt="20%">
+        <Heading size="lg" color="fi.200" mt="40%">
           ADD MONEY
         </Heading>
         <Heading size="lg" color="fi.200" mb="10%">
@@ -34,7 +34,7 @@ const AddMoneyScreen = ({ navigation }) => {
         </Heading>
       </Center>
 
-      <VStack space={2} mt={5}>
+      <VStack space={4} mt={5}>
         <FormControl marginBottom={2}>
           <FormControl.Label
             _text={{ color: "fi.500", fontSize: "sm", fontWeight: 600 }}
