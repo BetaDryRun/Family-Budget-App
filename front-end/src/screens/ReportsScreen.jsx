@@ -26,7 +26,7 @@ import {
 } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
 
-import {BarChart, LineGraph, PiChart} from '../components/Utility'
+import {BarChart, LineGraph, PiChart, PiChart2} from '../components/Utility'
 
 const AdminCarouselSelector = (item, navigation) => {
   switch (item) {
@@ -80,7 +80,7 @@ const ByTags = ({}) => {
             <BarChart />
           </View>
           <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
-            <PiChart />
+            <PiChart2 />
           </View>
           <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
             <LineGraph />
@@ -91,78 +91,78 @@ const ByTags = ({}) => {
   );
 };
 
-const Chart3 = ({}) => {
-  return (
-    <View>
-      <Box bg="fi.50" w="100%" h="100%">
-        <View style={{ flex: 1, alignItems: "center", marginTop: 65 }}>
-          <Text>Charts Page</Text>
-          <View w="100%" h="100%" alignSelf="center">
-            <PieChart
-              data={[
-                {
-                  name: "Seoul",
-                  population: 21500000,
-                  color: "rgba(131, 167, 234, 1)",
-                  legendFontColor: "#7F7F7F",
-                  legendFontSize: 15,
-                },
-                {
-                  name: "Toronto",
-                  population: 2800000,
-                  color: "#F00",
-                  legendFontColor: "#7F7F7F",
-                  legendFontSize: 15,
-                },
-                {
-                  name: "Beijing",
-                  population: 527612,
-                  color: "red",
-                  legendFontColor: "#7F7F7F",
-                  legendFontSize: 15,
-                },
-                {
-                  name: "New York",
-                  population: 8538000,
-                  color: "#ffffff",
-                  legendFontColor: "#7F7F7F",
-                  legendFontSize: 15,
-                },
-                {
-                  name: "Moscow",
-                  population: 11920000,
-                  color: "rgb(0, 0, 255)",
-                  legendFontColor: "#7F7F7F",
-                  legendFontSize: 15,
-                },
-              ]}
-              width={300}
-              height={300}
-              chartConfig={{
-                backgroundColor: "#e26a00",
-                backgroundGradientFrom: "#ffffff",
-                backgroundGradientTo: "#ffffff",
-                decimalPlaces: 2, // optional, defaults to 2dp
-                color: (opacity = 1) => `rgba(244, 140, 6)`,
-                style: {
-                  borderRadius: 16,
-                },
-              }}
-              bezier
-              style={{
-                marginVertical: 8,
-                borderRadius: 16,
-              }}
-              accessor="population"
-              backgroundColor="transparent"
-              paddingLeft="15"
-            />
-          </View>
-        </View>
-      </Box>
-    </View>
-  );
-};
+// const Chart3 = ({}) => {
+//   return (
+//     <View>
+//       <Box bg="fi.50" w="100%" h="100%">
+//         <View style={{ flex: 1, alignItems: "center", marginTop: 65 }}>
+//           <Text>Charts Page</Text>
+//           <View w="100%" h="100%" alignSelf="center">
+//             <PieChart
+//               data={[
+//                 {
+//                   name: "Seoul",
+//                   population: 21500000,
+//                   color: "rgba(131, 167, 234, 1)",
+//                   legendFontColor: "#7F7F7F",
+//                   legendFontSize: 15,
+//                 },
+//                 {
+//                   name: "Toronto",
+//                   population: 2800000,
+//                   color: "#F00",
+//                   legendFontColor: "#7F7F7F",
+//                   legendFontSize: 15,
+//                 },
+//                 {
+//                   name: "Beijing",
+//                   population: 527612,
+//                   color: "red",
+//                   legendFontColor: "#7F7F7F",
+//                   legendFontSize: 15,
+//                 },
+//                 {
+//                   name: "New York",
+//                   population: 8538000,
+//                   color: "#ffffff",
+//                   legendFontColor: "#7F7F7F",
+//                   legendFontSize: 15,
+//                 },
+//                 {
+//                   name: "Moscow",
+//                   population: 11920000,
+//                   color: "rgb(0, 0, 255)",
+//                   legendFontColor: "#7F7F7F",
+//                   legendFontSize: 15,
+//                 },
+//               ]}
+//               width={300}
+//               height={300}
+//               chartConfig={{
+//                 backgroundColor: "#e26a00",
+//                 backgroundGradientFrom: "#ffffff",
+//                 backgroundGradientTo: "#ffffff",
+//                 decimalPlaces: 2, // optional, defaults to 2dp
+//                 color: (opacity = 1) => `rgba(244, 140, 6)`,
+//                 style: {
+//                   borderRadius: 16,
+//                 },
+//               }}
+//               bezier
+//               style={{
+//                 marginVertical: 8,
+//                 borderRadius: 16,
+//               }}
+//               accessor="population"
+//               backgroundColor="transparent"
+//               paddingLeft="15"
+//             />
+//           </View>
+//         </View>
+//       </Box>
+//     </View>
+//   );
+// };
 
 export default class ReportsScreen extends React.Component {
   constructor(props) {
