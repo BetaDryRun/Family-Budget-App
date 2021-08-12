@@ -39,7 +39,7 @@ export default function App({navigation}) {
           <Stack.Screen name="Withdraw" options={{ headerShown: false }} component={WithdrawScreen} />
           <Stack.Screen name="QR" options={{ headerShown: false }} component={QRScreen} />
           <Stack.Screen name="Add Member" options={{headerShown: false }} component = {AddMember} />
-          <Stack.Screen name="Calender" options={{ headerShown: false }} component={DatePicker} />
+          <Stack.Screen name="Calender" date options={{ headerShown: false }} component={DatePicker} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

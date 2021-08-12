@@ -25,25 +25,8 @@ import {
   ScrollView,
 } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
-import {
-  AnimatedCircularProgress,
-  Easing,
-} from "react-native-circular-progress";
 
-//Data
-import { family } from "../dummyData/OrganisedData/Family";
-import { familyTransactionsInThisIteration } from "../dummyData/OrganisedData/FamilyTransactions";
-import { familyWallet } from "../dummyData/OrganisedData/FamilyWallet";
-import { familyUsers } from "../dummyData/OrganisedData/FamilyUsers";
-import { alignContent } from "styled-system";
-
-import {
-  LineChart,
-  BarChart,
-  PieChart,
-  ProgressChart,
-  ContributionGraph,
-} from "react-native-chart-kit";
+import {BarChart, LineGraph, PiChart} from '../components/Utility'
 
 const AdminCarouselSelector = (item, navigation) => {
   switch (item) {
@@ -71,120 +54,17 @@ const ByMembers = ({}) => {
     <View>
       <Header Title={"Members Analysis"} />
       <Box bg="fi.50" w="100%" h="100%">
+      <ScrollView>
         <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
-          <Text>Charts Page</Text>
-          <View>
-            <LineChart
-              data={{
-                labels: [
-                  "January",
-                  "February",
-                  "March",
-                  "April",
-                  "May",
-                  "June",
-                ],
-                datasets: [
-                  {
-                    data: [
-                      Math.random() * 100,
-                      Math.random() * 100,
-                      Math.random() * 100,
-                      Math.random() * 100,
-                      Math.random() * 100,
-                      Math.random() * 100,
-                    ],
-                  },
-                ],
-              }}
-              width={400} // from react-native
-              height={420}
-              chartConfig={{
-                backgroundColor: "#e26a00",
-                backgroundGradientFrom: "#ffffff",
-                backgroundGradientTo: "#ffffff",
-                decimalPlaces: 2, // optional, defaults to 2dp
-                color: (opacity = 1) => `rgba(0, 198, 156)`,
-                style: {
-                  borderRadius: 16,
-                },
-              }}
-              bezier
-              style={{
-                marginVertical: 8,
-                borderRadius: 16,
-              }}
-            />
+            <BarChart />
           </View>
-        </View>
-        {/* <View>
-          <Box bg="fi.50" w="100%" h="100%"> */}
-        <View style={{ flex: 1, alignItems: "center", marginTop: 65 }}>
-          <Text>Pie Chart</Text>
-          <View w="100%" h="100%" alignSelf="center">
-            <PieChart
-              data={[
-                {
-                  name: "Seoul",
-                  population: 21500000,
-                  color: "rgba(131, 167, 234, 1)",
-                  legendFontColor: "#7F7F7F",
-                  legendFontSize: 15,
-                },
-                {
-                  name: "Toronto",
-                  population: 2800000,
-                  color: "#F00",
-                  legendFontColor: "#7F7F7F",
-                  legendFontSize: 15,
-                },
-                {
-                  name: "Beijing",
-                  population: 527612,
-                  color: "red",
-                  legendFontColor: "#7F7F7F",
-                  legendFontSize: 15,
-                },
-                {
-                  name: "New York",
-                  population: 8538000,
-                  color: "#ffffff",
-                  legendFontColor: "#7F7F7F",
-                  legendFontSize: 15,
-                },
-                {
-                  name: "Moscow",
-                  population: 11920000,
-                  color: "rgb(0, 0, 255)",
-                  legendFontColor: "#7F7F7F",
-                  legendFontSize: 15,
-                },
-              ]}
-              width={300}
-              height={300}
-              chartConfig={{
-                backgroundColor: "#e26a00",
-                backgroundGradientFrom: "#ffffff",
-                backgroundGradientTo: "#ffffff",
-                decimalPlaces: 2, // optional, defaults to 2dp
-                color: (opacity = 1) => `rgba(244, 140, 6)`,
-                style: {
-                  borderRadius: 16,
-                },
-              }}
-              bezier
-              style={{
-                marginVertical: 8,
-                borderRadius: 16,
-              }}
-              accessor="population"
-              backgroundColor="transparent"
-              paddingLeft="15"
-            />
+          <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
+            <PiChart />
           </View>
-        </View>
-        {/* </Box>
-        </View> */}
+          <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
+            <LineGraph />
+          </View>
+      </ScrollView>
       </Box>
     </View>
   );
@@ -195,46 +75,17 @@ const ByTags = ({}) => {
     <View>
       <Header Title={"Category Analysis"} />
       <Box bg="fi.50" w="100%" h="100%">
+      <ScrollView>
         <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
-          <Text>Charts Page</Text>
-          <View>
-            <BarChart
-              // style={graphStyle}
-              data={{
-                labels: [
-                  "January",
-                  "February",
-                  "March",
-                  "April",
-                  "May",
-                  "June",
-                ],
-                datasets: [
-                  {
-                    data: [20, 45, 28, 80, 99, 43],
-                  },
-                ],
-              }}
-              width={350}
-              height={420}
-              chartConfig={{
-                backgroundColor: "#e26a00",
-                backgroundGradientFrom: "#ffffff",
-                backgroundGradientTo: "#ffffff",
-                decimalPlaces: 2, // optional, defaults to 2dp
-                color: (opacity = 1) => `rgb(231, 84, 128)`,
-                style: {
-                  borderRadius: 16,
-                },
-              }}
-              bezier
-              style={{
-                marginVertical: 8,
-                borderRadius: 16,
-              }}
-            />
+            <BarChart />
           </View>
-        </View>
+          <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
+            <PiChart />
+          </View>
+          <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
+            <LineGraph />
+          </View>
+      </ScrollView>
       </Box>
     </View>
   );
@@ -365,7 +216,6 @@ export default class ReportsScreen extends React.Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: "#282828" }}>
-        <ScrollView>
           <View
             style={{ flex: 2, flexDirection: "row", justifyContent: "center" }}
           >
@@ -380,7 +230,6 @@ export default class ReportsScreen extends React.Component {
             />
           </View>
           {this.pagination}
-        </ScrollView>
         <Button
           bg="fi.600"
           _text={{ color: "fi.50" }}

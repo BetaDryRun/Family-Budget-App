@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
     Box,
     Text,
@@ -12,6 +12,10 @@ import {
   import Calendar from "react-native-calendar-range-picker";
 
   const DatePicker = ({navigation}) => {
+    const [date,setDate] = useState({
+      "endDate": "2021-08-27",
+      "startDate": "2021-08-04"
+    })
     const CUSTOM_LOCALE = {
       monthNames: [
       'January',
@@ -39,13 +43,13 @@ import {
             locale={CUSTOM_LOCALE}
             startDate="2021-08-05"
             endDate="2021-08-12"
-            onChange={(date) => console.log(date)}
+            onChange={(date) => setDate(date)}
           />
         </View>
         <Button
             bg="fi.600"
             _text={{ color: "fi.50" }}
-            onPress={() =>  navigation.navigate("Home")}
+            onPress={() =>  navigation.navigate("Home", {date})}
             startIcon={
               <Icon
                 color="fi.50"

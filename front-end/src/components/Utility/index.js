@@ -1,3 +1,5 @@
 export {default as Header} from './Header'
-export {default as Header1} from './Header1'
 export {default as DatePicker} from './DatePicker'
+export {default as BarChart} from './Barchart'
+export {default as LineGraph} from './Graph'
+export {default as PiChart} from './PiChart'
