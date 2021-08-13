@@ -18,7 +18,7 @@ const image = {
   uri: "https://preview.redd.it/qwd83nc4xxf41.jpg?width=640&crop=smart&auto=webp&s=e82767fdf47158e80604f407ce4938e44afc6c25",
 };
 
-const role = ['ADMIN', 'SEASONED', 'MEMBER'];
+const role = ['HEAD', 'SEASONED', 'MEMBER'];
 
 const FabButton = ({ navigation }) => {
   const [selecting, setSelecting] = useState();
@@ -54,7 +54,7 @@ const FamilyList = ({ navigation }) => {
       <Box bg="fi.500" shadow={5} rounded="lg" maxWidth="100%" mt={5}>
         <Pressable
           onPress={() => {
-            role[index%3]==='ADMIN'?navigation.navigate("FamilyForAdmin", { selectedItem: item })
+            role[index%3]==='HEAD'?navigation.navigate("FamilyForAdmin", { selectedItem: item })
             :
             role[index%3]==='SEASONED'?navigation.navigate("FamilyForSeasoned", { selectedItem: item })
             :
@@ -74,9 +74,7 @@ const FamilyList = ({ navigation }) => {
             <Text color="fi.100">
               No Of Members:{" "}
               <Text color="fi.50">
-                {item.members.length +
-                  item.members.length +
-                  item.members.length}
+                {item.members.length}
               </Text>
             </Text>
             <Text color="fi.100">

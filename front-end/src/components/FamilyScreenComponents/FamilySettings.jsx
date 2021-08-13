@@ -15,23 +15,14 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import { FontAwesome } from "@expo/vector-icons";
 
-const AddFamily = (props) => {
 
-  const [addFamilyForm, setFamilyForm] = useState({
-    name: null,
-    description: null,
-    iterationPeriod: null,
-    budget: null
-  });
-
-  console.log(addFamilyForm);
-
+const FamilySettings = (props) => {
   const { control, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    console.log("submiting with ", data, addFamilyForm);
+    console.log("submiting with ", data);
   };
 
-  // let [timePeriod, setTimePeriod] = useState("")
+  let [timePeriod, setTimePeriod] = useState("")
 
   return (
     <View bg={"fi.400"} h="100%">
@@ -58,9 +49,7 @@ const AddFamily = (props) => {
             >
               Family Name:
             </FormControl.Label>
-            <Input value = {addFamilyForm.name} onChangeText = {(text) => setFamilyForm(prevState => {
-              return {...prevState, name: text};
-            })}/>
+            <Input />
           </FormControl>
           <FormControl mr={5} ml={5}>
             <FormControl.Label
@@ -68,9 +57,7 @@ const AddFamily = (props) => {
             >
               Family Description:
             </FormControl.Label>
-            <Input multiline={true} numberOfLines={4} value = {addFamilyForm.description} onChangeText = {(text) => setFamilyForm(prevState => {
-              return {...prevState, description: text};
-            })}/>
+            <Input multiline={true} numberOfLines={4} />
           </FormControl>
           <FormControl mr={5} ml={5}>
             <FormControl.Label
@@ -83,15 +70,11 @@ const AddFamily = (props) => {
               render={({ timePeriod }) => (
                 <Select
                   placeholder="Choose Iteration Period"
-                  selectedValue={ addFamilyForm.iterationPeriod }
-                  width={"100%"} onValueChange = {(itemValue) => {
-                    setFamilyForm(prevState => {
-                      return {...prevState, iterationPeriod: itemValue}
-                    })
+                  selectedValue={timePeriod}
+                  width={"100%"}
+                  onValueChange={(itemValue) => {
+                    setTimePeriod(itemValue);
                   }}
-                  // onValueChange={(itemValue) => {
-                  //   setTimePeriod(itemValue);
-                  // }}
                   selectedItemBg={"fi.300"}
                   dropdownOpenIcon={
                     <Icon as = {<FontAwesome name = "chevron-circle-up" />} size={6} />
@@ -100,10 +83,10 @@ const AddFamily = (props) => {
                     <Icon as= {<FontAwesome name="chevron-circle-down" />} size = {6}/>
                   }
                 >
-                  <Select.Item label="Daily" value="daily" />
-                  <Select.Item label="Weekly" value="weekly" />
-                  <Select.Item label="Monthly" value="monthly" />
-                  <Select.Item label="Yearly" value="yearly" />
+                  <Select.Item label="Daily" value="dy" />
+                  <Select.Item label="Weekly" value="wy" />
+                  <Select.Item label="Monthly" value="my" />
+                  <Select.Item label="Yearly" value="yy" />
                 </Select>
               )}
               name="Iteration Time"
@@ -116,12 +99,10 @@ const AddFamily = (props) => {
             >
               Family Budget For Selected Time Period:
             </FormControl.Label>
-            <Input value = {addFamilyForm.budget} onChangeText = {(text) => setFamilyForm(prevState => {
-              return {...prevState, budget: text};
-            })}/>
+            <Input />
           </FormControl>
-          <Button onPress ={() => {console.log('mac')}} color="fi.300" ml = {5} width = "100%">
-            Create Family
+          <Button onPress={handleSubmit(onSubmit)} color="fi.300" ml = {5} width = "100%">
+            Create Group
           </Button>
         </VStack>
       </Box>
@@ -136,4 +117,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddFamily;
+export default FamilySettings;

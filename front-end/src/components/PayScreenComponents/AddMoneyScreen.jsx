@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { StyleSheet } from "react-native";
 import {
   Box,
@@ -19,10 +19,14 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 
 const AddMoneyScreen = ({ navigation }) => {
+  const [addAmountForm, setAddAmountForm] = useState({
+    amount:null
+  });
+
   return (
-    <VStack flex={1} p={2} w="100%" mx="auto" bg="fi.50">
+    <VStack flex={1} p={2} space={2} w="100%" mx="auto" bg="fi.50">
       <Center>
-        <Heading size="lg" color="fi.200" mt="20%">
+        <Heading size="lg" color="fi.200" mt="40%">
           ADD MONEY
         </Heading>
         <Heading size="lg" color="fi.200" mb="10%">
@@ -30,7 +34,7 @@ const AddMoneyScreen = ({ navigation }) => {
         </Heading>
       </Center>
 
-      <VStack space={2} mt={5}>
+      <VStack space={4} mt={5}>
         <FormControl marginBottom={2}>
           <FormControl.Label
             _text={{ color: "fi.500", fontSize: "sm", fontWeight: 600 }}
@@ -55,6 +59,9 @@ const AddMoneyScreen = ({ navigation }) => {
                 }}
               />
             }
+            onChangeText={(Text) => {
+              setAddAmountForm({...addAmountForm,amount:parseInt(Text)});
+            }}
             placeholder="0"
             _light={{
               placeholderTextColor: "blueGray.400",
@@ -79,8 +86,8 @@ const AddMoneyScreen = ({ navigation }) => {
             <Box
               style={{ justifyContent: "center", alignContent: "center" }}
               bg="white"
-            //   rounded="md"
-            //   shadow={3}
+              //   rounded="md"
+              //   shadow={3}
               height={20}
               width={20}
             >
@@ -106,8 +113,8 @@ const AddMoneyScreen = ({ navigation }) => {
             <Box
               style={{ justifyContent: "center", alignContent: "center" }}
               bg="white"
-            //   rounded="md"
-            //   shadow={3}
+              //   rounded="md"
+              //   shadow={3}
               height={20}
               width={20}
             >
@@ -132,8 +139,8 @@ const AddMoneyScreen = ({ navigation }) => {
             <Box
               style={{ justifyContent: "center", alignContent: "center" }}
               bg="white"
-            //   rounded="md"
-            //   shadow={3}
+              //   rounded="md"
+              //   shadow={3}
               height={20}
               width={20}
             >
@@ -159,8 +166,8 @@ const AddMoneyScreen = ({ navigation }) => {
             <Box
               style={{ justifyContent: "center", alignContent: "center" }}
               bg="white"
-            //   rounded="md"
-            //   shadow={3}
+              //   rounded="md"
+              //   shadow={3}
               height={20}
               width={20}
             >
@@ -216,7 +223,10 @@ const AddMoneyScreen = ({ navigation }) => {
             <Button
               bg="fi.300"
               _text={{ color: "white" }}
-              //   onPress={() => navigation.navigate("Home")}
+              onPress={() => {
+                console.log(addAmountForm)
+                navigation.navigate("Home")
+              }}
             >
               Add Funds
             </Button>

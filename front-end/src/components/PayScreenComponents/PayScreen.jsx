@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import { StyleSheet } from "react-native";
 import {
   Box,
@@ -19,12 +19,16 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 
 const PayScreen = ({ navigation }) => {
+  const [payForm, setPayForm] = useState({
+    phoneNumber:null,
+    amount:null
+  })
   return (
     <VStack flex={1} p={2} w="100%" h='100%' mx="auto" bg="fi.50">
       <Button
         bg="fi.300"
         _text={{ color: "fi.50" }}
-        mt="7"
+        mt="20"
         w="16%"
         onPress={()=>{
           navigation.navigate("QR")
@@ -32,7 +36,7 @@ const PayScreen = ({ navigation }) => {
         style={{
           borderRadius: 20,
           alignSelf: "flex-end",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
         // onPress={() => navigation.navigate("Add Money")}
         startIcon={
@@ -51,7 +55,7 @@ const PayScreen = ({ navigation }) => {
         </Heading>
       </Center>
 
-      <VStack space={2}>
+      <VStack space={3}>
         <FormControl marginBottom={2}>
           <FormControl.Label
             _text={{ color: "fi.500", fontSize: "sm", fontWeight: 600 }}
@@ -61,6 +65,7 @@ const PayScreen = ({ navigation }) => {
           <Input
             size="2xl"
             variant="outline"
+            onChangeText={(text)=>setPayForm({...payForm,phoneNumber:text})}
             InputLeftElement={
               <Icon
                 as={<FontAwesome name="phone" />}
@@ -94,6 +99,7 @@ const PayScreen = ({ navigation }) => {
           <Input
             size="2xl"
             variant="outline"
+            onChangeText={(text)=>setPayForm({...payForm,amount:text})}
             InputLeftElement={
               <Icon
                 as={<FontAwesome name="rupee" />}
@@ -269,7 +275,10 @@ const PayScreen = ({ navigation }) => {
             <Button
               bg="fi.300"
               _text={{ color: "white" }}
-              //   onPress={() => navigation.navigate("Home")}
+                onPress={() => {
+                  console.log(payForm)
+                  // navigation.navigate("Home")
+                }}
             >
               Pay from Wallet
             </Button>

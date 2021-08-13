@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { StyleSheet } from "react-native";
 import {
   Radio,
@@ -20,12 +20,14 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 
 const WithdrawScreen = ({ navigation }) => {
-  const [value, setValue] = React.useState("Personal wallet");
-  const [valueInput, setValueInput] = React.useState("0");
+  const [withdrawForm, setWithdrawForm] = React.useState({
+    to:"Personal wallet",
+    amount: null
+  });
   return (
     <VStack flex={1} p={2} w="100%" mx="auto" bg="fi.50">
       <Center>
-        <Heading size="xl" color="fi.200" mt="30%" mb="10%">
+        <Heading size="xl" color="fi.200" mt="50%" mb="10%">
           WITHDRAW MONEY
         </Heading>
       </Center>
@@ -33,9 +35,9 @@ const WithdrawScreen = ({ navigation }) => {
         <FormControl.Label>Withdraw Money To: </FormControl.Label>
         <Radio.Group
           name="myRadioGroup"
-          value={value}
+          value={withdrawForm.to}
           onChange={(nextValue) => {
-            setValue(nextValue);
+            setWithdrawForm({...withdrawForm,to:nextValue})
           }}
         >
           <Radio value="Personal wallet" my={1}>
@@ -56,6 +58,7 @@ const WithdrawScreen = ({ navigation }) => {
           <Input
             size="2xl"
             variant="outline"
+            onChangeText={(text)=>setWithdrawForm({...withdrawForm, amount: text})}
             InputLeftElement={
               <Icon
                 as={<FontAwesome name="rupee" />}
@@ -78,10 +81,7 @@ const WithdrawScreen = ({ navigation }) => {
             _dark={{
               placeholderTextColor: "blueGray.50",
             }}
-            value={valueInput}
-            onChange={(value1) => {
-              setValueInput(value1);
-            }}
+            value={withdrawForm.amount}
           />
         </FormControl>
         <VStack space={2} mt={"15%"}>
@@ -92,13 +92,16 @@ const WithdrawScreen = ({ navigation }) => {
                 as={<FontAwesome name="rupee" />}
                 size="xs"
               />{" "}
-              {valueInput} will be added to your {value} wallet.
+              {withdrawForm.amount} will be added to your {withdrawForm.to} wallet.
             </Text>
           </HStack>
           <Button
             bg="fi.300"
             _text={{ color: "white" }}
-            onPress={() => navigation.navigate("Families")}
+            onPress={() => {
+              console.log(withdrawForm)
+              // navigation.navigate("Families")
+            }}
           >
             Withdraw Funds
           </Button>

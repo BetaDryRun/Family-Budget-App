@@ -4,7 +4,7 @@ import { DataTable } from "react-native-paper";
 const optionsPerPage = [2, 3, 4];
 import { SafeAreaView, FlatList, StyleSheet } from "react-native";
 import Carousel, { Pagination } from "react-native-snap-carousel";
-import { Header1, Header } from "../components/Utility";
+import { Header1, Header } from "../Utility";
 import { useForm, Controller } from "react-hook-form";
 import {
   Box,
@@ -26,7 +26,7 @@ import {
 } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
 
-import {BarChart,BarChart1, LineGraph, LineGraph1, PiChart, PiChart2} from '../components/Utility'
+import {BarChart,BarChart1, LineGraph, LineGraph1, PiChart, PiChart2} from '../Utility'
 
 const AdminCarouselSelector = (item, navigation) => {
   switch (item) {
@@ -53,7 +53,7 @@ const ByMembers = ({}) => {
   return (
     <View>
       <Header Title={"Members Analysis"} />
-      <Box bg="fi.50" w="100%" h="100%">
+      <Box bg="fi.50" w="100%" h="120%">
       <ScrollView mb='100'>
         <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
             <BarChart />
@@ -71,7 +71,7 @@ const ByTags = ({}) => {
   return (
     <View>
       <Header Title={"Category Analysis"} />
-      <Box bg="fi.50" w="100%" h="100%">
+      <Box bg="fi.50" w="100%" h="120%">
       <ScrollView mb='100'>
         <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
             <BarChart1 />
@@ -85,7 +85,7 @@ const ByTags = ({}) => {
   );
 };
 
-export default class ReportsScreen extends React.Component {
+export default class FamilyReports extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -136,20 +136,21 @@ export default class ReportsScreen extends React.Component {
 
   render() {
     return (
-          <View>
-            <View  w="100%" h="93.5%">
-            <Header Title={"Members Analysis"} />
-            <Box bg="fi.50">
-            <ScrollView mb='100'>
-              <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
-                  <BarChart1 />
-                </View>
-                <View style={{ flex: 1, alignItems: "center", marginTop: 15 }}>
-                  <LineGraph />
-                </View>
-            </ScrollView>
-            </Box>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#282828" }}>
+          <View
+            style={{ flex: 2, flexDirection: "row", justifyContent: "center" }}
+          >
+            <Carousel
+              layout={"default"}
+              ref={(ref) => (this.carousel = ref)}
+              data={this.state.carouselItems}
+              sliderWidth={300}
+              itemWidth={385}
+              renderItem={this._renderItem}
+              onSnapToItem={(index) => this.setState({ activeIndex: index })}
+            />
           </View>
+          {this.pagination}
         <Button
           bg="fi.600"
           _text={{ color: "fi.50" }}
@@ -165,7 +166,7 @@ export default class ReportsScreen extends React.Component {
         >
           Select Time Interval
         </Button>
-        </View>
+      </SafeAreaView>
     );
   }
 }

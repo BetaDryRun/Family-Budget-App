@@ -51,13 +51,13 @@ const FamilyForSeasoned = (props) => {
       {/* <Header Title={itemSelected.name} /> */}
       <Box bg="fi.600" width="100%" height="200%">
         <View style={{ flex: 1, alignItems: "center", marginTop: 90 }}>
-            <VStack space={2} alignItems="center">
-                <Text color="fi.50" style={{fontSize:25}} mt='-20'>{family.name}</Text>
+            <VStack space={6} alignItems="center">
+                <Text color="fi.50" style={{fontSize:25}} >{family.name}</Text>
                     <AnimatedCircularProgress
                         size={100}
                         width={15}
                         fill={(familyWallet.currentAmount/family.budget)*100}
-                        tintColor="#00c69c"
+                        tintColor="#f48c06"
                         onAnimationComplete={() => console.log('onAnimationComplete')}
                         dashedTint={{ width: 1, gap: 2 }}
                         // ref={(ref) => setCircularProgress(ref)}
