@@ -297,7 +297,7 @@ const FunctionalPage = (props) => {
                 mt="5"
                 w="45%"
                 style={{ borderRadius: 20 }}
-                onPress={() => navigation.navigate("Reports")}
+                onPress={() => navigation.navigate("Family Reports")}
                 startIcon={
                   <Icon
                     color="fi.50"
@@ -383,13 +383,6 @@ const TransactionHistory = () => {
       <Header Title={"Family Transactions"} />
       <Box bg="fi.50" w="100%" h="100%">
         <VStack space={5}>
-          <View
-            mt="-10"
-            style={{
-              borderBottomColor: "#f48c06",
-              borderBottomWidth: 3,
-            }}
-          />
           <FlatList
             data={familyTransactionsInThisIteration}
             showsVerticalScrollIndicator={true}

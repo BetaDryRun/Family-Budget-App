@@ -121,7 +121,7 @@ const AddFamily = (props) => {
             })}/>
           </FormControl>
           <Button onPress ={() => {console.log('mac')}} color="fi.300" ml = {5} width = "100%">
-            Create Group
+            Create Family
           </Button>
         </VStack>
       </Box>

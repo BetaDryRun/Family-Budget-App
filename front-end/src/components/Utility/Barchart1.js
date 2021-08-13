@@ -20,19 +20,19 @@ import {
     ContributionGraph,
   } from "react-native-chart-kit";
 
-  const Barchart = ({navigation}) => {
+  const Barchart1 = ({navigation}) => {
     return (
         <View>
-          <Heading size="md" mt='4'>Spendings Per Member</Heading>
+          <Heading size="md" mt='4'>Spendings Per Category</Heading>
           <View alignContent='center' mt='4'>
             <BarChart
               data={{
                 labels: [
-                  "Naman",
-                  "Apoorv",
-                  "March",
-                  "Utkarsh",
-                  "Sarthak",
+                  "Food",
+                  "Online",
+                  "Movies",
+                  "Bills",
+                  "Others",
                 ],
                 datasets: [
                   {
@@ -60,10 +60,10 @@ import {
                 alignContent:'center'
               }}
             />
-            <Text w="341" mt='-20'>This is the per member sendings during 1st August, 2021 - 8th August, 2021</Text>
+            <Text w="341" mt='-20'>This is the category wise sendings during 1st August, 2021 - 8th August, 2021</Text>
         </View>
       </View>
     )
   }
 
-export default Barchart;
+export default Barchart1;

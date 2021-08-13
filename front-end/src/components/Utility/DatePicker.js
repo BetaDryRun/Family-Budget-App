@@ -49,7 +49,7 @@ import {
         <Button
             bg="fi.600"
             _text={{ color: "fi.50" }}
-            onPress={() =>  navigation.navigate("Home", {date})}
+            onPress={() =>  navigation.navigate("Family Reports", {date})}
             startIcon={
               <Icon
                 color="fi.50"

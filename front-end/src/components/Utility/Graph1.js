@@ -20,7 +20,7 @@ import {
     ContributionGraph,
   } from "react-native-chart-kit";
 
-  const Graph = ({navigation}) => {
+  const Graph1 = ({navigation}) => {
     return (
       <View>
         <Heading size="md" mt='4'>Spendings Per Day</Heading>
@@ -76,4 +76,4 @@ import {
     )
   }
 
-export default Graph;
+export default Graph1;

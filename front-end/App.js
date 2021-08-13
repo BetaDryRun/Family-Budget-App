@@ -4,6 +4,7 @@ import {HomeScreen, FamilyList, WalletScreen, ReportsScreen, ProfileScreen} from
 import { AddFamily, FamilySettings } from './src/components/FamilyScreenComponents'
 import {FamilyForAdmin, FamilyForMember, FamilyForSeasoned } from './src/components/FamilyScreenComponents/Family'
 import {Register, Login} from './src/components/RegisterScreenComponents'
+import FamilyReports from './src/components/Reports/FamilyReports'
 import {PayScreen, AddMoneyScreen, QRScreen, WithdrawScreen} from './src/components/PayScreenComponents'
 import AddMember from './src/components/FamilyScreenComponents/AddMember';
 import { createStackNavigator } from '@react-navigation/stack'
@@ -40,6 +41,8 @@ export default function App({navigation}) {
           <Stack.Screen name="QR" options={{ headerShown: false }} component={QRScreen} />
           <Stack.Screen name="Add Member" options={{headerShown: false }} component = {AddMember} />
           <Stack.Screen name="Calender" date options={{ headerShown: false }} component={DatePicker} />
+          <Stack.Screen name="Family Reports" date options={{ headerShown: false }} component={FamilyReports} />
+          
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
