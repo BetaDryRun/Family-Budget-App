@@ -29,4 +29,8 @@ public class UserEntity {
     String firstName;
     String lastName;
 
+    String panNumber;
+    String accountId;
+    String resourceId;
+
 }
