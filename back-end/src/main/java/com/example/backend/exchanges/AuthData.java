@@ -1,4 +1,4 @@
-package com.example.backend.models;
+package com.example.backend.exchanges;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomFields {
+public class AuthData {
 
-    private String entity_id;
+    private String PAN;
 }

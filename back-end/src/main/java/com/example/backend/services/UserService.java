@@ -2,9 +2,7 @@ package com.example.backend.services;
 
 
 import com.example.backend.exceptions.BadRequestException;
-import com.example.backend.exchanges.DefaultResponse;
-import com.example.backend.exchanges.GetUserFamilyResponse;
-import com.example.backend.exchanges.GetUserResponse;
+import com.example.backend.exchanges.*;
 import com.example.backend.models.BudgetEntity;
 import com.example.backend.models.FamilyEntity;
 import com.example.backend.models.UserEntity;
@@ -43,8 +41,19 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public DefaultResponse createUser(UserEntity userEntity) {
+    @Autowired
+    private FusionService fusionService;
+
+    public DefaultResponse createUser(UserEntity userEntity) throws BadRequestException {
         userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+
+        CreateFusionAccountRequest createFusionAccountRequest = new CreateFusionAccountRequest(userEntity.getPanNumber());
+        CreateFusionAccountResponse account = fusionService.createAccount(createFusionAccountRequest);
+
+        IssueBundleRequest issueBundleRequest = new IssueBundleRequest(account.getIndividualID(),userEntity.getFirstName(), userEntity.getPhoneNumber());
+        fusionService.issueBundle(issueBundleRequest);
+
+
         userRepository.save(userEntity);
         walletService.createWallet(userEntity.getPhoneNumber());
 
