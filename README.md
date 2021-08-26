@@ -117,14 +117,14 @@ You will need these preinstalled:
 ## Screenshots
 
 <p float="left">
-  <img src="ss/1.jpg" width="100" />
-  <img src="ss/3.jpg" width="100" /> 
-  <img src="ss/4.jpg" width="100" />
+  <img src="ss/1.jpg" width="25%" style="margin-right: 50px;"/>
+  <img src="ss/3.jpg" width="25%" style="margin-right: 50px;"/> 
+  <img src="ss/4.jpg" width="25%" style="margin-right: 50px;"/>
 </p>
 <p>
-  <img src="ss/5.jpg" width="100" />
-  <img src="ss/9.jpg" width="100" />
-  <img src="ss/15.jpg" width="100" />
+  <img src="ss/5.jpg" width="25%" style="margin-right: 50px;"/>
+  <img src="ss/9.jpg" width="25%" style="margin-right: 50px;"/>
+  <img src="ss/15.jpg" width="25%" style="margin-right: 50px;"/>
 </p>
 
 
