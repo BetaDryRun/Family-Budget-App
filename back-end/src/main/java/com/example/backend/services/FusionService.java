@@ -4,6 +4,7 @@ import com.example.backend.exceptions.BadRequestException;
 import com.example.backend.exchanges.CreateFusionAccountRequest;
 import com.example.backend.exchanges.CreateFusionAccountResponse;
 import com.example.backend.exchanges.IssueBundleRequest;
+import com.example.backend.models.CreateUserPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -18,7 +19,7 @@ public class FusionService {
     private static final String createUserUrl = "https://fusion.preprod.zeta.in/api/v1/ifi/140793/applications/newIndividual";
     private static final String issueBundleRequestUrl = "https://fusion.preprod.zeta.in/api/v1/ifi/140793/bundles/1efa0950-5257-403b-a38d-61362060c565/issueBundle";
 
-    public CreateFusionAccountResponse createAccount(CreateFusionAccountRequest request) throws BadRequestException {
+    public CreateFusionAccountResponse createAccount(CreateUserPojo request) throws BadRequestException {
 
         try {
             return restTemplate.postForObject(createUserUrl,request,CreateFusionAccountResponse.class);
