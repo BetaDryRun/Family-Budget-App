@@ -46,7 +46,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#screenshots">Screenshots</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -114,12 +114,18 @@ You will need these preinstalled:
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Screenshots
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
+<p float="left">
+  <img src="ss/1.jpg" width="100" />
+  <img src="ss/3.jpg" width="100" /> 
+  <img src="ss/4.jpg" width="100" />
+</p>
+<p>
+  <img src="ss/5.jpg" width="100" />
+  <img src="ss/9.jpg" width="100" />
+  <img src="ss/15.jpg" width="100" />
+</p>
 
 
 <!-- ROADMAP -->
