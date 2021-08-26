@@ -53,6 +53,7 @@ public class UserService {
         CreateFusionAccountResponse account = fusionService.createAccount(createFusionAccountRequest);
 
         IssueBundleRequest issueBundleRequest = new IssueBundleRequest(account.getIndividualID(),userEntity.getFirstName(), userEntity.getPhoneNumber());
+        System.out.println(issueBundleRequest);
         IssueResponse issueResponse = fusionService.issueBundle(issueBundleRequest);
 
         userEntity.setAccountId(issueResponse.getAccounts().get(0).getAccountID());
