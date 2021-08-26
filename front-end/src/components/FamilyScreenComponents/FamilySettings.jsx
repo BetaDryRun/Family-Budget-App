@@ -26,17 +26,12 @@ const FamilySettings = (props) => {
 
   return (
     <View bg={"fi.400"} h="100%">
-      <Box
-        flex={1}
-        p={2}
-        w="100%"
-        mx='auto'
-        bg='fi.50'
-      >
+      {console.log("Naman")}
 
-        <Box w = "100%">
+      <Box flex={1} p={2} w="100%" mx="auto" bg="fi.50">
+        <Box w="100%">
           <Center>
-            <Heading size = "lg" color = "fi.200" mt = "10%">
+            <Heading size="lg" color="fi.200" mt="10%">
               Add family
             </Heading>
           </Center>
@@ -77,10 +72,16 @@ const FamilySettings = (props) => {
                   }}
                   selectedItemBg={"fi.300"}
                   dropdownOpenIcon={
-                    <Icon as = {<FontAwesome name = "chevron-circle-up" />} size={6} />
+                    <Icon
+                      as={<FontAwesome name="chevron-circle-up" />}
+                      size={6}
+                    />
                   }
                   dropdownCloseIcon={
-                    <Icon as= {<FontAwesome name="chevron-circle-down" />} size = {6}/>
+                    <Icon
+                      as={<FontAwesome name="chevron-circle-down" />}
+                      size={6}
+                    />
                   }
                 >
                   <Select.Item label="Daily" value="dy" />
@@ -101,7 +102,13 @@ const FamilySettings = (props) => {
             </FormControl.Label>
             <Input />
           </FormControl>
-          <Button onPress={handleSubmit(onSubmit)} color="fi.300" ml = {5} width = "100%">
+          {console.log("Naman")}
+          <Button
+            onPress={handleSubmit(onSubmit)}
+            color="fi.300"
+            ml={5}
+            width="100%"
+          >
             Create Group
           </Button>
         </VStack>

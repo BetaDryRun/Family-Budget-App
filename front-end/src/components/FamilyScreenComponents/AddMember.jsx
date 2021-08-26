@@ -45,7 +45,7 @@ const AddMember = (props) => {
         p={2}
         w="100%"
         mx='auto'
-        bg='fi.50'
+        bg="fi.50"
         >
   
           <Box w = "100%">
@@ -59,7 +59,7 @@ const AddMember = (props) => {
           <VStack space={5} mt={10} w="90%" pb={10}>
           <FormControl mr={5} ml={5}>
               <FormControl.Label
-                _text={{ color: "fi.500", fontSize: "sm", fontWeight: 600 }}
+                _text={{ color: 'fi.500', fontSize: "sm", fontWeight: 600 }}
               >
                 Mobile Number:
               </FormControl.Label>
@@ -70,7 +70,7 @@ const AddMember = (props) => {
 
             <FormControl mr={5} ml={5}>
               <FormControl.Label
-                _text={{ color: "fi.500", fontSize: "sm", fontWeight: 600 }}
+                _text={{ color: 'fi.500', fontSize: "sm", fontWeight: 600 }}
               >
                 Member Role:
               </FormControl.Label>

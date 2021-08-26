@@ -60,18 +60,11 @@ const AddFamily = ({navigation}) => {
 
   return (
     <View bg={"fi.400"} h="100%">
-      <Box
-        flex={1}
-        p={2}
-        w="100%"
-        mx='auto'
-        bg='fi.50'
-      >
-
-        <Box w = "100%">
+      <Box flex={1} p={2} w="100%" mx="auto" bg="fi.50">
+        <Box w="100%">
           <Center>
-            <Heading size = "lg" color = "fi.200" mt = "10%">
-              Add familys
+            <Heading size="lg" color="fi.200" mt="10%">
+              Add family
             </Heading>
           </Center>
         </Box>
@@ -83,9 +76,14 @@ const AddFamily = ({navigation}) => {
             >
               Family Name:
             </FormControl.Label>
-            <Input value = {addFamilyForm.name} onChangeText = {(text) => setFamilyForm(prevState => {
-              return {...prevState, name: text};
-            })}/>
+            <Input
+              value={addFamilyForm.name}
+              onChangeText={(text) =>
+                setFamilyForm((prevState) => {
+                  return { ...prevState, name: text };
+                })
+              }
+            />
           </FormControl>
           <FormControl mr={5} ml={5}>
             <FormControl.Label
@@ -93,9 +91,16 @@ const AddFamily = ({navigation}) => {
             >
               Family Description:
             </FormControl.Label>
-            <Input multiline={true} numberOfLines={4} value = {addFamilyForm.desc} onChangeText = {(text) => setFamilyForm(prevState => {
-              return {...prevState, desc: text};
-            })}/>
+            <Input
+              multiline={true}
+              numberOfLines={4}
+              value={addFamilyForm.description}
+              onChangeText={(text) =>
+                setFamilyForm((prevState) => {
+                  return { ...prevState, description: text };
+                })
+              }
+            />
           </FormControl>
           <FormControl mr={5} ml={5}>
             <FormControl.Label
@@ -108,21 +113,28 @@ const AddFamily = ({navigation}) => {
               render={({ timePeriod }) => (
                 <Select
                   placeholder="Choose Iteration Period"
-                  selectedValue={ addFamilyForm.iterationPeriod }
-                  width={"100%"} onValueChange = {(itemValue) => {
-                    setFamilyForm(prevState => {
-                      return {...prevState, iterationPeriod: itemValue}
-                    })
+                  selectedValue={addFamilyForm.iterationPeriod}
+                  width={"100%"}
+                  onValueChange={(itemValue) => {
+                    setFamilyForm((prevState) => {
+                      return { ...prevState, iterationPeriod: itemValue };
+                    });
                   }}
                   // onValueChange={(itemValue) => {
                   //   setTimePeriod(itemValue);
                   // }}
                   selectedItemBg={"fi.300"}
                   dropdownOpenIcon={
-                    <Icon as = {<FontAwesome name = "chevron-circle-up" />} size={6} />
+                    <Icon
+                      as={<FontAwesome name="chevron-circle-up" />}
+                      size={6}
+                    />
                   }
                   dropdownCloseIcon={
-                    <Icon as= {<FontAwesome name="chevron-circle-down" />} size = {6}/>
+                    <Icon
+                      as={<FontAwesome name="chevron-circle-down" />}
+                      size={6}
+                    />
                   }
                 >
                   <Select.Item label="Daily" value="daily" />
@@ -141,9 +153,14 @@ const AddFamily = ({navigation}) => {
             >
               Family Budget For Selected Time Period:
             </FormControl.Label>
-            <Input value = {addFamilyForm.budget} onChangeText = {(text) => setFamilyForm(prevState => {
-              return {...prevState, budget: text};
-            })}/>
+            <Input
+              value={addFamilyForm.budget}
+              onChangeText={(text) =>
+                setFamilyForm((prevState) => {
+                  return { ...prevState, budget: text };
+                })
+              }
+            />
           </FormControl>
           <Button onPress ={() => {handleAddFamily(navigation)}} style={{backgroundColor:'#f48c06'}} ml = {5} width = "100%">
             Create Family

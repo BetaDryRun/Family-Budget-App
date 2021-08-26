@@ -179,7 +179,7 @@ const Register = ({navigation}) => {
            Already Done!{" "}
          </Text>
          <Link
-           _text={{ color: "fi.300", bold: true, fontSize: "sm" }}
+           _text={{ color: 'fi.300', bold: true, fontSize: "sm" }}
            onPress={() => {
             navigation.navigate("Login")
           }}

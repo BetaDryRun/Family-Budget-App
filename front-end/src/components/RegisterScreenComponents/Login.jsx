@@ -80,7 +80,7 @@ const Login = ({navigation}) => {
             <FormControl.Label  _text={{color: 'fi.500', fontSize: 'sm', fontWeight: 600}}>
                 Password
             </FormControl.Label>
-            <Input type="password" autoCapitalize="off" onChangeText={(text)=>setLoginForm({...loginForm, password: text})}/>
+            <Input type="password" autoCapitalize="none" onChangeText={(text)=>setLoginForm({...loginForm, password: text})}/>
             <Link
               _text={{ fontSize: 'xs', fontWeight: '700', color:'fi.500' }}
               alignSelf="flex-end"
