@@ -203,7 +203,7 @@ const FunctionalPage = (props) => {
           <VStack space={5} alignItems="center">
             <Button
               bg="fi.600"
-              _text={{ color: "fi.50" }}
+              _text={{ color: 'fi.50' }}
               onPress={() => setShowModal(true)}
               style={{
                 borderRadius: 20,
@@ -254,7 +254,7 @@ const FunctionalPage = (props) => {
             <HStack mt="18" space={4}>
               <Button
                 bg="fi.300"
-                _text={{ color: "fi.50" }}
+                _text={{ color: 'fi.50' }}
                 mt="5"
                 w="45%"
                 style={{ borderRadius: 20 }}
@@ -273,7 +273,7 @@ const FunctionalPage = (props) => {
               </Button>
               <Button
                 bg="fi.300"
-                _text={{ color: "fi.50" }}
+                _text={{ color: 'fi.50' }}
                 mt="5"
                 w="35%"
                 h="50"
@@ -293,7 +293,7 @@ const FunctionalPage = (props) => {
             <HStack mt="-12" space={3} alignContent="center">
               <Button
                 bg="fi.300"
-                _text={{ color: "fi.50" }}
+                _text={{ color: 'fi.50' }}
                 mt="5"
                 w="45%"
                 style={{ borderRadius: 20 }}
@@ -310,7 +310,7 @@ const FunctionalPage = (props) => {
               </Button>
               <Button
                 bg="fi.300"
-                _text={{ color: "fi.50" }}
+                _text={{ color: 'fi.50' }}
                 mt="5"
                 w="35%"
                 h="50"
@@ -471,7 +471,7 @@ export default class FamilyForAdmin extends React.Component {
     return (
       <View
         style={{
-          backgroundColor: "#ffffff",
+          backgroundColor: "#fff",
           borderRadius: 5,
           height: 640,
         }}

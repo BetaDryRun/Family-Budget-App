@@ -35,17 +35,10 @@ const AddFamily = (props) => {
 
   return (
     <View bg={"fi.400"} h="100%">
-      <Box
-        flex={1}
-        p={2}
-        w="100%"
-        mx='auto'
-        bg='fi.50'
-      >
-
-        <Box w = "100%">
+      <Box flex={1} p={2} w="100%" mx="auto" bg="fi.50">
+        <Box w="100%">
           <Center>
-            <Heading size = "lg" color = "fi.200" mt = "10%">
+            <Heading size="lg" color="fi.200" mt="10%">
               Add family
             </Heading>
           </Center>
@@ -58,9 +51,14 @@ const AddFamily = (props) => {
             >
               Family Name:
             </FormControl.Label>
-            <Input value = {addFamilyForm.name} onChangeText = {(text) => setFamilyForm(prevState => {
-              return {...prevState, name: text};
-            })}/>
+            <Input
+              value={addFamilyForm.name}
+              onChangeText={(text) =>
+                setFamilyForm((prevState) => {
+                  return { ...prevState, name: text };
+                })
+              }
+            />
           </FormControl>
           <FormControl mr={5} ml={5}>
             <FormControl.Label
@@ -68,9 +66,16 @@ const AddFamily = (props) => {
             >
               Family Description:
             </FormControl.Label>
-            <Input multiline={true} numberOfLines={4} value = {addFamilyForm.description} onChangeText = {(text) => setFamilyForm(prevState => {
-              return {...prevState, description: text};
-            })}/>
+            <Input
+              multiline={true}
+              numberOfLines={4}
+              value={addFamilyForm.description}
+              onChangeText={(text) =>
+                setFamilyForm((prevState) => {
+                  return { ...prevState, description: text };
+                })
+              }
+            />
           </FormControl>
           <FormControl mr={5} ml={5}>
             <FormControl.Label
@@ -83,21 +88,28 @@ const AddFamily = (props) => {
               render={({ timePeriod }) => (
                 <Select
                   placeholder="Choose Iteration Period"
-                  selectedValue={ addFamilyForm.iterationPeriod }
-                  width={"100%"} onValueChange = {(itemValue) => {
-                    setFamilyForm(prevState => {
-                      return {...prevState, iterationPeriod: itemValue}
-                    })
+                  selectedValue={addFamilyForm.iterationPeriod}
+                  width={"100%"}
+                  onValueChange={(itemValue) => {
+                    setFamilyForm((prevState) => {
+                      return { ...prevState, iterationPeriod: itemValue };
+                    });
                   }}
                   // onValueChange={(itemValue) => {
                   //   setTimePeriod(itemValue);
                   // }}
                   selectedItemBg={"fi.300"}
                   dropdownOpenIcon={
-                    <Icon as = {<FontAwesome name = "chevron-circle-up" />} size={6} />
+                    <Icon
+                      as={<FontAwesome name="chevron-circle-up" />}
+                      size={6}
+                    />
                   }
                   dropdownCloseIcon={
-                    <Icon as= {<FontAwesome name="chevron-circle-down" />} size = {6}/>
+                    <Icon
+                      as={<FontAwesome name="chevron-circle-down" />}
+                      size={6}
+                    />
                   }
                 >
                   <Select.Item label="Daily" value="daily" />
@@ -116,11 +128,25 @@ const AddFamily = (props) => {
             >
               Family Budget For Selected Time Period:
             </FormControl.Label>
-            <Input value = {addFamilyForm.budget} onChangeText = {(text) => setFamilyForm(prevState => {
-              return {...prevState, budget: text};
-            })}/>
+            <Input
+              value={addFamilyForm.budget}
+              onChangeText={(text) =>
+                setFamilyForm((prevState) => {
+                  return { ...prevState, budget: text };
+                })
+              }
+            />
           </FormControl>
-          <Button onPress ={() => {console.log('mac')}} color="fi.300" ml = {5} width = "100%">
+          {console.log("Naman")}
+
+          <Button
+            onPress={() => {
+              console.log("mac");
+            }}
+            color="fi.300"
+            ml={5}
+            width="100%"
+          >
             Create Family
           </Button>
         </VStack>
