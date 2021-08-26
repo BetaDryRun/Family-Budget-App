@@ -28,14 +28,12 @@ const Login = ({navigation}) => {
   })
 
   const handleLogin = async(navigation) => {
-    console.log(loginForm)
     const headers = {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
     const params = new URLSearchParams()
     params.append('username', loginForm.username)
     params.append('password', loginForm.password)
-    console.log(params)
 
     try{
       const res = await axios.post(`${base}/login`,

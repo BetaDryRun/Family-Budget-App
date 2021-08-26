@@ -37,6 +37,7 @@ const Register = ({navigation}) => {
     try{
       const res = await axios.post(`${base}/user`,
       stateRegister, {headers})
+      console.log(res.status)
       if(res.status===201 || res.status===200)
         navigation.navigate("Login");
       else

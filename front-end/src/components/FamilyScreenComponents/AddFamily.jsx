@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
+import axios from 'axios';
+import {base} from '../../BackendCall/config'
 import {
   VStack,
   FormControl,
@@ -15,21 +17,44 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import { FontAwesome } from "@expo/vector-icons";
 
-const AddFamily = (props) => {
+const AddFamily = ({navigation}) => {
 
   const [addFamilyForm, setFamilyForm] = useState({
     name: null,
-    description: null,
+    desc: null,
+    link:"",
     iterationPeriod: null,
-    budget: null
+    budget: null,
+    members_id:[],
+    admins_id:[],
+    seasoned_id:[],
+    membersBudget:[],
+    tags:[]
   });
 
-  console.log(addFamilyForm);
+  
+  const handleAddFamily= async(navigation) =>{
+    console.log(addFamilyForm);
+    const headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'}
+
+    try{
+      const res = await axios.post(`${base}/family`,
+      addFamilyForm, {headers})
+      console.log(res.status)
+
+      if(res.status===201 || res.status===200)
+        navigation.navigate('Home')
+      else
+        navigation.navigate('Add Family')
+    }
+    catch(e){
+      console.log(e)
+    }
+  }
 
   const { control, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => {
-    console.log("submiting with ", data, addFamilyForm);
-  };
 
   // let [timePeriod, setTimePeriod] = useState("")
 
@@ -68,8 +93,8 @@ const AddFamily = (props) => {
             >
               Family Description:
             </FormControl.Label>
-            <Input multiline={true} numberOfLines={4} value = {addFamilyForm.description} onChangeText = {(text) => setFamilyForm(prevState => {
-              return {...prevState, description: text};
+            <Input multiline={true} numberOfLines={4} value = {addFamilyForm.desc} onChangeText = {(text) => setFamilyForm(prevState => {
+              return {...prevState, desc: text};
             })}/>
           </FormControl>
           <FormControl mr={5} ml={5}>
@@ -120,7 +145,7 @@ const AddFamily = (props) => {
               return {...prevState, budget: text};
             })}/>
           </FormControl>
-          <Button onPress ={() => {console.log('mac')}} style={{backgroundColor:'#f48c06'}} ml = {5} width = "100%">
+          <Button onPress ={() => {handleAddFamily(navigation)}} style={{backgroundColor:'#f48c06'}} ml = {5} width = "100%">
             Create Family
           </Button>
         </VStack>

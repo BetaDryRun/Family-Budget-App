@@ -18,8 +18,6 @@ import org.springframework.web.client.HttpServerErrorException;
 
 @RestController
 public class FamilyController {
-
-
     @Autowired
     FamilyService familyService;
 

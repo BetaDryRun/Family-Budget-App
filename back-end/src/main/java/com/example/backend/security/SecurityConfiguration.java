@@ -36,6 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/webjars/**").permitAll()
                 .antMatchers("/", "static/css/*", "static/js/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/user").permitAll()
+                .antMatchers("/user").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin()
                     .successHandler((request, response, authentication) -> {
