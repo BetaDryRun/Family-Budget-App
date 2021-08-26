@@ -1,11 +1,11 @@
 package com.example.backend.services;
 
 import com.example.backend.exceptions.BadRequestException;
-import com.example.backend.exchanges.AddMemberRequest;
-import com.example.backend.exchanges.DefaultResponse;
+import com.example.backend.exchanges.*;
 import com.example.backend.models.BudgetEntity;
 import com.example.backend.models.FamilyEntity;
 import com.example.backend.models.UserEntity;
+import com.example.backend.models.issue.IssueResponse;
 import com.example.backend.repositories.FamilyRepository;
 import com.example.backend.repositories.UserRepository;
 import lombok.extern.log4j.Log4j2;
@@ -31,6 +31,9 @@ public class FamilyService {
     @Autowired
     UserService userService;
 
+    @Autowired
+    FusionService fusionService;
+
     public DefaultResponse createFamily(FamilyEntity familyEntity, String userId) throws BadRequestException {
 
         Optional<UserEntity> response = userRepository.findById(userId);
@@ -45,6 +48,17 @@ public class FamilyService {
             familyEntity.getMembers_id().add(userId);
 
             familyEntity.getMembersBudget().add(budgetEntity);
+
+            CreateFusionAccountRequest createFusionAccountRequest = new CreateFusionAccountRequest("CEPPA343242");
+            System.out.println(createFusionAccountRequest);
+            CreateFusionAccountResponse account = fusionService.createAccount(createFusionAccountRequest);
+
+            IssueBundleRequest issueBundleRequest = new IssueBundleRequest(account.getIndividualID(),familyEntity.getName(), "+917478547856");
+            System.out.println(issueBundleRequest);
+            IssueResponse issueResponse = fusionService.issueBundle(issueBundleRequest);
+
+            familyEntity.setAccountId(issueResponse.getAccounts().get(0).getAccountID());
+
             FamilyEntity insert = familyRepository.insert(familyEntity);
 
             userService.addFamily(insert.getId(),userId);
