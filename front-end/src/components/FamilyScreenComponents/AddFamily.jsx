@@ -46,7 +46,7 @@ const AddFamily = (props) => {
         <Box w = "100%">
           <Center>
             <Heading size = "lg" color = "fi.200" mt = "10%">
-              Add family
+              Add familys
             </Heading>
           </Center>
         </Box>
@@ -120,7 +120,7 @@ const AddFamily = (props) => {
               return {...prevState, budget: text};
             })}/>
           </FormControl>
-          <Button onPress ={() => {console.log('mac')}} color="fi.300" ml = {5} width = "100%">
+          <Button onPress ={() => {console.log('mac')}} style={{backgroundColor:'#f48c06'}} ml = {5} width = "100%">
             Create Family
           </Button>
         </VStack>

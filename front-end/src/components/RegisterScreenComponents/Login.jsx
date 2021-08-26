@@ -2,6 +2,8 @@ import * as React from 'react';
 import {useState,useEffect} from 'react';
 import { FlatList, ImageBackground } from "react-native";
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
+import {base} from '../../BackendCall/config'
 import {
   Box,
   Text,
@@ -16,13 +18,39 @@ import {
   HStack,
   Center
 } from 'native-base';
+import { cos } from 'react-native-reanimated';
 
 const Login = ({navigation}) => {
 
   const [loginForm,setLoginForm] = useState({
-    phoneNumber:null,
+    username:null,
     password:null
   })
+
+  const handleLogin = async(navigation) => {
+    console.log(loginForm)
+    const headers = {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+    const params = new URLSearchParams()
+    params.append('username', loginForm.username)
+    params.append('password', loginForm.password)
+    console.log(params)
+
+    try{
+      const res = await axios.post(`${base}/login`,
+      params, {headers})
+      console.log(res.status)
+
+      if(res.status===201 || res.status===200)
+        navigation.navigate('Home')
+      else
+        navigation.navigate('Login')
+    }
+    catch(e){
+      console.log(e)
+    }
+  }
 
  return (
       <Box
@@ -48,7 +76,7 @@ const Login = ({navigation}) => {
             <FormControl.Label _text={{color: 'fi.500', fontSize: 'sm', fontWeight: 600}}>
                 Phone No.
             </FormControl.Label>
-            <Input onChangeText={(text)=>setLoginForm({...loginForm, phoneNumber: text})}/>
+            <Input onChangeText={(text)=>setLoginForm({...loginForm, username: text})}/>
           </FormControl>
           <FormControl mb={5}>
             <FormControl.Label  _text={{color: 'fi.500', fontSize: 'sm', fontWeight: 600}}>
@@ -65,9 +93,8 @@ const Login = ({navigation}) => {
           </FormControl>
           <VStack  space={2}>
           <Button bg="fi.300" _text={{color: 'white' }}
-            onPress={()=> {
-              
-              navigation.navigate('Home')
+            onPress={async()=> {
+              await handleLogin(navigation);
             }}
           >
               Login

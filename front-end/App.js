@@ -19,6 +19,7 @@ export default function App({navigation}) {
     fonts,
     spacing
   })
+  console.disableYellowBox = true;
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
