@@ -6,8 +6,11 @@ import com.example.backend.exchanges.DefaultResponse;
 import com.example.backend.exchanges.GetUserFamilyResponse;
 import com.example.backend.exchanges.GetUserResponse;
 import com.example.backend.models.BudgetEntity;
+import com.example.backend.models.FamilyEntity;
 import com.example.backend.models.UserEntity;
+import com.example.backend.repositories.FamilyRepository;
 import com.example.backend.repositories.UserRepository;
+import com.example.backend.security.models.UserDetailsCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -30,6 +33,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private FamilyRepository familyRepository;
 
     @Autowired
     private MongoTemplate mongoTemplate;
@@ -117,5 +123,22 @@ public class UserService {
         user.setFamilies_id(families);
 
         userRepository.save(user);
+    }
+
+    public List<FamilyEntity> findFamilies(UserDetailsCustom loggedInUser) throws BadRequestException {
+
+        Optional<UserEntity> user = userRepository.findById(loggedInUser.getUserId());
+        if (!user.isPresent()) {
+            throw new BadRequestException("user doesnot exist");
+        }
+
+        List <String> families_id = user.get().getFamilies_id();
+        List<FamilyEntity> families = new ArrayList<FamilyEntity>();
+
+        for(String family_id: families_id) {
+            Optional<FamilyEntity> tempFam = familyRepository.findById(family_id);
+            families.add(tempFam.get());
+        }
+        return families;
     }
 }
