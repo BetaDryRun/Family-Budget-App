@@ -38,8 +38,13 @@ const AddFamily = (props) => {
       <Box flex={1} p={2} w="100%" mx="auto" bg="fi.50">
         <Box w="100%">
           <Center>
+<<<<<<< HEAD
             <Heading size="lg" color="fi.200" mt="10%">
               Add family
+=======
+            <Heading size = "lg" color = "fi.200" mt = "10%">
+              Add familys
+>>>>>>> ec54fb9ec460c434f7951fbcde7c29a55c7d0231
             </Heading>
           </Center>
         </Box>
@@ -137,16 +142,7 @@ const AddFamily = (props) => {
               }
             />
           </FormControl>
-          {console.log("Naman")}
-
-          <Button
-            onPress={() => {
-              console.log("mac");
-            }}
-            color="fi.300"
-            ml={5}
-            width="100%"
-          >
+          <Button onPress ={() => {console.log('mac')}} style={{backgroundColor:'#f48c06'}} ml = {5} width = "100%">
             Create Family
           </Button>
         </VStack>

@@ -52,7 +52,7 @@ const FamilyForSeasoned = (props) => {
       <Box bg="fi.600" width="100%" height="200%">
         <View style={{ flex: 1, alignItems: "center", marginTop: 90 }}>
             <VStack space={6} alignItems="center">
-                <Text color="fi.50" style={{fontSize:25}} >{family.name}</Text>
+                <Text color="fi.50" style={{fontSize:25}} >Family 2</Text>
                     <AnimatedCircularProgress
                         size={100}
                         width={15}

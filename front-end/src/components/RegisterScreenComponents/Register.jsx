@@ -1,6 +1,7 @@
 import React,{useRef, useState, useEffect} from 'react';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import PhoneInput from 'react-native-phone-input'
+import axios from 'axios';
 import {
   Box,
   Text,
@@ -16,17 +17,35 @@ import {
   HStack,
   Center
 } from 'native-base';
-import {registerUser} from '../../BackendCall/InmemoryData/InmemoryAPIs'
+import {base} from '../../BackendCall/config'
 
 const Register = ({navigation}) => {
-  const [pickerData, setPickerData] = useState(null);
   const [stateRegister, setStateRegister] = useState({
-    fname: null,
-    lname: null,
-    email: null,
-    phone: null,
+    firstName: null,
+    lastName: null,
+    emailId: null,
+    phoneNumber: null,
+    families:[],
     password: null,
   });
+
+  const handleRegister = async(navigation) => {
+    console.log(stateRegister)
+    const headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'}
+    try{
+      const res = await axios.post(`${base}/user`,
+      stateRegister, {headers})
+      if(res.status===201 || res.status===200)
+        navigation.navigate("Login");
+      else
+        navigation.navigate("Register");
+    }
+    catch(e){
+      console.log(e)
+    }
+  }
 
 
  return (
@@ -50,7 +69,7 @@ const Register = ({navigation}) => {
            </FormControl.Label>
            <Input
              onChangeText={(Text) => {
-               setStateRegister({ ...stateRegister, fname: `${Text}` });
+               setStateRegister({ ...stateRegister, firstName: `${Text}` });
              }}
              placeholder="First Name"
            />
@@ -63,7 +82,7 @@ const Register = ({navigation}) => {
            </FormControl.Label>
            <Input
              onChangeText={(Text) => {
-               setStateRegister({ ...stateRegister, lname: `${Text}` });
+               setStateRegister({ ...stateRegister, lastName: `${Text}` });
              }}
              placeholder="Last Name"
            />
@@ -78,7 +97,7 @@ const Register = ({navigation}) => {
          <Input
            autoCapitalize="off"
            onChangeText={(Text) => {
-             setStateRegister({ ...stateRegister, email: `${Text}` });
+             setStateRegister({ ...stateRegister, emailId: `${Text}` });
            }}
            placeholder="email"
          />
@@ -91,7 +110,7 @@ const Register = ({navigation}) => {
          </FormControl.Label>
          <Input
            onChangeText={(Text) => {
-             setStateRegister({ ...stateRegister, phone: `${Text}` });
+             setStateRegister({ ...stateRegister, phoneNumber: `${Text}` });
            }}
            placeholder="Phone"
          />
@@ -115,8 +134,7 @@ const Register = ({navigation}) => {
            bg="fi.300"
            _text={{ color: "white" }}
            onPress={async() => {
-             await registerUser(stateRegister)
-             navigation.navigate("Home");
+             const status = await handleRegister(navigation);
            }}
          >
            Register
