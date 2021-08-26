@@ -26,6 +26,23 @@ public class UserEntity {
 
     List<String> families_id;
     String emailId;
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id='" + id + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", password='" + password + '\'' +
+                ", families_id=" + families_id +
+                ", emailId='" + emailId + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", panNumber='" + panNumber + '\'' +
+                ", accountId='" + accountId + '\'' +
+                ", resourceId='" + resourceId + '\'' +
+                '}';
+    }
+
     String firstName;
     String lastName;
 
