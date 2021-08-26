@@ -3,7 +3,6 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -17,13 +16,11 @@
   <h3 align="center">Fay</h3>
 
   <p align="center">
-    Tagline please
+    Your one-stop payment platform
     <br />
-    <a href="https://github.com/BetaDryRun/Family-Budget-App"><strong>Explore the docs »</strong></a>
+    <a href="#about-the-project"><strong>About the Project »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/BetaDryRun/Family-Budget-App">View Demo</a>
-    ·
     <a href="https://github.com/BetaDryRun/Family-Budget-App">Report Bug</a>
     ·
     <a href="https://github.com/BetaDryRun/Family-Budget-App">Request Feature</a>
