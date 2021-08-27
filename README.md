@@ -9,23 +9,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/BetaDryRun/Family-Budget-App">
-    <img src="ss/app-icon.png" alt="Logo" height="160">
-  </a>
+    <a href="https://github.com/BetaDryRun/Family-Budget-App">
+        <img src="ss/app-icon.png" alt="Logo" height="160">
+    </a>
 
   <h3 align="center">Fay</h3>
 
   <p align="center">
-    Your one-stop payment platform
+    Your one-stop solution to all budgeting woes
     <br />
     <a href="#our-proposed-solution"><strong>Our Proposed Solution »</strong></a>
     <br />
     <br />
     <a href="https://github.com/BetaDryRun/Family-Budget-App">App Demo</a>
     ·
-    <a href="https://github.com/BetaDryRun/Family-Budget-App">Report Bug</a>
+    <a href="https://github.com/BetaDryRun/Family-Budget-App/issues">Report Bug</a>
     ·
-    <a href="https://github.com/BetaDryRun/Family-Budget-App">Request Feature</a>
+    <a href="https://github.com/BetaDryRun/Family-Budget-App/issues">Request Feature</a>
   </p>
 </p>
 
@@ -41,10 +41,19 @@
         <li>
             <a href="#our-proposed-solution">Our Proposed Solution</a>
             <ul>
-                <li><a href="#app-workflow">App Workflow</a></li>
+                <li><a href="#fusion-api-by-zeta">Fusion API by Zeta</a></li>
+            </ul>
+             <ul>
+                <li><a href="#system-architecture">System Architecture</a></li>
+            </ul>
+             <ul>
+                <li><a href="#fusion-api-by-zeta">Fusion API by Zeta</a></li>
             </ul>
             <ul>
                 <li><a href="#built-with">Built With</a></li>
+            </ul>
+            <ul>
+                <li><a href="#app-workflow">App Workflow</a></li>
             </ul>
         </li>
         <li>
@@ -56,9 +65,8 @@
         </li>
         <li><a href="#screenshots">Screenshots</a></li>
         <li><a href="#important-links">Important Links</a></li>
-        <li><a href="#roadmap">Roadmap</a></li>
-        <li><a href="#contributing">Contributing</a></li>
         <li><a href="#license">License</a></li>
+        <li><a href="#future-scope">Future Scope</a></li>
         <li><a href="#contact">Contact</a></li>
     </ol>
 </details>
@@ -66,11 +74,13 @@
 
 ## Identifying the Problem
 
-Families find it difficult to keep track of expenses and make guided decisions to make a proper monthly budget.
-No way of accessing a consolidated view on exchanges done through different bank accounts/wallets.
-No way to automatically categorize various transactions and visualize them from differing points-of-views.
-Traditional ways of setting transaction limits and self-notes to control expenditures of varying nature are cumbersome and inflexible.
-Planning for a whole months budget and adapting it to personal and time-variant needs on a family level is not straightforward.
+Some of the key issues faced by the families:
+
+* Families find it difficult to keep track of expenses and make guided decisions to make a proper monthly budget.
+* No way of accessing a consolidated view on exchanges done through different bank accounts/wallets.
+* No way to automatically categorize various transactions and visualize them from differing points-of-views.
+* Traditional ways of setting transaction limits and self-notes to control expenditures of varying nature are cumbersome and inflexible.
+* Planning for a whole months budget and adapting it to personal and time-variant needs on a family level is not straightforward.
 
 
 <!-- ABOUT THE PROJECT -->
@@ -80,23 +90,33 @@ Planning for a whole months budget and adapting it to personal and time-variant 
     <img src="ss/zeta.gif" width = "20%" alt="Fay"/>
 </p>
 
+We aim to revolutionize how families view their money and make informed choices without the pain of going through each and every transaction all the time.
+
 We are providing these key features:
 
 * Budget allocation for family based on categories such as entertainment, shopping, etc.
 * Parental control on pocket money. Children can raise requests in order to spend money through family wallet
 * Personal and family-level view of expenses based on time and type of expense
 * Seamless transfer between bank account and wallets
-* Anaylytical report generation on spendings
+* Analytical report generation on spendings
 
 ### Fusion API by Zeta
+
+Fusion APIs used:
+* /{accountId}/balance - To check Family balance
+* /issueBundle - Account Creation and resource Allocation for money transfer
+* /newIndividual - User Onboarding and KYC
+* /transfers - A2A transfer between users and members of the family (with Fay budget wrapper)
+* /{accountId}/transactions - To check all categorised transactions of an account
 
 ### System Architecture
 
 <p align="center">
   <a href="https://github.com/BetaDryRun/Family-Budget-App">
-    <img src="ss/system-architecture.png" alt="System Architecture" width="80%">
+    <img src="ss/system-architecture.png" alt="System Architecture" width="60%">
   </a>
 </p>
+
 
 ### Built With
 
@@ -184,9 +204,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Team Name: DryRun
+**Team Name**: DryRun
 
-Project Link: [https://github.com/BetaDryRun/Family-Budget-App](https://github.com/BetaDryRun/Family-Budget-App)
+**Project Link**: [https://github.com/BetaDryRun/Family-Budget-App](https://github.com/BetaDryRun/Family-Budget-App)
 
 
 
