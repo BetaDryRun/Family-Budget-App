@@ -30,6 +30,8 @@ public class FamilyEntity {
 
     List<String> tags;
 
+    String accountId;
+
 
 
 }

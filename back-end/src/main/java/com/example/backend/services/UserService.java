@@ -2,12 +2,11 @@ package com.example.backend.services;
 
 
 import com.example.backend.exceptions.BadRequestException;
-import com.example.backend.exchanges.DefaultResponse;
-import com.example.backend.exchanges.GetUserFamilyResponse;
-import com.example.backend.exchanges.GetUserResponse;
+import com.example.backend.exchanges.*;
 import com.example.backend.models.BudgetEntity;
 import com.example.backend.models.FamilyEntity;
 import com.example.backend.models.UserEntity;
+import com.example.backend.models.issue.IssueResponse;
 import com.example.backend.repositories.FamilyRepository;
 import com.example.backend.repositories.UserRepository;
 import com.example.backend.security.models.UserDetailsCustom;
@@ -23,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,10 +43,27 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public DefaultResponse createUser(UserEntity userEntity) {
+    @Autowired
+    private FusionService fusionService;
+
+    public DefaultResponse createUser(UserEntity userEntity) throws BadRequestException {
         userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+
+        CreateFusionAccountRequest createFusionAccountRequest = new CreateFusionAccountRequest(userEntity.getPanNumber());
+        System.out.println(createFusionAccountRequest);
+        CreateFusionAccountResponse account = fusionService.createAccount(createFusionAccountRequest);
+
+        IssueBundleRequest issueBundleRequest = new IssueBundleRequest(UUID.randomUUID().toString(), account.getIndividualID(),userEntity.getFirstName(), userEntity.getPhoneNumber());
+        System.out.println(issueBundleRequest);
+        IssueResponse issueResponse = fusionService.issueBundle(issueBundleRequest);
+
+        userEntity.setAccountId(issueResponse.getAccounts().get(0).getAccountID());
+        userEntity.setResourceId(issueResponse.getPaymentInstruments().get(0).getResourceID());
+
+
+        System.out.println(userEntity);
         userRepository.save(userEntity);
-        walletService.createWallet(userEntity.getPhoneNumber());
+
 
         DefaultResponse defaultResponse = new DefaultResponse();
         defaultResponse.setCode("200");
