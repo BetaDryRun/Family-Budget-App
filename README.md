@@ -18,9 +18,11 @@
   <p align="center">
     Your one-stop payment platform
     <br />
-    <a href="#about-the-project"><strong>About the Project »</strong></a>
+    <a href="#our-proposed-solution"><strong>Our Proposed Solution »</strong></a>
     <br />
     <br />
+    <a href="https://github.com/BetaDryRun/Family-Budget-App">App Demo</a>
+    ·
     <a href="https://github.com/BetaDryRun/Family-Budget-App">Report Bug</a>
     ·
     <a href="https://github.com/BetaDryRun/Family-Budget-App">Request Feature</a>
@@ -31,52 +33,87 @@
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#screenshots">Screenshots</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
+    <summary>Table of Contents</summary>
+    <ol>
+        <li>
+            <a href="#identifying-the-problem">Identifying the Problem</a>
+        </li>
+        <li>
+            <a href="#our-proposed-solution">Our Proposed Solution</a>
+            <ul>
+                <li><a href="#app-workflow">App Workflow</a></li>
+            </ul>
+            <ul>
+                <li><a href="#built-with">Built With</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#getting-started">Getting Started</a>
+            <ul>
+                <li><a href="#prerequisites">Prerequisites</a></li>
+                <li><a href="#installation">Installation</a></li>
+            </ul>
+        </li>
+        <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#important-links">Important Links</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#contributing">Contributing</a></li>
+        <li><a href="#license">License</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ol>
 </details>
 
 
+## Identifying the Problem
+
+Families find it difficult to keep track of expenses and make guided decisions to make a proper monthly budget.
+No way of accessing a consolidated view on exchanges done through different bank accounts/wallets.
+No way to automatically categorize various transactions and visualize them from differing points-of-views.
+Traditional ways of setting transaction limits and self-notes to control expenditures of varying nature are cumbersome and inflexible.
+Planning for a whole months budget and adapting it to personal and time-variant needs on a family level is not straightforward.
+
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Our Proposed Solution
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<p align ="center">
+    <img src="ss/zeta.gif" width = "20%" alt="Fay"/>
+</p>
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+We are providing these key features:
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+* Budget allocation for family based on categories such as entertainment, shopping, etc.
+* Parental control on pocket money. Children can raise requests in order to spend money through family wallet
+* Personal and family-level view of expenses based on time and type of expense
+* Seamless transfer between bank account and wallets
+* Anaylytical report generation on spendings
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
+### Fusion API by Zeta
 
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+### System Architecture
+
+<p align="center">
+  <a href="https://github.com/BetaDryRun/Family-Budget-App">
+    <img src="ss/system-architecture.png" alt="System Architecture" width="80%">
+  </a>
+</p>
 
 ### Built With
 
+* [Fusion API by Zeta](https://fusion.tech/docs/)
 * [Springboot](https://spring.io/projects/spring-boot)
 * [React Native](https://reactnative.dev/)
+* [MongoDB](https://www.mongodb.com/)
+* Machine Learning
 
+
+### App Workflow
+
+<p align="center">
+  <a href="https://github.com/BetaDryRun/Family-Budget-App">
+    <img src="ss/app-workflow.png" alt="App workflow" width="80%">
+  </a>
+</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -126,25 +163,10 @@ You will need these preinstalled:
   <img src="ss/15.jpg" width="25%" style="margin-right: 50px;"/>
 </p>
 
+## Important Links
 
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/BetaDryRun/Family-Budget-App/issues) for a list of proposed features (and known issues).
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
+* <a href="http://localhost:8080/swagger-ui.html">Swagger Documentation</a>
+* Demo
 
 
 <!-- LICENSE -->
@@ -153,6 +175,11 @@ Contributions are what make the open source community such an amazing place to b
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
+## Future Scope
+
+1. ML driven tagging of transaction. Custom tags can be created to personalize analytics.
+2. Easy creation of “pot” for saving money towards a goal.
+3. Giving recommendation on saving and investment.
 
 <!-- CONTACT -->
 ## Contact
@@ -162,8 +189,10 @@ Team Name: DryRun
 Project Link: [https://github.com/BetaDryRun/Family-Budget-App](https://github.com/BetaDryRun/Family-Budget-App)
 
 
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[repository-url]: https://github.com/BetaDryRun/Family-Budget-App
 [contributors-shield]: https://img.shields.io/github/contributors/BetaDryRun/Family-Budget-App.svg?style=for-the-badge
 [contributors-url]: https://github.com/BetaDryRun/Family-Budget-App/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/BetaDryRun/Family-Budget-App.svg?style=for-the-badge
