@@ -4,7 +4,7 @@
     "slug": "FamilyBudgetApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/fay.png",
     "splash": {
       "image": "./assets/fay.png",
       "resizeMode": "contain",
@@ -17,13 +17,18 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.DryRun.fay",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#333333"
-      }
+        "backgroundColor": "#333333",
+        "package": "com.DryRun.fay",
+        "versionCode": 1
+      },
+      "package": "com.DryRun.fay"
     },
     "web": {
       "favicon": "./assets/favicon.png"
