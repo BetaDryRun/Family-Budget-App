@@ -41,7 +41,7 @@ const image = {
 };
 
 const FamilyInnerData = ({ type }) => {
-  let value = familyWallet.currentAmount;
+  let value = 350;
   return (
     <HStack>
       <Icon

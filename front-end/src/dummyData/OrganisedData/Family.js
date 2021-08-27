@@ -1,8 +1,8 @@
 export const family={
     id: "132415",
-    name: "Family 1",
+    name: "Family",
     link: "https://share",
-    description: "About the family argarga aergarg rga agaraga",
+    description: "Description about the family in multiple lines",
     members: ["1", "2", "3"],
     admins: ["1"],
     seasoned: ["2"],

@@ -29,7 +29,7 @@ const InnerData=({})=>{
         <HStack>
             <Icon color="fi.300" as={<FontAwesome name="rupee" />} size="xs" alignContent='center'/>
             <Text bold fontSize='md' color="fi.300" alignContent='center'>
-                {familyWallet.currentAmount}
+                1201
             </Text>
         </HStack>
     )
@@ -52,7 +52,7 @@ const FamilyForSeasoned = (props) => {
       <Box bg="fi.600" width="100%" height="200%">
         <View style={{ flex: 1, alignItems: "center", marginTop: 90 }}>
             <VStack space={6} alignItems="center">
-                <Text color="fi.50" style={{fontSize:25}} >{family.name}</Text>
+                <Text color="fi.50" style={{fontSize:25}} >Flat-Mates</Text>
                     <AnimatedCircularProgress
                         size={100}
                         width={15}

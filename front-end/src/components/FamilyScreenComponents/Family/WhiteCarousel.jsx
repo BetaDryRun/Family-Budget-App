@@ -117,27 +117,27 @@ const generalInfoData = [
   {
     id:1,
     title: "Highest Spender",
-    value: "First Item",
+    value: "Apoorv",
   },
   {
     id:2,
     title: "Lowest Spender",
-    value: "Second Item",
+    value: "Sarthak",
   },
   {
     id:3,
     title: "Highest Contributor",
-    value: "Third Item",
+    value: "Apoorv",
   },
   {
     id:4,
     title: "Lowest Contributor",
-    value: "Third Item",
+    value: "Naman",
   },
   {
     id:5,
     title: "Average Money Spent Per User",
-    value: "Third Item",
+    value: "300 Rupees",
   },
 ];
 
