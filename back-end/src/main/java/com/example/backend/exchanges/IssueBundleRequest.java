@@ -11,6 +11,7 @@ import lombok.ToString;
 @ToString
 public class IssueBundleRequest {
 
+    String requestID;
     String accountHolderID;
     String name;
     String phoneNumber;

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @Log4j2
@@ -53,7 +54,7 @@ public class FamilyService {
             System.out.println(createFusionAccountRequest);
             CreateFusionAccountResponse account = fusionService.createAccount(createFusionAccountRequest);
 
-            IssueBundleRequest issueBundleRequest = new IssueBundleRequest(account.getIndividualID(),familyEntity.getName(), "+917478547856");
+            IssueBundleRequest issueBundleRequest = new IssueBundleRequest(UUID.randomUUID().toString(), account.getIndividualID(),familyEntity.getName(), "+917478547856");
             System.out.println(issueBundleRequest);
             IssueResponse issueResponse = fusionService.issueBundle(issueBundleRequest);
 

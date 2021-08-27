@@ -11,7 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class TransactionEntity {
 
-    private String requestID = "69";
+    private String requestID;
     private Amount amount;
     private String transferCode = "ATLAS_P2M_AUTH";
     private String debitAccountID;
@@ -19,7 +19,8 @@ public class TransactionEntity {
     private long transferTime = 1581083590962L;
     private String remarks = "NOT A TEST";
 
-    public TransactionEntity(String debitAccountID, String creditAccountID, Integer amount) {
+    public TransactionEntity(String requestID, String debitAccountID, String creditAccountID, Integer amount) {
+        this.requestID = requestID;
         this.debitAccountID = debitAccountID;
         this.creditAccountID = creditAccountID;
         this.amount = new Amount(amount);

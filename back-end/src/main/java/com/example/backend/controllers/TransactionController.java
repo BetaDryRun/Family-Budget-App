@@ -25,10 +25,10 @@ public class TransactionController {
             @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error",response = HttpServerErrorException.InternalServerError.class)
     })
-    public ResponseEntity<DefaultResponse> makeWalletPayment(@RequestParam String senderAccountId, @RequestParam String receiverAccountId, @RequestParam Integer amount) {
+    public ResponseEntity<DefaultResponse> makeWalletPayment(@RequestParam String receiverPhoneNumber, @RequestParam Integer amount) {
         DefaultResponse defaultResponse;
         try {
-            defaultResponse = fusionService.transferMoney(receiverAccountId, amount);
+            defaultResponse = fusionService.transferMoney(receiverPhoneNumber, amount);
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(defaultResponse);
         } catch (Exception e) {
             defaultResponse = new DefaultResponse();
@@ -56,6 +56,28 @@ public class TransactionController {
             defaultResponse = new DefaultResponse();
             defaultResponse.setCode("500");
             defaultResponse.setMessages(new String[]{"Balance not available"});
+            System.out.println(e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(defaultResponse);
+        }
+    }
+
+    @GetMapping("/addMoney")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Created", response = DefaultResponse.class),
+            @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error",response = HttpServerErrorException.InternalServerError.class)
+    })
+    public ResponseEntity<DefaultResponse> addMoneyToAccount(String familyId, Integer amount) {
+        DefaultResponse defaultResponse = new DefaultResponse();
+        try {
+            defaultResponse = fusionService.addMoneyToAccount(familyId, amount);
+            defaultResponse.setMessages(new String[]{"Your money has been successfully added"});
+            defaultResponse.setCode("200");
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(defaultResponse);
+        } catch (Exception e) {
+            defaultResponse = new DefaultResponse();
+            defaultResponse.setCode("500");
+            defaultResponse.setMessages(new String[]{"Unable to add money"});
             System.out.println(e);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(defaultResponse);
         }

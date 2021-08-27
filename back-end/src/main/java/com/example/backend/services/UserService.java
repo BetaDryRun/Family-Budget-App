@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -52,7 +53,7 @@ public class UserService {
         System.out.println(createFusionAccountRequest);
         CreateFusionAccountResponse account = fusionService.createAccount(createFusionAccountRequest);
 
-        IssueBundleRequest issueBundleRequest = new IssueBundleRequest(account.getIndividualID(),userEntity.getFirstName(), userEntity.getPhoneNumber());
+        IssueBundleRequest issueBundleRequest = new IssueBundleRequest(UUID.randomUUID().toString(), account.getIndividualID(),userEntity.getFirstName(), userEntity.getPhoneNumber());
         System.out.println(issueBundleRequest);
         IssueResponse issueResponse = fusionService.issueBundle(issueBundleRequest);
 

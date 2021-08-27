@@ -8,6 +8,7 @@ import com.example.backend.exchanges.IssueBundleRequest;
 import com.example.backend.models.BalanceEntity;
 import com.example.backend.models.TransactionEntity;
 import com.example.backend.models.issue.IssueResponse;
+import com.example.backend.repositories.FamilyRepository;
 import com.example.backend.repositories.UserRepository;
 import com.example.backend.security.facade.IAuthenticationFacade;
 import com.example.backend.security.models.UserDetailsCustom;
@@ -18,6 +19,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.UUID;
 
 @Service
 public class FusionService {
@@ -30,6 +33,9 @@ public class FusionService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private FamilyRepository familyRepository;
 
     // {{fusion_base_url}}/api/v1/ifi/{{ifiID}}/applications/newIndividual
     private static final String createUserUrl = "https://fusion.preprod.zeta.in/api/v1/ifi/140793/applications/newIndividual";
@@ -83,13 +89,13 @@ public class FusionService {
             HttpHeaders headers = new HttpHeaders();
             headers.set("X-Zeta-AuthToken", "eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidGFnIjoia3E2R3dhNVpjXzMyd0FOU2xwdkpEQSIsImFsZyI6IkExMjhHQ01LVyIsIml2IjoiUloxUC1FSWUyRmZpM0tJNSJ9.9HiGnRWPs72xyHkz318uarugQxSVzqEksXraJ8N0zec.MEJhqMICEqUgfSrfT5tX2g.9XiRnjXxE08Lr-lh06h7RwZvtJuLdxqkcG02A1ojTGbnoKunZKfVNhQ-rJihnoltutrPQwYPalW8lxM_pnnZ9zZS6RMO-S_UM_gx5p5IFDe1IUlOH3utXWEczdYhcCrnBAXKXAzRCnjh_-Av_RAWi33wZOfcMQrVh3IjAUMtO_R18tK6oekDRt2ivHT9vJ-k0w0iHxnfvLhzjBvKpFPkkuqCj6V9jMEwnjUAB4hIlLPB7fOdJY06KmE5GwipjIR0if69bqhTqyPf1tKJIt-0VlNMD7nfMA-vb9ImRHoLPv771gZbT84W4dIVKuhMB8-1TjQSW-LTKn5Cae56ifOPVxXmN0p8FkDL2CPVi4Im3nw5DrnDj7FgJQgp0Ql6w5di.NCjdbFfwveouzImxettTCg");
 
-            TransactionEntity transactionEntity = new TransactionEntity(senderAccountId, receiverAccountId, amount);
+            TransactionEntity transactionEntity = new TransactionEntity(UUID.randomUUID().toString(), senderAccountId, receiverAccountId, amount);
             HttpEntity<TransactionEntity> httpEntity = new HttpEntity<>(transactionEntity, headers);
             String response = restTemplate.postForObject(a2aTransactionUrl, httpEntity, String.class);
            return new DefaultResponse(new String[]{"Transaction Done"}, "200");
         } catch (Exception e) {
             System.out.println(e);
-            throw new BadRequestException("Exception in issuing bundle request");
+            throw new BadRequestException("Error while transferring funds");
         }
     }
 
@@ -105,6 +111,24 @@ public class FusionService {
         } catch (Exception e) {
             System.out.println(e);
             throw new BadRequestException("Exception in checking balance");
+        }
+    }
+
+    public DefaultResponse addMoneyToAccount(String familyId, Integer amount) throws BadRequestException{
+        try {
+
+            String familyAccountId = familyRepository.findById(familyId).get().getAccountId();
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("X-Zeta-AuthToken", "eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwidGFnIjoia3E2R3dhNVpjXzMyd0FOU2xwdkpEQSIsImFsZyI6IkExMjhHQ01LVyIsIml2IjoiUloxUC1FSWUyRmZpM0tJNSJ9.9HiGnRWPs72xyHkz318uarugQxSVzqEksXraJ8N0zec.MEJhqMICEqUgfSrfT5tX2g.9XiRnjXxE08Lr-lh06h7RwZvtJuLdxqkcG02A1ojTGbnoKunZKfVNhQ-rJihnoltutrPQwYPalW8lxM_pnnZ9zZS6RMO-S_UM_gx5p5IFDe1IUlOH3utXWEczdYhcCrnBAXKXAzRCnjh_-Av_RAWi33wZOfcMQrVh3IjAUMtO_R18tK6oekDRt2ivHT9vJ-k0w0iHxnfvLhzjBvKpFPkkuqCj6V9jMEwnjUAB4hIlLPB7fOdJY06KmE5GwipjIR0if69bqhTqyPf1tKJIt-0VlNMD7nfMA-vb9ImRHoLPv771gZbT84W4dIVKuhMB8-1TjQSW-LTKn5Cae56ifOPVxXmN0p8FkDL2CPVi4Im3nw5DrnDj7FgJQgp0Ql6w5di.NCjdbFfwveouzImxettTCg");
+
+            TransactionEntity transactionEntity = new TransactionEntity(UUID.randomUUID().toString(), "7a6e890a-b511-4b70-879d-2b5c10d72005", familyAccountId, amount);
+            HttpEntity<TransactionEntity> httpEntity = new HttpEntity<>(transactionEntity, headers);
+            String response = restTemplate.postForObject(a2aTransactionUrl, httpEntity, String.class);
+            return new DefaultResponse(new String[]{"Transaction Done"}, "200");
+        } catch (Exception e) {
+            System.out.println(e);
+            throw new BadRequestException("Error while transferring funds");
         }
     }
 
