@@ -4,7 +4,7 @@
     "slug": "FamilyBudgetApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/fay.png",
+    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/fay.png",
       "resizeMode": "contain",
@@ -24,9 +24,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#333333",
-        "package": "com.DryRun.fay",
-        "versionCode": 1
+        "backgroundColor": "#333333"
       },
       "package": "com.DryRun.fay"
     },

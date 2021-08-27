@@ -21,7 +21,7 @@
     <a href="#our-proposed-solution"><strong>Our Proposed Solution »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/BetaDryRun/Family-Budget-App">App Demo</a>
+    <a href="https://drive.google.com/file/d/1A7Gt5qILQo_h6SP-zInGwOCrngWhR76R/view?usp=drivesdk">App Demo</a>
     ·
     <a href="https://github.com/BetaDryRun/Family-Budget-App/issues">Report Bug</a>
     ·
@@ -162,6 +162,7 @@ You will need these preinstalled:
    mvn clean install
    java -jar back-end-0.0.1-SNAPSHOT.jar
    ```
+  
 3. To run frontend
    ```sh
    cd front-end/
@@ -186,7 +187,7 @@ You will need these preinstalled:
 ## Important Links
 
 * <a href="http://localhost:8080/swagger-ui.html">Swagger Documentation</a>
-* Demo
+* <a href="https://drive.google.com/file/d/1A7Gt5qILQo_h6SP-zInGwOCrngWhR76R/view?usp=drivesdk">Demo</a>
 
 
 <!-- LICENSE -->
