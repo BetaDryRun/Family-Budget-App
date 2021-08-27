@@ -107,12 +107,11 @@ Fusion APIs used:
 
 ### System Architecture
 
-<!-- <p align="center">
+<p align="center">
   <a href="https://github.com/BetaDryRun/Family-Budget-App">
-    <img src="ss/system-architecture.png" alt="System Architecture" width="80%">
+    <img src="ss/system-architecture.png" alt="System Architecture" width="60%">
   </a>
-</p> -->
-<iframe frameborder="0" style="width:100%;height:804px;" src="https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1&title=Untitled%20Diagram.drawio#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1KbESnBjR4GSIaV_onrWZhz0knbmzLsXl%26export%3Ddownload"></iframe>
+</p>
 
 
 ### Built With
