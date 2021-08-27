@@ -16,7 +16,7 @@
   <h3 align="center">Fay</h3>
 
   <p align="center">
-    Your one-stop payment platform
+    Your one-stop solution to all budgeting woes
     <br />
     <a href="#our-proposed-solution"><strong>Our Proposed Solution »</strong></a>
     <br />
@@ -74,11 +74,13 @@
 
 ## Identifying the Problem
 
-Families find it difficult to keep track of expenses and make guided decisions to make a proper monthly budget.
-No way of accessing a consolidated view on exchanges done through different bank accounts/wallets.
-No way to automatically categorize various transactions and visualize them from differing points-of-views.
-Traditional ways of setting transaction limits and self-notes to control expenditures of varying nature are cumbersome and inflexible.
-Planning for a whole months budget and adapting it to personal and time-variant needs on a family level is not straightforward.
+Some of the key issues faced by the families:
+
+* Families find it difficult to keep track of expenses and make guided decisions to make a proper monthly budget.
+* No way of accessing a consolidated view on exchanges done through different bank accounts/wallets.
+* No way to automatically categorize various transactions and visualize them from differing points-of-views.
+* Traditional ways of setting transaction limits and self-notes to control expenditures of varying nature are cumbersome and inflexible.
+* Planning for a whole months budget and adapting it to personal and time-variant needs on a family level is not straightforward.
 
 
 <!-- ABOUT THE PROJECT -->
@@ -87,6 +89,8 @@ Planning for a whole months budget and adapting it to personal and time-variant 
 <p align ="center">
     <img src="ss/zeta.gif" width = "20%" alt="Fay"/>
 </p>
+
+We aim to revolutionize how families view their money and make informed choices without the pain of going through each and every transaction all the time.
 
 We are providing these key features:
 
@@ -99,11 +103,11 @@ We are providing these key features:
 ### Fusion API by Zeta
 
 Fusion APIs used:
-* /{accountId}/balance - 
+* /{accountId}/balance - To check Family balance
 * /issueBundle - Account Creation and resource Allocation for money transfer
 * /newIndividual - User Onboarding and KYC
 * /transfers - A2A transfer between users and members of the family (with Fay budget wrapper)
-* /{accountId}/transactions - 
+* /{accountId}/transactions - To check all categorised transactions of an account
 
 ### System Architecture
 
