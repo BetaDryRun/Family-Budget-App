@@ -99,11 +99,11 @@ We are providing these key features:
 ### Fusion API by Zeta
 
 Fusion APIs used:
-* /{accountId}/balance
-* /issueBundle
-* /newIndividual
-* /transfers
-* /{accountId}/transactions
+* /{accountId}/balance - 
+* /issueBundle - Account Creation and resource Allocation for money transfer
+* /newIndividual - User Onboarding and KYC
+* /transfers - A2A transfer between users and members of the family (with Fay budget wrapper)
+* /{accountId}/transactions - 
 
 ### System Architecture
 
@@ -200,9 +200,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Team Name: DryRun
+**Team Name**: DryRun
 
-Project Link: [https://github.com/BetaDryRun/Family-Budget-App](https://github.com/BetaDryRun/Family-Budget-App)
+**Project Link**: [https://github.com/BetaDryRun/Family-Budget-App](https://github.com/BetaDryRun/Family-Budget-App)
 
 
 
