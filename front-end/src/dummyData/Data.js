@@ -1,9 +1,9 @@
 export const DummyFamily = [
   {
     id: "132415",
-    name: "Family 1",
+    name: "Family",
     link: "https://share",
-    description: "This is a family examply in which my role is that of a Head (Admin)",
+    description: "Weekly Budgeting for my family.",
     members: ["1", "2", "3", "4" , "5"],
     admins: ["1"],
     seasoned: ["2"],
@@ -19,9 +19,9 @@ export const DummyFamily = [
   },
   {
     id: "151515",
-    name: "Family 2",
+    name: "Flat-Mates",
     link: "https://share2",
-    description: "This is a family examply in which my role is that of a Seasoned.",
+    description: "Monthly Expense management among flatmates.",
     members: ["mid1", "mid2", "mid3"],
     admins: ["aid1", "aid2", "aid3…"],
     seasoned: ["sid1", "sid2", "sid3…"],
@@ -37,9 +37,9 @@ export const DummyFamily = [
   },
   {
     id: "133753",
-    name: "Family 3",
+    name: "College Friends",
     link: "https://share3",
-    description: "This is a family examply in which my role is that of a Child",
+    description: "Expense management among friends.",
     members: ["mid1", "mid2", "mid3"],
     admins: ["aid1", "aid2", "aid3…"],
     seasoned: ["sid1", "sid2", "sid3…"],

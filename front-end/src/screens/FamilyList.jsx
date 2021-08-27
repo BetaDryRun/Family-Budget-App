@@ -69,7 +69,7 @@ const FamilyList = ({ navigation }) => {
               {item.description}
             </Text>
             <Text lineHeight={[5, 5, 7]} noOfLines={[4, 4, 2]} color="fi.50">
-              Role - {role[index%3]}
+              Role - <Text color="fi.300">{role[index%3]}</Text>
             </Text>
             <Text color="fi.100">
               No Of Members:{" "}
