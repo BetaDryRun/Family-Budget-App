@@ -45,7 +45,7 @@ public class UserController {
         try {
             defaultResponse = userService.createUser(userEntity);
             return ResponseEntity.status(HttpStatus.CREATED).body(defaultResponse);
-        } catch (DuplicateKeyException e) {
+        } catch (DuplicateKeyException | BadRequestException e) {
             defaultResponse = new DefaultResponse();
             defaultResponse.setCode("500");
             defaultResponse.setMessages(new String[]{"Phone number already registered"});
