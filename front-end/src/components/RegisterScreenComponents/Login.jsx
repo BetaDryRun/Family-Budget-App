@@ -38,15 +38,14 @@ const Login = ({navigation}) => {
     try{
       const res = await axios.post(`${base}/login`,
       params, {headers})
-      console.log(res.status)
+      console.log("User Logged In")
 
       if(res.status===201 || res.status===200)
         navigation.navigate('Home')
-      else
-        navigation.navigate('Login')
     }
     catch(e){
       console.log(e)
+      navigation.navigate('Register')
     }
   }
 

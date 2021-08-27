@@ -40,46 +40,10 @@ const image = {
   uri: "https://preview.redd.it/qwd83nc4xxf41.jpg?width=640&crop=smart&auto=webp&s=e82767fdf47158e80604f407ce4938e44afc6c25",
 };
 
-const FamilyInnerData = ({ type }) => {
-  let value = familyWallet.currentAmount;
-  return (
-    <HStack>
-      <Icon
-        color="fi.300"
-        as={<FontAwesome name="rupee" />}
-        size="xs"
-        alignContent="center"
-      />
-      <Text bold fontSize="md" color="fi.300" alignContent="center">
-        {value}
-      </Text>
-    </HStack>
-  );
-};
-const PerosnalInnerData = ({ type }) => {
-  let value = 0;
-  family.membersBudgets.map((member) => {
-    if (member.id === "1") value += member.remainingBudget;
-  });
-  return (
-    <HStack>
-      <Icon
-        color="fi.300"
-        as={<FontAwesome name="rupee" />}
-        size="xs"
-        alignContent="center"
-      />
-      <Text bold fontSize="md" color="fi.300" alignContent="center">
-        {value}
-      </Text>
-    </HStack>
-  );
-};
-
-const AdminCarouselSelector = (item, navigation) => {
+const AdminCarouselSelector = (item, navigation, familyData, user) => {
   switch (item) {
     case 0:
-      return <FunctionalPage navigation={navigation} />;
+      return <FunctionalPage navigation={navigation} familyData={familyData} user={user}/>;
     case 1:
       return <SpendTable />;
     case 2:
@@ -178,20 +142,53 @@ const AddMemberModal=({showModal,setShowModal})=>{
 }
 
 const FunctionalPage = (props) => {
-  const { navigation } = props;
+  const { navigation,familyData, user } = props;
   const [showModal, setShowModal] = useState(false)
-  //   const itemSelected = props?.route?.params?.selectedItem;
+    const itemSelected = props?.route?.params?.selectedItem;
 
-  const calculator = () => {
-    let value = 0;
-    let total = 0;
-    family.membersBudgets.map((member) => {
-      if (member.id === "1") {
-        value += member.remainingBudget;
-        total += member.budget;
-      }
+    const FamilyInnerData = ({ type }) => {
+      let value = familyData.budget;
+      return (
+        <HStack>
+          <Icon
+            color="fi.300"
+            as={<FontAwesome name="rupee" />}
+            size="xs"
+            alignContent="center"
+          />
+          <Text bold fontSize="md" color="fi.300" alignContent="center">
+            {value}
+          </Text>
+        </HStack>
+      );
+    };
+
+    const PerosnalInnerData = ({ type }) => {
+      let value = 0;
+      family.membersBudgets.map((member) => {
+        if (member.id === "1") value += member.remainingBudget;
+      });
+      return (
+        <HStack>
+          <Icon
+            color="fi.300"
+            as={<FontAwesome name="rupee" />}
+            size="xs"
+            alignContent="center"
+          />
+          <Text bold fontSize="md" color="fi.300" alignContent="center">
+            {value}
+          </Text>
+        </HStack>
+      );
+    };
+
+  const calculator = (familyData) => {
+    let value = familyData.budget;
+    familyData.membersBudget.map((member) => {
+        value = value - (member.budget - member.remainingBudget);
     });
-    return (value / total) * 100;
+    return (value / familyData.budget) * 100;
   };
 
   return (
@@ -240,7 +237,7 @@ const FunctionalPage = (props) => {
             <AnimatedCircularProgress
               size={100}
               width={15}
-              fill={calculator()}
+              fill={calculator(familyData)}
               tintColor="#f48c06"
               dashedTint={{ width: 1, gap: 2 }}
               // ref={(ref) => setCircularProgress(ref)}
@@ -461,12 +458,13 @@ export default class FamilyForAdmin extends React.Component {
     super(props);
     this.state = {
       navigation: props.navigation,
+      family: props.route.params.selectedItem,
+      user: props.route.params.user,
       activeIndex: 0,
       carouselItems: [0, 1, 2],
     };
     this._renderItem = this._renderItem.bind(this);
   }
-
   _renderItem({ item, index }) {
     return (
       <View
@@ -476,10 +474,11 @@ export default class FamilyForAdmin extends React.Component {
           height: 640,
         }}
       >
-        {AdminCarouselSelector(item, this.props.navigation)}
+        {AdminCarouselSelector(item, this.props.navigation, this.state.family, this.state.user)}
       </View>
     );
   }
+
   get pagination() {
     const { carouselItems, activeIndex } = this.state;
     return (

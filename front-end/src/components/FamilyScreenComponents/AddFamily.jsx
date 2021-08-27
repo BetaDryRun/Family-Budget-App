@@ -97,7 +97,7 @@ const AddFamily = ({navigation}) => {
               value={addFamilyForm.description}
               onChangeText={(text) =>
                 setFamilyForm((prevState) => {
-                  return { ...prevState, description: text };
+                  return { ...prevState, desc: text };
                 })
               }
             />

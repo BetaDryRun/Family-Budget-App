@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FamilyList from './FamilyList';
 import ReportsScreen from './ReportsScreen'
@@ -130,7 +130,7 @@ const HomeScreen = (props) => {
                   size="md"
                   style={{ alignSelf: "center" }}
                 />
-              </View> 
+              </View>
         }}
       />
     </Tab.Navigator>

@@ -25,6 +25,7 @@ const Register = ({navigation}) => {
     lastName: null,
     emailId: null,
     phoneNumber: null,
+    panNumber:null,
     families:[],
     password: null,
   });
@@ -37,7 +38,7 @@ const Register = ({navigation}) => {
     try{
       const res = await axios.post(`${base}/user`,
       stateRegister, {headers})
-      console.log(res.status)
+      console.log("User Registered!")
       if(res.status===201 || res.status===200)
         navigation.navigate("Login");
       else
@@ -51,7 +52,7 @@ const Register = ({navigation}) => {
 
  return (
    <Box flex={1} p={2} w="100%" mx="auto" bg="fi.50">
-     <Center  mt='25%'>
+     <Center  mt='15%'>
        <Heading size="lg" color="fi.200" mt="10%">
          Register
        </Heading>
@@ -112,6 +113,19 @@ const Register = ({navigation}) => {
          <Input
            onChangeText={(Text) => {
              setStateRegister({ ...stateRegister, phoneNumber: `${Text}` });
+           }}
+           placeholder="Phone"
+         />
+       </FormControl>
+       <FormControl>
+         <FormControl.Label
+           _text={{ color: "fi.500", fontSize: "sm", fontWeight: 600 }}
+         >
+           PAN Number
+         </FormControl.Label>
+         <Input
+           onChangeText={(Text) => {
+             setStateRegister({ ...stateRegister, panNumber: `${Text}` });
            }}
            placeholder="Phone"
          />

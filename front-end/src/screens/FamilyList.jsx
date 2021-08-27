@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useIsFocused } from "@react-navigation/native";
 import { FlatList, ImageBackground } from "react-native";
 import { DummyFamily } from "../dummyData/Data";
 import axios from 'axios';
@@ -12,9 +13,11 @@ import {
   Button,
   Icon,
   Pressable,
+  Center,
 } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import { Header } from "../components/Utility";
+import { Title } from "react-native-paper";
 
 const image = {
   uri: "https://preview.redd.it/qwd83nc4xxf41.jpg?width=640&crop=smart&auto=webp&s=e82767fdf47158e80604f407ce4938e44afc6c25",
@@ -29,8 +32,8 @@ const FabButton = ({ navigation }) => {
       bg="fi.300"
       style={{
         position: "absolute",
-        bottom: 20,
-        right: 10,
+        bottom: 85,
+        right: 15,
         height: 60,
         width: 60,
         borderRadius: 40,
@@ -44,7 +47,6 @@ const FabButton = ({ navigation }) => {
 };
 
 const changeBal = (item,bal) => {
-  console.log(item)
   item.map((key) => {
     bal = bal - (key.budget -  key.remainingBudget);
   });
@@ -55,6 +57,8 @@ const changeBal = (item,bal) => {
 const FamilyList = ({ navigation }) => {
 
   const [families,setFamilies] = useState([]);
+  const [user,setUser] = useState(null);
+  const isFocused = useIsFocused();
 
   const callAllFamilies = async() => {
     const headers = {
@@ -62,8 +66,12 @@ const FamilyList = ({ navigation }) => {
       'Accept': 'application/json'}
 
     try{
-      const res = await axios.get(`${base}/user/families`, {headers})
-      setFamilies(res.data)
+      const res1 = await axios.get(`${base}/user/families`, {headers})
+      setFamilies(res1.data)
+      console.log("Families loaded!")
+      const res2 = await axios.get(`${base}/user`, {headers})
+      setUser(res2.data)
+      console.log("User loaded!")
     }
     catch(e){
       console.log(e)
@@ -71,20 +79,22 @@ const FamilyList = ({ navigation }) => {
   }
 
   useEffect(()=>{
-    callAllFamilies()
-  },[])
+    if(isFocused)
+      callAllFamilies()
+  },[navigation, isFocused])
 
 
   const renderItem = ({ item, index }) => {
     return (
+      
       <Box bg="fi.500" shadow={5} rounded="lg" maxWidth="100%" mt={5}>
         <Pressable
           onPress={() => {
-            role[index%3]==='HEAD'?navigation.navigate("FamilyForAdmin", { selectedItem: item })
+            role[index%3]==='HEAD'?navigation.navigate("FamilyForAdmin", { selectedItem: item, user:user })
             :
-            role[index%3]==='SEASONED'?navigation.navigate("FamilyForSeasoned", { selectedItem: item })
+            role[index%3]==='SEASONED'?navigation.navigate("FamilyForSeasoned", { selectedItem: item, user:user })
             :
-            navigation.navigate("FamilyForMember", { selectedItem: item })
+            navigation.navigate("FamilyForMember", { selectedItem: item, user:user  })
           }}
         >
           <Stack space={4} m={4}>
@@ -127,7 +137,7 @@ const FamilyList = ({ navigation }) => {
           >
       {
         families.length===0?
-          <Text>Loading...</Text>
+          <Center> <Title>No Families Present</Title> </Center>
         :
           <View>
             <FlatList
@@ -141,9 +151,10 @@ const FamilyList = ({ navigation }) => {
               keyExtractor={(item) => String(item.id)}
               renderItem={renderItem}
             />
-            <FabButton navigation={navigation} />
           </View>
       }
+
+      <FabButton navigation={navigation} />
       </ImageBackground>
       </View>
     </View>

@@ -60,9 +60,13 @@ public class UserController {
             @ApiResponse(code = 400, message = "Bad request, adjust before retrying", response = DefaultResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error",response = HttpServerErrorException.InternalServerError.class)
     })
-    public ResponseEntity<List<GetUserResponse>> getUser(@RequestParam String phoneNumber) throws BadRequestException {
-        List<GetUserResponse> user = userService.getUser(phoneNumber);
-        return ResponseEntity.ok(user);
+    public ResponseEntity<GetUserResponse> getUser() throws BadRequestException {
+    	UserDetailsCustom loggedInUser = (UserDetailsCustom) authenticationFacade.getPrincipal();
+        if (loggedInUser == null) {
+            throw new BadRequestException("User is not logged in!");
+        }
+        List<GetUserResponse> user = userService.getUser(loggedInUser.getUsername());
+        return ResponseEntity.ok(user.get(0));
     }
 
     @DeleteMapping("/user")
